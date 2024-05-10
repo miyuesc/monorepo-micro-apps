@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "jsx": "preserve",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@miyue-mma/shared": ["./packages/shared/index.ts"],
+      "@miyue-mma/shared/*": ["./packages/shared/*"]
+    },
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "declaration": true,
+    "declarationDir": "./types",
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "*.ts",
+    "packages",
+    "applications",
+    "vitest.config.ts"
+  ],
+  "exclude": [
+    "unocss.config.ts",
+    "node_modules",
+    "**/*.md",
+    "**/dist",
+    "packages/.test",
+    "packages/_docs"
+  ]
+}
