@@ -40,10 +40,18 @@ export function isPromise<T = any>(val: unknown): val is Promise<T> {
     && isFunction((val as any).catch)
 }
 
-export function isPrimitive(value: any): boolean {
+export function isPrimitive(value: unknown): boolean {
   return (
     value === undefined
     || value === null
     || (typeof value !== 'object' && typeof value !== 'function')
   )
+}
+
+export function isNullable(value: unknown): boolean {
+  return isUndefined(value) || isNull(value)
+}
+
+export function isNoNullable(value: unknown): boolean {
+  return !isUndefined(value) && !isNull(value)
 }
