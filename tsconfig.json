@@ -11,6 +11,7 @@
       "@miyue-mma/shared": ["./packages/shared/index.ts"],
       "@miyue-mma/shared/*": ["./packages/shared/*"]
     },
+    "noImplicitThis": true,
     "resolveJsonModule": true,
     "strict": true,
     "strictFunctionTypes": true,
