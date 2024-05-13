@@ -12,6 +12,7 @@
     },
     "./*": "./*"
   },
+  "files": ["http", "utils"],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
