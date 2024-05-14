@@ -2,17 +2,18 @@
   "name": "@miyue-mma/shared",
   "version": "0.0.1",
   "description": "",
-  "main": "./index.cjs",
-  "module": "./index.mjs",
-  "types": "./index.d.cts",
+  "main": "./dist/cjs/index.cjs",
+  "module": "./dist/esm/index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./index.mjs",
-      "require": "./index.cjs"
-    },
-    "./*": "./*"
+    "types": "./dist/index.d.ts",
+    "import": "./dist/esm/index.mjs",
+    "require": "./dist/cjs/index.cjs"
   },
-  "files": ["http", "utils"],
+  "scripts": {
+    "build": "pnpm rollup -c"
+  },
+  "files": ["src", "dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"

@@ -1,0 +1,7 @@
+export * from './colors'
+export * from './event-emitter'
+export * from './object'
+export * from './reg-exp'
+export * from './string'
+export * from './timer'
+export * from './typed'

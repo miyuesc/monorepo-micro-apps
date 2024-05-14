@@ -1,4 +1,4 @@
-import { isPrimitive } from '@miyue-mma/shared/utils/typed'
+import { isPrimitive } from './typed'
 
 /**
  * 简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
@@ -58,3 +58,5 @@ export function deepClone<T>(obj: T, hash = new WeakMap()): T {
 
   return newObj
 }
+
+export function toArray() {}

@@ -2,7 +2,7 @@ export interface QueueConfig {
   maxLength: number
 }
 
-class Queue {
+export class Queue {
   _config: QueueConfig
   _queue: unknown[]
 
@@ -44,5 +44,3 @@ class Queue {
     return this._queue[0]
   }
 }
-
-export default Queue

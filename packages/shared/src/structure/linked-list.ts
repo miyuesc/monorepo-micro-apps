@@ -10,7 +10,7 @@ export interface LinkedListConfig {
 
 export type InsertPosition = 'before' | 'after'
 
-class LinkedList {
+export class LinkedList {
   _config: LinkedListConfig
   _list: LinkedListNode[]
 
@@ -73,5 +73,3 @@ class LinkedList {
     return node
   }
 }
-
-export default LinkedList

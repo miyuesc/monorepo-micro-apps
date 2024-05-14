@@ -2,7 +2,7 @@ export interface StackConfig {
   maxLength: number
 }
 
-class Stack {
+export class Stack {
   _config: StackConfig
   _stack: unknown[]
 
@@ -44,5 +44,3 @@ class Stack {
     return this._stack[this.size() - 1]
   }
 }
-
-export default Stack

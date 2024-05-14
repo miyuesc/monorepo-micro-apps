@@ -1,4 +1,4 @@
-import { isPlainObject } from '@miyue-mma/shared/utils/typed'
+import { isPlainObject } from './typed'
 
 const nativeMax = Math.max
 const nativeMin = Math.min
