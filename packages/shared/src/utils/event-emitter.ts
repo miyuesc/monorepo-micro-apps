@@ -168,6 +168,4 @@ export class EventEmitter {
   }
 }
 
-const emitterInstance = new EventEmitter()
-
-export default emitterInstance
+export const emitterInstance = new EventEmitter()

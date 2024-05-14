@@ -12,12 +12,17 @@
     "require": "./dist/cjs/index.cjs"
   },
   "scripts": {
-    "build": "pnpm rollup -c"
+    "build": "pnpm clean && pnpm rollup -c",
+    "clean": "rimraf dist"
   },
   "files": ["src", "dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "bugs": {
     "url": "https://github.com/miyuesc/monorepo-micro-apps/issues"

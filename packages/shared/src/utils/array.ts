@@ -1,4 +1,4 @@
-import { isString, notEmptyArray } from '@miyue-mma/shared/src'
+import { isString, notEmptyArray } from './typed'
 
 export interface TreeArrayNode {
   [key: string]: unknown
