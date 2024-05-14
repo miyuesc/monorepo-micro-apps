@@ -61,3 +61,39 @@ export function toMap<T extends Record<string, unknown>>(data: T[], key: string,
 
   return result
 }
+
+export interface GenerateLabelProps {
+  key?: string
+  label?: string
+  children?: string
+  splice?: boolean
+  separator?: string
+  hideFirst?: boolean
+}
+
+/**
+ * 根据指定值，将指定属性名组装为字符串
+ * @param data
+ * @param value
+ * @param props
+ */
+export function generateLabel<T extends Record<string, unknown>>(data: T[], value: unknown, props: GenerateLabelProps = {}): string | undefined {
+  const { key = 'id', label = 'label', children = 'children', splice = true, separator = '/', hideFirst } = props
+
+  for (const node of data) {
+    if (node[key] === value)
+      return node[label] as string
+
+    if (notEmptyArray(node[children])) {
+      const result = generateLabel(node[children] as T[], value, { ...props, hideFirst: false })
+      if (result) {
+        if (hideFirst)
+          return result
+
+        return splice ? `${node[label]}${separator}${result}` : result
+      }
+    }
+  }
+
+  return undefined
+}
