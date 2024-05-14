@@ -1,2 +1,3 @@
 export * from './useCronExpression'
-export * from './usePagenationRequest'
+export * from './useEventEmitter'
+export * from './usePaginationRequest'

@@ -14,7 +14,7 @@ export interface Page {
 }
 export type ErrorHandling = (errorMsg?: string) => unknown
 
-export default function<T extends object = NonNullable<unknown>, S extends object = NonNullable<unknown>>(
+export function usePaginationRequest<T extends object = NonNullable<unknown>, S extends object = NonNullable<unknown>>(
   httpRequest: DataRequest,
   responseTransfer?: ResponseDataTransfer,
   errorHanding?: ErrorHandling,
