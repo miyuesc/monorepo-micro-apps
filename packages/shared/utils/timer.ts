@@ -143,6 +143,21 @@ export function debounce<T extends (...args: unknown[]) => unknown>(func: T, wai
 /**
  * 节流
  */
-export function throttle<F extends Function>(fn: F, wait: number) {
+interface ThrottleOptions {
+  leading?: boolean
+  trailing?: boolean
+}
+export function throttle<T extends (...args: unknown[]) => unknown>(func: T, wait: number, options?: ThrottleOptions) {
+  let leading = true
+  let trailing = true
 
+  if (isPlainObject(options)) {
+    leading = 'leading' in options ? !!options.leading : leading
+    trailing = 'trailing' in options ? !!options.trailing : trailing
+  }
+  return debounce(func, wait, {
+    leading,
+    maxWait: wait,
+    trailing,
+  })
 }

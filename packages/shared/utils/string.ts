@@ -3,7 +3,7 @@
  *
  * insertString('hello world', 6, 'my ') -> 'hello my world'
  */
-export function insertString(str: string, index: number, insertStr: string): string {
+export function insert(str: string, index: number, insertStr: string): string {
   return str.substring(0, index) + insertStr + str.substring(index)
 }
 
