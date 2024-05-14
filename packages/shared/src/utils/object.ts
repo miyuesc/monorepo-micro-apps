@@ -1,4 +1,4 @@
-import { isPrimitive } from './typed'
+import { isPrimitive, notEmptyArray } from './typed'
 
 /**
  * 简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
@@ -59,4 +59,37 @@ export function deepClone<T>(obj: T, hash = new WeakMap()): T {
   return newObj
 }
 
-export function toArray() {}
+export interface TreeNode {
+  [key: string]: TreeNode[] | unknown
+}
+
+export interface FlatChildrenKeysProps {
+  key?: string
+  children?: string
+}
+/**
+ * 获取一个树节点的所有子节点数组 ( 场景：将一个组织的 code 与该组织的子组织 code 合并到一个数组 )
+ * @param {object} node 包含子节点的数据对象
+ * @param { ?{children?: string, key?: string}} props 默认关键字
+ * @return { Array[string] } 关键字数组
+ */
+export function flatChildrenKeywords(node: TreeNode, props: FlatChildrenKeysProps = {}): string[] {
+  const { key = 'id', children = 'children' } = props
+  const result: string[] = []
+
+  node[key] && result.push(node[key] as string)
+
+  if (notEmptyArray(node[children])) {
+    const childNodes = node[children] as TreeNode[]
+    childNodes.reduce((target, child) => {
+      if (notEmptyArray(child[children]))
+        target.push(...flatChildrenKeywords(child, props))
+      else
+        child[key] && result.push(child[key] as string)
+
+      return result
+    }, result)
+  }
+
+  return result
+}

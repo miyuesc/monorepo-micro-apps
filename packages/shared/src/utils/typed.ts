@@ -55,3 +55,7 @@ export function isNullable(value: unknown): boolean {
 export function isNoNullable(value: unknown): boolean {
   return !isUndefined(value) && !isNull(value)
 }
+
+export function notEmptyArray(value: unknown): boolean {
+  return isArray(value) && value.length > 0
+}

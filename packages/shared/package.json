@@ -2,6 +2,7 @@
   "name": "@miyue-mma/shared",
   "version": "0.0.1",
   "description": "",
+  "author": "MiyueFE <https://github.com/miyuesc>",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/esm/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,5 +19,8 @@
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
   },
-  "private": true
+  "bugs": {
+    "url": "https://github.com/miyuesc/monorepo-micro-apps/issues"
+  },
+  "private": false
 }

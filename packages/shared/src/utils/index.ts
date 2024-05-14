@@ -1,5 +1,7 @@
+export * from './array'
 export * from './colors'
 export * from './event-emitter'
+export * from './files'
 export * from './object'
 export * from './reg-exp'
 export * from './string'
