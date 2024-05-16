@@ -24,8 +24,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "peerDependencies": {
-    "vue": "^3.0.0",
-    "@miyue-mma/shared": "^0.0.1"
+    "@miyue-mma/shared": "^0.0.4",
+    "echarts": "^5.4.3",
+    "echarts-liquidfill": "^3.1.0",
+    "vue": "^3.0.0"
   },
   "dependencies": {
     "@miyue-mma/shared": "workspace:^"
