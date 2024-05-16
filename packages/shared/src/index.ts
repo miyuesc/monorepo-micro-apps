@@ -1,3 +1,4 @@
+export * from './echarts'
 export * from './http'
 export * from './structure'
 export * from './types'

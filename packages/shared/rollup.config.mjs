@@ -19,6 +19,7 @@ export default [
       file: 'dist/index.d.ts',
       format: 'es',
     },
+    externals: [/echarts\/*/],
     plugins: [externals(), dts()]
   },
   {
@@ -35,6 +36,7 @@ export default [
       entryFileNames: '[name].cjs',
       sourcemap: useSourceMap
     },
+    externals: [/echarts\/*/],
     plugins: [
       externals(),
       useEsbuild
@@ -60,6 +62,7 @@ export default [
       entryFileNames: '[name].mjs',
       sourcemap: useSourceMap
     },
+    externals: [/echarts\/*/],
     plugins: [
       externals(),
       useEsbuild

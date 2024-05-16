@@ -1,6 +1,6 @@
 {
   "name": "@miyue-mma/shared",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "author": "MiyueFE <https://github.com/miyuesc>",
   "main": "./dist/cjs/index.cjs",
