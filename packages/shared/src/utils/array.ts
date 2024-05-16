@@ -1,7 +1,48 @@
 import { isString, notEmptyArray } from './typed'
 
-export interface TreeArrayNode {
-  [key: string]: unknown
+/**
+ * 生成指定长度数组
+ * @param length
+ * @param formatter
+ */
+export function create<T>(length: number, formatter?: (idx?: number) => T): T[] {
+  return Array.from({ length }, (_, index) => formatter ? formatter(index) : index as T)
+}
+
+/**
+ * 随机打乱数组
+ * @param array
+ */
+export function shuffle<T>(array: T[]): T[] {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]
+  }
+  return array
+}
+
+export type PartitionFilter<T> = (i: T, idx: number, arr: readonly T[]) => any
+
+/**
+ * 根据条件拆分数组
+ * @param array
+ * @param filters
+ */
+export function partition<T>(array: readonly T[], ...filters: PartitionFilter<T>[]): Array<T[]> & { length: typeof filters['length'] } {
+  const result: T[][] = Array.from({ length: filters.length + 1 }).fill(null).map(() => [])
+
+  array.forEach((e, idx, arr) => {
+    let i = 0
+    for (const filter of filters) {
+      if (filter(e, idx, arr)) {
+        result[i].push(e)
+        return
+      }
+      i += 1
+    }
+    result[i].push(e)
+  })
+  return result
 }
 
 export interface FlatProps {
@@ -10,7 +51,6 @@ export interface FlatProps {
   currentDepth?: number
   removeChildren?: boolean
 }
-
 /**
  * 对象数组扁平化
  * @param data 源对象数组
@@ -39,7 +79,6 @@ export interface ToMapProps {
   useFlat?: boolean
   flatOptions?: FlatProps
 }
-
 /**
  * 转成对象结构
  * @param data
@@ -70,7 +109,6 @@ export interface GenerateLabelProps {
   separator?: string
   hideFirst?: boolean
 }
-
 /**
  * 根据指定值，将指定属性名组装为字符串
  * @param data
