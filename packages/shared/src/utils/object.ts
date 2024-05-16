@@ -1,4 +1,4 @@
-import { isPrimitive, notEmptyArray } from './typed'
+import { isArray, isPrimitive, notEmptyArray } from './typed'
 
 /**
  * 简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
@@ -12,7 +12,7 @@ export function simpleMerge<T extends object>(target: T | Partial<T>, source: T)
     if (!target[key]) {
       target[key] = source[key]
     }
-    else if (Array.isArray(target[key])) {
+    else if (isArray(target[key])) {
       ;(target[key] as any[]) = [...new Set([...(source[key] as any[]), ...(target[key] as any[])])]
     }
     else if (typeof target[key] === 'object') {

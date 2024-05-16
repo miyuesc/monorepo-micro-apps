@@ -135,3 +135,11 @@ export function generateLabel<T extends Record<string, unknown>>(data: T[], valu
 
   return undefined
 }
+
+/**
+ * 对数组进行排序并返回前 n 个元素
+ */
+export function sortWith<T extends Record<string, unknown>>(articles: T[], key: keyof T, len: number = 10) {
+  const copyArr = articles.slice()
+  return copyArr.sort((a, b) => (b[key] as number) - (a[key] as number)).slice(0, len)
+}
