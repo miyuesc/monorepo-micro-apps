@@ -1,6 +1,6 @@
 {
   "name": "@miyue-mma/shared",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "author": "MiyueFE <https://github.com/miyuesc>",
   "main": "./dist/cjs/index.cjs",
@@ -26,6 +26,9 @@
   },
   "bugs": {
     "url": "https://github.com/miyuesc/monorepo-micro-apps/issues"
+  },
+  "peerDependencies": {
+    "echarts": "^5.4.3"
   },
   "private": false
 }
