@@ -37,7 +37,9 @@ export function pascal(str: string): string {
   const parts = str?.split(/[.\-\s_]/).map(x => x.toLowerCase()) ?? []
   if (parts.length === 0)
     return ''
-  return parts.map(str => str.charAt(0).toUpperCase() + str.slice(1)).join('')
+  return parts
+    .map(str => str.charAt(0).toUpperCase() + str.slice(1))
+    .join('')
 }
 
 /**
@@ -90,14 +92,26 @@ export function camel(str: string): string {
  * ) // Hello! My name is placeholder.
  * ```
  */
-export function template(str: string, object: Record<string | number, any>, fallback?: string | ((key: string) => string)): string
-export function template(str: string, ...args: (string | number | bigint | undefined | null)[]): string
+export function template(
+  str: string,
+  object: Record<string | number, any>,
+  fallback?: string | ((key: string) => string),
+): string
+export function template(
+  str: string,
+  ...args: (string | number | bigint | undefined | null)[]
+): string
 export function template(str: string, ...args: any[]): string {
   const [firstArg, fallback] = args
 
   if (isObject(firstArg)) {
     const vars = firstArg as Record<string, any>
-    return str.replace(/{([\w\d]+)}/g, (_, key) => vars[key] || ((typeof fallback === 'function' ? fallback(key) : fallback) ?? key))
+    return str.replace(
+      /{([\w\d]+)}/g,
+      (_, key) =>
+        vars[key]
+        || ((typeof fallback === 'function' ? fallback(key) : fallback) ?? key),
+    )
   }
   else {
     return str.replace(/{(\d+)}/g, (_, key) => {
@@ -107,4 +121,32 @@ export function template(str: string, ...args: any[]): string {
       return args[index]
     })
   }
+}
+
+let idCounter: number = 0
+
+/**
+ * 递增 Id
+ * @param prefix
+ */
+export function uniqueId(prefix?: string) {
+  const id = ++idCounter
+  return (prefix || '') + id
+}
+
+/**
+ * 伪随机 Id
+ * @param length
+ */
+export function randomId(length: number): string {
+  let result = ''
+  const characters
+    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const charactersLength = characters.length
+  let counter = 0
+  while (counter < length) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+    counter += 1
+  }
+  return result
 }
