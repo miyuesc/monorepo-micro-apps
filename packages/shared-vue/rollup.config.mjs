@@ -26,6 +26,7 @@ export default [
       entryFileNames: '[name].cjs',
       sourcemap: useSourceMap
     },
+    externals: [/echarts\/*/, /vue\/*/],
     plugins: [
       externals(),
       useEsbuild
@@ -51,6 +52,7 @@ export default [
       entryFileNames: '[name].mjs',
       sourcemap: useSourceMap
     },
+    externals: [/echarts\/*/, /vue\/*/],
     plugins: [
       externals(),
       useEsbuild

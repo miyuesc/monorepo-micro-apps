@@ -12,6 +12,7 @@
   },
   "scripts": {
     "build": "pnpm clean && pnpm rollup -c",
+    "build:types": "vite build",
     "clean": "rimraf dist"
   },
   "files": ["hooks", "dist"],
