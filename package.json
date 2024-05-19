@@ -26,6 +26,7 @@
     "@types/node": "^20.12.11",
     "@unocss/eslint-plugin": "^0.59.4",
     "@vitejs/plugin-vue": "^1.9.4",
+    "axios": "^1.6.8",
     "esbuild": "^0.21.2",
     "eslint": "^8.56.0",
     "eslint-plugin-format": "^0.1.1",
