@@ -1,5 +1,7 @@
 // https://github.com/arco-design/arco-design-vue/blob/main/packages/web-vue/components/_utils/dom.ts
 
+import { isNumber } from './typed'
+
 export interface Size {
   height: number
   width: number
@@ -58,4 +60,13 @@ export function getScrollBarWidth(element: HTMLElement) {
   return element.tagName === 'BODY'
     ? window.innerWidth - getDocumentSize().width
     : element.offsetWidth - element.clientWidth
+}
+
+/**
+ * 设置元素 transform: translate 移动
+ */
+export function setTranslate(element: HTMLElement, x: number | string, y: number | string) {
+  const offsetX = isNumber(x) ? `${x}px` : x
+  const offsetY = isNumber(y) ? `${y}px` : y
+  element.style.transform = `translate(${offsetX}, ${offsetY})`
 }
