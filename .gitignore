@@ -131,3 +131,6 @@ dist
 
 # IDE configurations
 .idea/
+
+# test result
+packages/*/test/report

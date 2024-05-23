@@ -59,16 +59,16 @@ export interface FlatProps {
 export function flat<T extends Record<string, unknown>>(data: T[], props: FlatProps = {}): T[] {
   const result: T[] = []
 
-  const { children = 'children', depth = Number.POSITIVE_INFINITY, currentDepth = 0, removeChildren = false } = props
+  const { children = 'children', depth = Number.POSITIVE_INFINITY, currentDepth = 1, removeChildren = false } = props
 
   for (const datum of data) {
-    if (removeChildren)
-      Reflect.deleteProperty(datum, children)
-
     result.push(datum)
 
     if (currentDepth < depth && notEmptyArray(datum[children]))
       result.push(...flat(datum[children] as T[], { children, depth, currentDepth: currentDepth + 1, removeChildren }))
+
+    if (removeChildren)
+      Reflect.deleteProperty(datum, children)
   }
 
   return result

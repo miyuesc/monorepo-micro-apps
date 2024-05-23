@@ -15,7 +15,8 @@
   "scripts": {
     "build": "pnpm clean && pnpm rollup -c",
     "clean": "rimraf dist",
-    "test": "vitest"
+    "test": "vitest",
+    "test:preview": "vite preview --outDir test/report"
   },
   "files": ["src", "dist"],
   "repository": {
