@@ -1,9 +1,7 @@
-import type { AxiosInstance, CreateAxiosDefaults } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, CreateAxiosDefaults } from 'axios'
 import axios from 'axios'
 
 let _instance: AxiosInstance | undefined
-
-export type AxiosInterceptorType = 'requestSuccess' | 'requestError' | 'responseSuccess' | 'responseError'
 
 export function create<T>(config?: CreateAxiosDefaults<T>): AxiosInstance {
   if (!_instance)
@@ -15,10 +13,10 @@ export function getInstance(): AxiosInstance {
   return _instance || create()
 }
 
-// export function addInterceptor<V>(onFulfilled?: ((value: V) => V | Promise<V>) | null, onRejected?: ((error: any) => any) | null, options?: AxiosInterceptorOptions): number {
-//   const id = getInstance().interceptors.request.use(onFulfilled, onRejected, options)
-//   interceptorMap.set(id, interceptor)
-//   return id
-// }
+export function get(url: string, params: unknown = {}, config: AxiosRequestConfig = {}) {
+  return getInstance().get(url, { params, ...config })
+}
 
-export {}
+export function post(url: string, data: unknown, params: unknown = {}, config: AxiosRequestConfig = {}) {
+  return getInstance().post(url, data, { params, ...config })
+}

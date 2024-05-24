@@ -59,7 +59,7 @@ export interface FlatProps {
 export function flat<T extends Record<string, unknown>>(data: T[], props: FlatProps = {}): T[] {
   const result: T[] = []
 
-  const { children = 'children', depth = Number.POSITIVE_INFINITY, currentDepth = 1, removeChildren = false } = props
+  const { children = 'children', depth = Number.POSITIVE_INFINITY, currentDepth = 0, removeChildren = false } = props
 
   for (const datum of data) {
     result.push(datum)

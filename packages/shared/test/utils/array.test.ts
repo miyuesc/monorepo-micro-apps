@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { create, flat, partition } from '../../src/utils'
+import { create, flat, partition } from '../../src'
 
 describe('array', () => {
   describe('create', () => {
@@ -84,7 +84,7 @@ describe('array', () => {
     })
 
     it('normal Flat With Special Depth', () => {
-      expect(flat(tree, { children: 'child', depth: 2 }).length).toBe(6)
+      expect(flat(tree, { children: 'child', depth: 1 }).length).toBe(6)
     })
 
     it('normal Flat And Delete Children', () => {
@@ -107,7 +107,7 @@ describe('array', () => {
     })
 
     it('normal Flat With Special Depth And Delete Children', () => {
-      expect(flat(tree, { children: 'child', depth: 2, removeChildren: true })).toStrictEqual([
+      expect(flat(tree, { children: 'child', depth: 1, removeChildren: true })).toStrictEqual([
         { label: 1 },
         { label: 3 },
         { label: 4 },
