@@ -10,3 +10,22 @@ base: ![pnpm](https://badgen.net/badge/pnpm/8.15) ![node](https://badgen.net/bad
 
 library: ![Vue](https://badgen.net/badge/vue/3.x) ![React](https://badgen.net/badge/react/18.x)
 
+## Intro
+
+```
+./
+|- applications
+|- packages
+|   |- shared
+|       |- src
+|       |- test
+|   |- shared-vue
+|   |- shared-react
+|- .eslint.config.mjs
+|- LICENCE
+|- package.json
+|- README.md
+|- ts-config.json
+```
+
+`package/shared` has published at NPM, you can use `npm add @miyue-mma/shared` to install it.
