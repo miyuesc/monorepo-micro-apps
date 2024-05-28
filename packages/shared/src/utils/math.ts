@@ -3,6 +3,11 @@ export interface IPoint {
   y: number
 }
 
+/**
+ * 判断点是否在图形内
+ * @param polygon
+ * @param point
+ */
 export function isPointInConvexPolygon(polygon: IPoint[], point: IPoint) {
   let dir: number | undefined
   for (let i = 0; i < polygon.length; i++) {
@@ -31,4 +36,15 @@ export function isPointInConvexPolygon(polygon: IPoint[], point: IPoint) {
   }
   // 点都在边的同一方向上
   return true
+}
+
+/**
+ * 计算距离
+ * @param point1
+ * @param point2
+ */
+export function calculateDistance(point1: IPoint, point2: IPoint): number {
+  const distanceX = Math.abs(point2.x - point1.x)
+  const distanceY = Math.abs(point2.y - point1.y)
+  return Math.sqrt(distanceX * distanceX + distanceY * distanceY)
 }
