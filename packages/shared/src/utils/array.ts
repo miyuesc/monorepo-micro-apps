@@ -10,6 +10,26 @@ export function create<T>(length: number, formatter?: (idx?: number) => T): T[] 
 }
 
 /**
+ * 数组去重
+ */
+export function unique<T>(array: T[]): T[] {
+  return [...new Set(array)]
+}
+
+/**
+ * 数组差异项
+ */
+export function diff<T>(source: T[] = [], target: T[] = []): T[] {
+  if (!source.length)
+    return target.slice()
+
+  if (!target.length)
+    return source.slice()
+
+  return source.filter(item => !target.includes(item))
+}
+
+/**
  * 随机打乱数组
  * @param array
  */
