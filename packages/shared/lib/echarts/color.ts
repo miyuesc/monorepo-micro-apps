@@ -1,6 +1,6 @@
 // 引入 echarts 核心模块，核心模块提供了 echarts 使用必须要的接口。
 import { graphic } from 'echarts/core'
-import { isPlainObject } from '../utils'
+import { isPlainObject } from '../utils/typed'
 
 export interface GradientColorStop {
   offset: number

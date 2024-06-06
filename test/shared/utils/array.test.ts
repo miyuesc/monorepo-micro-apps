@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { create, flat, partition } from '../../src'
+import { create, flat, partition } from '@miyue-mma/shared'
 
 describe('array', () => {
   describe('create', () => {

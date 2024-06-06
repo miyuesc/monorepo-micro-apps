@@ -14,7 +14,7 @@ const useEsbuild = true // `true` -> use esbuild, `false` use tsc
 export default [
   {
     // .d.ts build
-    input: 'src/index.ts',
+    input: 'lib/index.ts',
     output: {
       file: 'dist/index.d.ts',
       format: 'es',
@@ -24,7 +24,7 @@ export default [
   },
   {
     // CJS build
-    input: 'src/index.ts',
+    input: 'lib/index.ts',
     output: {
       dir: 'dist/cjs',
       format: 'cjs',
@@ -50,7 +50,7 @@ export default [
   },
   {
     // ESM builds
-    input: 'src/index.ts',
+    input: 'lib/index.ts',
     output: {
       dir: 'dist/esm',
       format: 'es',

@@ -1,4 +1,5 @@
-import { isArray, isPrimitive, notEmptyArray } from './typed'
+import { toPathArray } from './string'
+import { isArray, isNoNullable, isNullable, isPrimitive, isString, notEmptyArray } from './typed'
 
 /**
  * 简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
@@ -92,4 +93,35 @@ export function flatChildrenKeywords(node: TreeNode, props: FlatChildrenKeysProp
   }
 
   return result
+}
+
+/**
+ * 判断对象是否具有指定路径的属性
+ */
+export function has(obj: Record<string, any>, path: string | string[]): boolean {
+  if (!isNoNullable(obj))
+    return false
+  if (isString(path)) {
+    if (obj[path])
+      return true
+    path = toPathArray(path)
+  }
+  else {
+    path = path.map(toPathArray).flat()
+  }
+
+  const len = path.length
+  let current: any = obj
+  let idx: number = 0
+
+  while (idx < len) {
+    current = current[path[idx]]
+
+    if (isNullable(current))
+      return false
+
+    idx++
+  }
+
+  return isNoNullable(current)
 }

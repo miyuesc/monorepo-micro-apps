@@ -150,3 +150,11 @@ export function randomId(length: number): string {
   }
   return result
 }
+
+/**
+ * 转对象路径数组
+ */
+export function toPathArray(path: string): string[] {
+  const regex = /\[(\d+)]/g
+  return path.replace(regex, (_, number) => `.${number}.`).split('.').filter(s => s.trim())
+}

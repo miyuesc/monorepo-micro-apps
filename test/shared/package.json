@@ -1,0 +1,19 @@
+{
+  "name": "@miyue-mma/shared-test",
+  "version": "0.0.1",
+  "description": "",
+  "author": "MiyueFE <https://github.com/miyuesc>",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:preview": "vite preview --outDir report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@miyue-mma/shared": "workspace:^"
+  }
+}

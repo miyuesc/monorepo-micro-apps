@@ -6,7 +6,7 @@ import type { GraphicComponentOption } from 'echarts/components'
 import { eLinearGradient } from '@miyue-mma/shared'
 // 水球图支撑
 import 'echarts-liquidfill'
-import { create } from '@miyue-mma/shared/src'
+import { create } from 'packages/shared/lib'
 
 export interface WaterPoloOptions {
   waveNumber?: number

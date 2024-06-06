@@ -14,11 +14,9 @@
   },
   "scripts": {
     "build": "pnpm clean && pnpm rollup -c",
-    "clean": "rimraf dist",
-    "test": "vitest",
-    "test:preview": "vite preview --outDir test/report"
+    "clean": "rimraf dist"
   },
-  "files": ["src", "dist"],
+  "files": ["lib", "dist"],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"

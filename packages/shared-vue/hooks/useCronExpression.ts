@@ -1,6 +1,6 @@
 import { computed, isRef, onMounted, ref, watch } from 'vue'
 import type { Ref } from 'vue'
-import { simpleMerge } from '@miyue-mma/shared/src/utils/object'
+import { simpleMerge } from '@miyue-mma/shared/lib/utils/object'
 
 /**
  * https://www.freeformatter.com/cron-expression-generator-quartz.html

@@ -112,6 +112,12 @@ importers:
         specifier: ^3.0.0
         version: 3.4.27(typescript@5.4.5)
 
+  test/shared:
+    dependencies:
+      '@miyue-mma/shared':
+        specifier: workspace:^
+        version: link:../../packages/shared
+
 packages:
 
   '@ampproject/remapping@2.3.0':

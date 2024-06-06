@@ -1,5 +1,5 @@
 {
-  "name": "@miyue-mma/monorepo-micro-apps",
+  "name": "monorepo-micro-apps",
   "version": "0.0.1",
   "description": "基于 pnpm + monorepo 的微前端项目管理方案",
   "author": "MiyueFE <https://github.com/miyuesc>",
