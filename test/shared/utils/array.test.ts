@@ -75,20 +75,22 @@ describe('array', () => {
       },
     ]
 
+    const cloned = () => JSON.parse(JSON.stringify(tree))
+
     it('normal Flat', () => {
-      expect(flat(tree).length).toBe(2)
+      expect(flat(cloned()).length).toBe(2)
     })
 
     it('normal Flat With Special Key', () => {
-      expect(flat(tree, { children: 'child' }).length).toBe(14)
+      expect(flat(cloned(), { children: 'child' }).length).toBe(14)
     })
 
     it('normal Flat With Special Depth', () => {
-      expect(flat(tree, { children: 'child', depth: 1 }).length).toBe(6)
+      expect(flat(cloned(), { children: 'child', depth: 1 }).length).toBe(6)
     })
 
     it('normal Flat And Delete Children', () => {
-      expect(flat(tree, { children: 'child', removeChildren: true })).toStrictEqual([
+      expect(flat(cloned(), { children: 'child', removeChildren: true })).toStrictEqual([
         { label: 1 },
         { label: 3 },
         { label: 7 },
@@ -107,7 +109,7 @@ describe('array', () => {
     })
 
     it('normal Flat With Special Depth And Delete Children', () => {
-      expect(flat(tree, { children: 'child', depth: 1, removeChildren: true })).toStrictEqual([
+      expect(flat(cloned(), { children: 'child', depth: 1, removeChildren: true })).toStrictEqual([
         { label: 1 },
         { label: 3 },
         { label: 4 },
