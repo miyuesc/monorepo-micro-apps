@@ -32,7 +32,7 @@ export async function pollingRequest<R = any, T extends Response = any>(url: str
 
     resList.push(...res.data.data)
 
-    lastResponse = res
+    lastResponse = res as unknown as T
     badCount = 0
 
     idx++

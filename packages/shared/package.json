@@ -14,9 +14,14 @@
   },
   "scripts": {
     "build": "pnpm clean && pnpm rollup -c",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist && rimraf docs",
+    "docs": "typeDoc lib/index.ts --plugin typedoc-plugin-markdown"
   },
-  "files": ["lib", "dist"],
+  "typedocMain": "lib/index.ts",
+  "files": [
+    "lib",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
@@ -35,5 +40,9 @@
   "dependencies": {
     "echarts": "^5.4.3"
   },
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "typedoc": "^0.26.3",
+    "typedoc-plugin-markdown": "^4.1.1"
+  }
 }

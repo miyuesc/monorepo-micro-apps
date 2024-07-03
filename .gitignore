@@ -134,3 +134,7 @@ dist
 
 # test result
 packages/*/test/report
+
+# docs
+packages/*/docs
+
