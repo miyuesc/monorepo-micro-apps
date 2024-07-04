@@ -29,7 +29,7 @@ export function capitalize(str: string): string {
 }
 
 /**
- * 首字母大写
+ * 多单词首字母大写
  *
  * pascal('hello world')   -> 'HelloWorld'
  */

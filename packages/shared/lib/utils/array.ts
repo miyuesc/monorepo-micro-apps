@@ -163,3 +163,44 @@ export function sortWith<T extends Record<string, unknown>>(articles: T[], key: 
   const copyArr = articles.slice()
   return copyArr.sort((a, b) => (b[key] as number) - (a[key] as number)).slice(0, len)
 }
+
+export interface TreeArrayProps {
+  children?: string
+  traversal?: 'depth' | 'breadth'
+}
+/**
+ * 在树形数组中查找指定元素
+ */
+export function findInTree<T extends Record<string, unknown>>(tree: T[], finder: (i: T, idx: number) => boolean, props: TreeArrayProps = {}): T | undefined {
+  const { children = 'children', traversal = 'depth' } = props
+
+  const len = tree.length
+
+  if (traversal === 'depth') {
+    for (let i = 0; i < len; i++) {
+      const item = tree[i]
+      if (finder(item, i))
+        return item
+      if (notEmptyArray(item[children])) {
+        const result = findInTree(item[children] as T[], finder, props)
+        if (result)
+          return result
+      }
+    }
+    return undefined
+  }
+
+  const queue: T[] = [...tree]
+  while (queue.length) {
+    const item = queue.shift()
+
+    if (!item)
+      return undefined
+
+    if (finder(item, 0))
+      return item
+
+    if (notEmptyArray(item[children]))
+      queue.push(...item[children] as T[])
+  }
+}

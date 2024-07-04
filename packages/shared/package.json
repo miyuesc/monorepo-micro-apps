@@ -14,8 +14,10 @@
   },
   "scripts": {
     "build": "pnpm clean && pnpm rollup -c",
-    "clean": "rimraf dist && rimraf docs",
-    "docs": "typeDoc lib/index.ts --plugin typedoc-plugin-markdown"
+    "clean": "rimraf dist",
+    "clean:docs": "rimraf docs",
+    "docs:md": "pnpm clean:docs && typeDoc lib/index.ts --plugin typedoc-plugin-markdown",
+    "docs:html": "pnpm clean:docs && typeDoc lib/index.ts"
   },
   "typedocMain": "lib/index.ts",
   "files": [

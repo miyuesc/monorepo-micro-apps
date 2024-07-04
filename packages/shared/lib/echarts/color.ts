@@ -37,6 +37,7 @@ export function eLinearGradient(
   const newColors: GradientColorStop[] | undefined = colorStepsHelper(colors)
   return new graphic.LinearGradient(x1, y1, x2, y2, newColors, cord)
 }
+
 // 径向渐变
 export function eRadialGradient(
   x: number,

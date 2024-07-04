@@ -28,4 +28,4 @@ library: ![Vue](https://badgen.net/badge/vue/3.x) ![React](https://badgen.net/ba
 |- ts-config.json
 ```
 
-`package/shared` has published at NPM, you can use `npm add @miyue-mma/shared` to install it.
+> `package/shared` has published at NPM, you can use `npm add @miyue-mma/shared` to install it.
