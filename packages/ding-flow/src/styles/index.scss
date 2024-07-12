@@ -1,0 +1,143 @@
+@import "normalize.css";
+@import "./variable";
+
+/*基础画布区域*/
+.ding-flow_wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-1);
+}
+.ding-flow_container {
+  display: flex;
+}
+.ding-flow_container.ding-flow_vertical {
+  flex-direction: column;
+}
+.ding-flow_container.ding-flow-horizontal {
+  flex-direction: row;
+}
+
+/*流程节点通用*/
+.flow-node {
+  border-radius: var(--border-radius-medium);
+  border: 1px solid var(--color-border-2);
+  position: relative;
+  background-color: var(--color-bg-1);
+  z-index: 10;
+  transition: var(--transision);
+  &:hover {
+    > .flow-node__remove {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+.flow-node__wrapper {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.flow-node__behavior {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+  }
+  .flow-node__behavior-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    text-align: center;
+    border-radius: var(--border-radius-circle);
+    color: #fff;
+    background-color: rgb(var(--primary-6));
+    border: 1px solid transparent;
+    &:hover {
+      color: #fff;
+      background-color: rgb(var(--primary-5));
+      border-color: transparent;
+    }
+  }
+}
+.ding-flow_container.ding-flow_vertical {
+  .flow-node__wrapper {
+    flex-direction: column;
+  }
+  .flow-node__behavior {
+    height: 80px;
+    &.small-behavior {
+      height: 40px;
+    }
+    &::before {
+      height: 100%;
+      width: 0;
+      margin: 0 auto;
+      border-left: 1px solid var(--color-border-2);
+      border-right: 1px solid var(--color-border-2);
+    }
+    &::after {
+      height: 0;
+      position: absolute;
+      bottom: var(--arrow-width);
+      left: 50%;
+      transform: translate(-50%, 100%);
+      border-width: var(--arrow-width);
+      border-color: var(--color-border-2) transparent transparent transparent;
+      border-style: solid;
+    }
+  }
+}
+.ding-flow_container.ding-flow_horizontal {
+  .flow-node__wrapper {
+    flex-direction: row;
+  }
+  .flow-node__behavior {
+    width: 80px;
+    &.small-behavior {
+      width: 40px;
+    }
+    &::before {
+      height: 0;
+      width: 100%;
+      margin: 0 auto;
+      border-top: 1px solid var(--color-border-2);
+      border-bottom: 1px solid var(--color-border-2);
+    }
+    &::after {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      bottom: var(--arrow-width);
+      transform: translate(100%, -50%);
+      border-width: var(--arrow-width);
+      border-color: transparent transparent transparent var(--color-border-2);
+      border-style: solid;
+    }
+  }
+}
+
+/* 具体各类型节点样式 */
+.flow-event {
+  width: var(--event-width);
+  height: var(--event-width);
+  border-radius: 50%;
+  color: var(--color-text-2);
+  font-size: var(--text-size-1);
+  text-align: center;
+  line-height: var(--event-width);
+}

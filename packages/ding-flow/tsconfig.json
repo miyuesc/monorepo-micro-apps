@@ -8,7 +8,7 @@
     // 允许从没有设置默认导出的模块中默认导入。这并不影响代码的输出，仅为了类型检查。
     "allowSyntheticDefaultImports": true,
     // 解析非相对模块名的基准目录
-    "baseUrl": ".",
+    "baseUrl": "./",
     // 从 tslib 导入辅助工具函数（比如 __extends， __rest等）
     "importHelpers": true,
     // 决定如何处理模块。

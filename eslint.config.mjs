@@ -6,7 +6,6 @@ export default antfu({
       printWidth: 120
     }
   },
-  unocss: true,
   vue: true,
   node: true,
   typescript: true,

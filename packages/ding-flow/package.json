@@ -27,5 +27,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
+  },
+  "dependencies": {
+    "@miyue-mma/shared": "workspace:^",
+    "normalize.css": "^8.0.1",
+    "tippy.js": "^6.3.7"
+  },
+  "devDependencies": {
+    "unplugin-vue-components": "^0.27.2",
+    "vue-i18n": "^9.13.1"
   }
 }
