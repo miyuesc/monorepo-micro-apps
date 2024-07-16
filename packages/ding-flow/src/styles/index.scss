@@ -1,30 +1,42 @@
 @import "normalize.css";
 @import "./variable";
+@import "./components";
+@import "./nodes";
 
 /*基础画布区域*/
 .ding-flow_wrapper {
-  display: flex;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
+  overflow: auto;
   background-color: var(--color-bg-1);
   box-sizing: border-box;
 }
 .ding-flow_container {
   display: flex;
-  width: 100%;
-  height: 100%;
+  width: max-content;
+  height: max-content;
   padding: var(--common-padding-4);
   overflow: auto;
   box-sizing: border-box;
+  align-items: center;
+  min-width: 100%;
+}
+.ding-flow_flex-safe {
+  display: flex;
+  max-width: 100%;
+  max-height: 100%;
 }
 .ding-flow_container.ding-flow_vertical {
   flex-direction: column;
+  .ding-flow_flex-safe {
+    flex-direction: column;
+  }
 }
 .ding-flow_container.ding-flow-horizontal {
   flex-direction: row;
+  .ding-flow_flex-safe {
+    flex-direction: row;
+  }
 }
 
 /*流程节点通用*/
@@ -66,20 +78,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-
-    width: 24px;
-    height: 24px;
-    padding: 0;
-    text-align: center;
-    border-radius: var(--border-radius-circle);
-    color: #fff;
-    background-color: rgb(var(--primary-6));
-    border: 1px solid transparent;
-    &:hover {
-      color: #fff;
-      background-color: rgb(var(--primary-5));
-      border-color: transparent;
-    }
   }
 }
 .ding-flow_container.ding-flow_vertical {
@@ -145,229 +143,4 @@
   color: var(--color-text-1);
   border-bottom: 1px solid var(--color-border-2);
   box-sizing: border-box;
-}
-
-/* 具体各类型节点 默认样式 */
-.flow-event {
-  width: var(--event-width);
-  height: var(--event-width);
-  border-radius: 50%;
-  color: var(--color-text-2);
-  font-size: var(--text-size-1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.flow-task {
-  width: var(--task-width);
-  height: var(--task-height);
-}
-.flow-service {
-  width: var(--service-width);
-  height: var(--service-height);
-}
-.flow-expression {
-  width: var(--expression-width);
-  height: var(--expression-height);
-}
-.flow-subprocess {
-  .ding-flow_wrapper {
-    border-radius: var(--border-radius-medium);
-  }
-}
-.flow-gateway {
-  border: unset;
-  position: relative;
-  .ding-flow_wrapper {
-    border-radius: var(--border-radius-medium);
-  }
-  .gateway-node__behavior {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    z-index: 100;
-  }
-  .gateway-node__branches {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-    }
-  }
-  .branch-col {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    box-sizing: border-box;
-    flex-shrink: 0;
-    flex-grow: 0;
-
-    &::before {
-      content: '';
-      position: absolute;
-      background-color: var(--color-border-2);
-      z-index: 0;
-    }
-
-    &:last-child::after,
-    &:first-child::after {
-      content: '';
-      position: absolute;
-      z-index: 5;
-    }
-
-    .flow-node__wrapper:last-child {
-      .flow-node__behavior::after {
-        content: unset;
-      }
-    }
-  }
-}
-
-.ding-flow_horizontal {
-  .flow-subprocess {
-    //min-height: var(--common-width);
-  }
-  .flow-subprocess .ding-flow_wrapper {
-    padding: var(--common-padding-2) var(--common-padding-3);
-  }
-  .flow-gateway {
-    padding-left: var(--common-padding-4);
-    .gateway-node__behavior {
-      height: 100%;
-      width: 32px;
-      left: 0;
-      top: 50%;
-      transform: translate(0, -50%);
-    }
-    .gateway-node__branches {
-      flex-direction: column;
-    }
-    .branch-col +.branch-col {
-      margin-top: var(--common-margin-4);
-    }
-    .gateway-node__branches {
-      flex-direction: column;
-      &::before,
-      &::after {
-        width: 0;
-        top: calc(var(--common-height) / 2);
-        bottom: calc(var(--common-height) / 2);
-      }
-      &::before {
-        left: 0;
-        border-left: 1px solid var(--color-border-2);
-      }
-      &::after {
-        right: 0;
-        border-right: 1px solid var(--color-border-2);
-      }
-    }
-    .branch-col {
-      padding: 0 0 0 var(--common-padding-5);
-
-      &::before {
-        left: 0;
-        right: 0;
-        top: calc(50% - 1px);
-        bottom: calc(50% - 1px);
-      }
-
-      &:last-child::after,
-      &:first-child::after {
-        height: 50%;
-        left: 0;
-        right: 0;
-        border-left: 1px solid var(--color-bg-1);
-        border-right: 1px solid var(--color-bg-1);
-      }
-
-      &:first-child::after {
-        top: -1px;
-      }
-
-      &:last-child::after {
-        top: calc(50% + 1px);
-      }
-    }
-  }
-}
-.ding-flow_vertical {
-  min-width: var(--common-width);
-  .flow-subprocess .ding-flow_wrapper {
-    padding: var(--common-padding-3) var(--common-padding-2);
-  }
-  .flow-gateway {
-    padding-top: var(--common-padding-4);
-    .gateway-node__behavior {
-      width: 100%;
-      height: 32px;
-      left: 50%;
-      top: 0;
-      transform: translate(-50%, 0);
-    }
-    .gateway-node__branches {
-      flex-direction: row;
-      &::before,
-      &::after {
-        left: calc(var(--common-width) / 2);
-        right: calc(var(--common-width) / 2);
-      }
-      &::before {
-        top: 0;
-        border-bottom: 1px solid var(--color-border-2);
-      }
-      &::after {
-        bottom: 0;
-        border-top: 1px solid var(--color-border-2);
-      }
-    }
-    .branch-col {
-      padding: var(--common-padding-5) 0 0 0;
-      &::before {
-        top: 0;
-        bottom: 0;
-        left: calc(50% - 1px);
-        right: calc(50% - 1px);
-      }
-
-      &:last-child::after,
-      &:first-child::after {
-        width: 50%;
-        top: 0;
-        bottom: 0;
-        border-top: 1px solid var(--color-bg-1);
-        border-bottom: 1px solid var(--color-bg-1);
-      }
-      &:first-child::after {
-        left: -1px;
-      }
-      &:last-child::after {
-        left: calc(50% + 1px);
-      }
-    }
-    .branch-col +.branch-col {
-      margin-left: var(--common-margin-4);
-    }
-  }
-}
-
-/* 具体各类型节点 自定义样式 */
-.flow-event.start-event {
-  border-width: 2px;
-  border-color: var(--color-success-light-4);
-}
-.flow-event.end-event {
-  border-width: 4px;
-  border-color: var(--color-danger-light-4);
 }

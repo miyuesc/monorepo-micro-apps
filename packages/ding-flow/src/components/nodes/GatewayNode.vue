@@ -61,8 +61,8 @@ function addExpression() {
 <template>
   <div class="flow-node flow-gateway">
     <div class="gateway-node__behavior">
-      <button @click="addExpression">
-        添加条件
+      <button class="df-button df-button-primary df-button-round" @click="addExpression">
+        <span>添加条件</span>
       </button>
     </div>
 
@@ -77,7 +77,7 @@ function addExpression() {
           :idx="bi"
           :direction="direction"
           :can-remove="canRemove"
-          :can-add="canAppend"
+          :can-append="canAppend"
           :can-move="canMove"
           :remove-validator="removeValidator"
           @click="$emits('click', $event)"

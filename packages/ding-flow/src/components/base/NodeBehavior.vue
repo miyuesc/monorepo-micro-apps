@@ -42,7 +42,7 @@ function validateDrop(ev: DragEvent) {
   <div class="flow-node__behavior">
     <div
       ref="triggerRef"
-      class="flow-node__behavior-btn"
+      class="flow-node__behavior-btn df-button df-button-circle df-button-primary"
       @drop.stop="emitDropNode"
       @dragover.stop="validateDrop"
     >

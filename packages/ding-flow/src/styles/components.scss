@@ -1,0 +1,81 @@
+/* 部分样式来自 arco-design-vue */
+.df-button {
+  display: flex;
+  align-items: safe center;
+  justify-content: safe center;
+  line-height: 1.575;
+
+  &-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--border-radius-circle);
+  }
+  &-round {
+    border-radius: var(--border-radius-medium);
+  }
+
+  &-mini {
+    padding: 4px 12px;
+    font-size: 12px;
+  }
+  &-small {
+    padding: 4px 16px;
+    font-size: 14px;
+  }
+  &-medium {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+  &-large {
+    padding: 8px 24px;
+    font-size: 16px;
+  }
+
+  &-long {
+    width: 100%;
+  }
+
+  &-primary {
+    color: #fff;
+    background-color: rgb(var(--primary-6));
+    border: 1px solid transparent;
+    &:hover {
+      color: #fff;
+      background-color: rgb(var(--primary-5));
+      border-color: transparent;
+    }
+  }
+
+  &-danger {
+    color: #fff;
+    background-color: rgb(var(--danger-6));
+    border: 1px solid transparent;
+    &:hover {
+      color: #fff;
+      background-color: rgb(var(--danger-5));
+      border-color: transparent;
+    }
+  }
+
+  &-success {
+    color: #fff;
+    background-color: rgb(var(--success-6));
+    border: 1px solid transparent;
+    &:hover {
+      color: #fff;
+      background-color: rgb(var(--success-5));
+      border-color: transparent;
+    }
+  }
+
+  &-warning {
+    color: #fff;
+    background-color: rgb(var(--warning-6));
+    border: 1px solid transparent;
+    &:hover {
+      color: #fff;
+      background-color: rgb(var(--warning-5));
+      border-color: transparent;
+    }
+  }
+}
