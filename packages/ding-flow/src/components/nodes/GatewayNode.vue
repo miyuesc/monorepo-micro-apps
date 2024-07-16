@@ -9,7 +9,12 @@ defineOptions({ name: 'GatewayNode' })
 </script>
 
 <template>
-  <div class="flow-node flow-gateway" />
+  <div class="flow-node flow-gateway">
+    <div class="flow-node_header">
+      网关
+    </div>
+    <div class="flow-node_content" />
+  </div>
 </template>
 
 <style scoped></style>

@@ -7,7 +7,17 @@
   --text-size-2: 14px;
   --text-size-3: 16px;
 
+  --common-width:  200px;
+  --common-height:  80px;
+
   --event-width: 40px;
+  --event-height: 40px;
+  --task-width: var(--common-width);
+  --task-height: var(--common-height);
+  --service-width: var(--common-width);
+  --service-height: var(--common-height);
+  --expression-width: var(--common-width);
+  --expression-height: var(--common-height);
 }
 
 /* 主题来源：arco-design 懂车帝PC2B 主题 {@link https://arco.design/themes/preview/58}*/

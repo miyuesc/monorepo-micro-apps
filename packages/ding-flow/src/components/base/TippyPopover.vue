@@ -166,11 +166,26 @@ function destroyTippy() {
   }
 }
 
+function hidden() {
+  if (tippyInstance.value) {
+    if (Array.isArray(tippyInstance.value)) {
+      tippyInstance.value.forEach((ins) => {
+        ins.hide()
+      })
+    }
+    else {
+      tippyInstance.value.hide()
+    }
+  }
+}
+
 onMounted(() => initTippy())
 
 onUnmounted(() => destroyTippy())
 
 watch(() => $props.target, initTippy)
+
+defineExpose({ hidden })
 </script>
 
 <template>

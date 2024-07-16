@@ -5,18 +5,25 @@
  * @since 2024/7/12 上午10:06
  */
 
+import type { ComponentInstance, Ref } from 'vue'
 import { shallowRef } from 'vue'
-import type { BaseNodeType } from '@/types'
+import TippyPopover from './TippyPopover.vue'
+import type { BaseNode, BaseNodeType } from '@/types'
 import { getDragData } from '@/utils/element-utils'
 
 defineOptions({ name: 'NodeBehavior' })
 
-const emits = defineEmits(['click', 'drop'])
+const emits = defineEmits<{
+  append: [type: BaseNodeType]
+  drop: [node: Ref<BaseNode>]
+}>()
 
 const triggerRef = shallowRef<HTMLDivElement>()
+const popRef = shallowRef<ComponentInstance<typeof TippyPopover>>()
 
 function emitClick(type: BaseNodeType) {
-  emits('click', type)
+  emits('append', type)
+  popRef.value?.hidden()
 }
 
 function emitDropNode(ev: DragEvent) {
@@ -33,27 +40,44 @@ function validateDrop(ev: DragEvent) {
 
 <template>
   <div class="flow-node__behavior">
-    <div ref="triggerRef" class="flow-node__behavior-btn" @drop.stop="emitDropNode" @dragover.stop="validateDrop">
-      ＋
+    <div
+      ref="triggerRef"
+      class="flow-node__behavior-btn"
+      @drop.stop="emitDropNode"
+      @dragover.stop="validateDrop"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+      >
+        <path d="M12 5l0 14" />
+        <path d="M5 12l14 0" />
+      </svg>
     </div>
-    <TippyPopover placement="bottom-start" :target="triggerRef">
+    <TippyPopover ref="popRef" placement="bottom-start" :target="triggerRef">
       <template #default>
         <div>
           <span class="node-behavior__header">添加节点</span>
           <div class="node-behavior__btn">
-            <button @click="emitClick('task')">
+            <button @click.stop="emitClick('task')">
               审批
             </button>
-            <button @click="emitClick('service')">
+            <button @click.stop="emitClick('service')">
               服务
             </button>
-            <button @click="emitClick('event')">
+            <button @click.stop="emitClick('event')">
               事件
             </button>
-            <button @click="emitClick('gateway')">
+            <button @click.stop="emitClick('gateway')">
               网关
             </button>
-            <button @click="emitClick('subprocess')">
+            <button @click.stop="emitClick('subprocess')">
               子流程
             </button>
           </div>

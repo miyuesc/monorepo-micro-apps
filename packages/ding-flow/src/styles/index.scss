@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-bg-1);
+  box-sizing: border-box;
 }
 .ding-flow_container {
   display: flex;
@@ -29,6 +30,7 @@
   background-color: var(--color-bg-1);
   z-index: 10;
   transition: var(--transision);
+  box-sizing: border-box;
   &:hover {
     > .flow-node__remove {
       visibility: visible;
@@ -59,8 +61,8 @@
     transform: translate(-50%, -50%);
     z-index: 10;
 
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     padding: 0;
     text-align: center;
     border-radius: var(--border-radius-circle);
@@ -120,7 +122,7 @@
     }
     &::after {
       position: absolute;
-      right: 0;
+      right: var(--arrow-width);
       top: 50%;
       bottom: var(--arrow-width);
       transform: translate(100%, -50%);
@@ -129,6 +131,14 @@
       border-style: solid;
     }
   }
+}
+.flow-node_header {
+  width: 100%;
+  height: auto;
+  padding: 4px 12px;
+  color: var(--color-text-1);
+  border-bottom: 1px solid var(--color-border-2);
+  box-sizing: border-box;
 }
 
 /* 具体各类型节点样式 */
@@ -140,4 +150,37 @@
   font-size: var(--text-size-1);
   text-align: center;
   line-height: var(--event-width);
+}
+.flow-task {
+  width: var(--task-width);
+  height: var(--task-height);
+}
+.flow-service {
+  width: var(--service-width);
+  height: var(--service-height);
+}
+.flow-expression {
+  width: var(--expression-width);
+  height: var(--expression-height);
+}
+.flow-subprocess {
+  .ding-flow_wrapper {
+    border-radius: var(--border-radius-medium);
+  }
+}
+.flow-gateway {
+  .ding-flow_wrapper {
+    border-radius: var(--border-radius-medium);
+  }
+}
+
+.ding-flow_horizontal {
+  .flow-subprocess .ding-flow_wrapper {
+    padding-left: 20px;
+  }
+}
+.ding-flow_vertical {
+  .flow-subprocess .ding-flow_wrapper {
+    padding-top: 20px;
+  }
 }

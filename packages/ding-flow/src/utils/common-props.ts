@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { AsyncExecutionValidator, CanAdd, CanMove, CanRemove } from '@/types'
+import type { AsyncExecutionValidator, CanAppend, CanMove, CanRemove } from '@/types'
 
 function PropsGenerator<T>() {
   return {
@@ -11,8 +11,8 @@ function PropsGenerator<T>() {
       type: [Boolean, Function] as PropType<CanRemove>,
       default: true,
     },
-    canAdd: {
-      type: [Boolean, Function] as PropType<CanAdd>,
+    canAppend: {
+      type: [Boolean, Function] as PropType<CanAppend>,
       default: true,
     },
     canMove: {

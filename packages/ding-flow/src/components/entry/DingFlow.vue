@@ -8,8 +8,8 @@
 import type { PropType } from 'vue'
 import { computed, ref, toRef, watchEffect } from 'vue'
 import type { BaseNode, EventNode, FlowDirection } from '@/types'
-import { ids } from '@/utils/uuid'
 import PropsGenerator from '@/utils/common-props'
+import { createPresetProcess } from '@/utils/element-utils'
 
 defineOptions({ name: 'DingFlow' })
 
@@ -25,18 +25,8 @@ const $emits = defineEmits(['update:data', 'node-click'])
 
 const computedCls = computed<string>(() => `ding-flow_container ding-flow_${$props.direction || 'vertical'}`)
 
-function defaultFlowData(): EventNode {
-  return {
-    id: `event-${ids()}`,
-    type: 'event',
-    name: '开始',
-    prev: null,
-    next: null,
-    businessData: {},
-  }
-}
+const startNode = $props.data ? toRef($props, 'data') : ref(createPresetProcess())
 
-const startNode = $props.data ? toRef($props, 'data') : ref(defaultFlowData())
 const nodeList = computed<BaseNode[]>(() => {
   const list: BaseNode[] = []
   let nextNode: BaseNode | null = startNode.value
@@ -62,13 +52,13 @@ watchEffect(() => {
       <NodeWrapper
         v-for="(node, i) in nodeList"
         :key="node.id"
-        :data="node"
-        :can-add="canAdd"
+        v-model:data="nodeList[i]"
+        :can-append="canAppend"
       >
         <component
           :is="transformNodeName(node)"
           v-model:data="nodeList[i]"
-          :can-add="canAdd"
+          :can-append="canAppend"
           :can-remove="i > 0 && canRemove"
           :can-move="i > 0 && canMove"
           :remove-validator="removeValidator"

@@ -9,7 +9,12 @@ defineOptions({ name: 'ExpressionNode' })
 </script>
 
 <template>
-  <div class="flow-node flow-expression" />
+  <div class="flow-node flow-expression">
+    <div class="flow-node_header">
+      条件
+    </div>
+    <div class="flow-node_content" />
+  </div>
 </template>
 
 <style scoped></style>
