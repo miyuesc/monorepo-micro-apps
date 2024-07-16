@@ -66,7 +66,7 @@ function validateDrop(ev: DragEvent) {
           <span class="node-behavior__header">添加节点</span>
           <div class="node-behavior__btn">
             <button @click.stop="emitClick('task')">
-              审批
+              任务
             </button>
             <button @click.stop="emitClick('service')">
               服务

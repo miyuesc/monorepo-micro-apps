@@ -43,5 +43,14 @@ body,
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  position: relative;
+}
+.demo-btns {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 10;
 }
 </style>

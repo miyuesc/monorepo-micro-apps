@@ -38,20 +38,56 @@ export function removeNodeInMap(id: BaseNode['id']) {
   return node
 }
 
+export const DEFAULT_NAME_MAP = {
+  event: '事件',
+  gateway: '网关',
+  task: '任务',
+  service: '服务',
+  subprocess: '子流程',
+  expression: '条件',
+}
 /**
  * 创建节点
  */
-export function createNode(type: 'gateway', bo?: Record<string, unknown>): GatewayNode
-export function createNode(type: 'expression', bo?: Record<string, unknown>): ExpressionNode
-export function createNode(type: 'task', bo?: Record<string, unknown>): TaskNode
-export function createNode(type: 'service', bo?: Record<string, unknown>): ServiceNode
-export function createNode(type: 'event', bo?: Record<string, unknown>): EventNode
-export function createNode(type: 'subprocess', bo?: Record<string, unknown>): SubprocessNode
-export function createNode(type: BaseNodeType, bo?: Record<string, unknown>): BaseNode {
+export function createNode(
+  type: 'gateway',
+  name?: string,
+  bo?: Record<string, unknown>,
+): GatewayNode
+export function createNode(
+  type: 'expression',
+  name?: string,
+  bo?: Record<string, unknown>,
+): ExpressionNode
+export function createNode(
+  type: 'task',
+  name?: string,
+  bo?: Record<string, unknown>,
+): TaskNode
+export function createNode(
+  type: 'service',
+  name?: string,
+  bo?: Record<string, unknown>,
+): ServiceNode
+export function createNode(
+  type: 'event',
+  name?: string,
+  bo?: Record<string, unknown>,
+): EventNode
+export function createNode(
+  type: 'subprocess',
+  name?: string,
+  bo?: Record<string, unknown>,
+): SubprocessNode
+export function createNode(
+  type: BaseNodeType,
+  name?: string,
+  bo?: Record<string, unknown>,
+): BaseNode {
   const base: BaseNode = {
     id: `${type}-${ids()}`,
     type,
-    name: type,
+    name: name || DEFAULT_NAME_MAP[type] || type,
     prev: null,
     next: null,
     businessData: bo || {},
@@ -60,22 +96,34 @@ export function createNode(type: BaseNodeType, bo?: Record<string, unknown>): Ba
   switch (type) {
     case 'gateway':
       const expressions: ExpressionNode[] = []
-      const expressionNode1: ExpressionNode = createNode('expression')
-      const expressionNode2: ExpressionNode = createNode('expression')
+      const expressionNode1: ExpressionNode = createNode('expression', '条件1')
+      const expressionNode2: ExpressionNode = createNode('expression', '条件2')
       expressionNode1.parent = base as GatewayNode
       expressionNode2.parent = base as GatewayNode
       expressions.push(expressionNode1, expressionNode2)
-      return { ...base, name: '网关', expressions, default: expressionNode1 } as GatewayNode
+      return {
+        ...base,
+        expressions,
+        default: expressionNode1,
+      } as GatewayNode
     case 'expression':
-      return { ...base, name: '条件' } as ExpressionNode
+      return { ...base } as ExpressionNode
     case 'service':
-      return { ...base, name: '服务' } as ServiceNode
+      return { ...base } as ServiceNode
     case 'task':
-      return { ...base, name: '任务' } as TaskNode
+      return { ...base } as TaskNode
     case 'subprocess':
-      return { ...base, name: '子流程', start: createNode('event') } as SubprocessNode
+      const subprocessStart = createNode('event', '开始', {
+        $type: 'startEvent',
+        cls: 'start-event',
+      })
+      subprocessStart.next = createNode('event', '结束', { $type: 'endEvent' })
+      return {
+        ...base,
+        start: subprocessStart,
+      } as SubprocessNode
     case 'event':
-      return { ...base, name: '事件' } as EventNode
+      return { ...base } as EventNode
     default:
       return base
   }
@@ -85,7 +133,10 @@ export function createNode(type: BaseNodeType, bo?: Record<string, unknown>): Ba
  * @param curNode 当前节点
  * @param newNode 追加节点
  */
-export function appendNode(curNode: Ref<BaseNode>, newNode: Ref<BaseNode>): Ref<BaseNode> {
+export function appendNode(
+  curNode: Ref<BaseNode>,
+  newNode: Ref<BaseNode>,
+): Ref<BaseNode> {
   const nextNode = curNode.value.next
 
   curNode.value.next = newNode.value
@@ -127,7 +178,10 @@ export function removeNode(curNode: Ref<BaseNode>): Ref<BaseNode> {
  * @param targetNode 目标节点
  * @param node 被移动节点
  */
-export function moveNode(targetNode: Ref<BaseNode>, node: Ref<BaseNode>): Ref<BaseNode> {
+export function moveNode(
+  targetNode: Ref<BaseNode>,
+  node: Ref<BaseNode>,
+): Ref<BaseNode> {
   removeNode(node)
   return appendNode(targetNode, node)
 }
@@ -156,8 +210,14 @@ export function getDragData(event: DragEvent) {
 }
 
 export function createPresetProcess() {
-  const start = createNode('event', { $type: 'startEvent' })
-  const end = createNode('event', { $type: 'endEvent' })
+  const start = createNode('event', '开始', {
+    $type: 'startEvent',
+    cls: 'start-event',
+  })
+  const end = createNode('event', '结束', {
+    $type: 'endEvent',
+    cls: 'end-event',
+  })
   start.next = end
   return start
 }

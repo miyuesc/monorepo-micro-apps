@@ -15,7 +15,7 @@ const $emit = defineEmits(['click'])
 </script>
 
 <template>
-  <div class="flow-node flow-event">
-    <span>{{ $props.data.name || $t('event-node') }}</span>
+  <div :class="`flow-node flow-event ${data.businessData?.cls || ''}`">
+    <span>{{ data.name || $t('event-node') }}</span>
   </div>
 </template>

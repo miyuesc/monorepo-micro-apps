@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { AsyncExecutionValidator, CanAppend, CanMove, CanRemove } from '@/types'
+import type { AsyncExecutionValidator, BaseNode, CanAppend, CanMove, CanRemove } from '@/types'
 
 function PropsGenerator<T>() {
   return {
@@ -13,7 +13,7 @@ function PropsGenerator<T>() {
     },
     canAppend: {
       type: [Boolean, Function] as PropType<CanAppend>,
-      default: true,
+      default: () => (node: BaseNode) => node.businessData?.$type !== 'endEvent',
     },
     canMove: {
       type: [Boolean, Function] as PropType<CanMove>,

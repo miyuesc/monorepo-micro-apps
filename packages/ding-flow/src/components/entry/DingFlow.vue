@@ -7,14 +7,14 @@
 
 import type { PropType } from 'vue'
 import { computed, ref, toRef, watchEffect } from 'vue'
-import type { BaseNode, EventNode, FlowDirection } from '@/types'
+import type { BaseNode, FlowDirection } from '@/types'
 import PropsGenerator from '@/utils/common-props'
 import { createPresetProcess } from '@/utils/element-utils'
 
 defineOptions({ name: 'DingFlow' })
 
 const $props = defineProps({
-  ...PropsGenerator<EventNode>(),
+  ...PropsGenerator<BaseNode>(),
   direction: {
     type: String as PropType<FlowDirection>,
     default: 'vertical',
@@ -58,6 +58,7 @@ watchEffect(() => {
         <component
           :is="transformNodeName(node)"
           v-model:data="nodeList[i]"
+          :direction="direction"
           :can-append="canAppend"
           :can-remove="i > 0 && canRemove"
           :can-move="i > 0 && canMove"

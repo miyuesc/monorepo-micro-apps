@@ -1,5 +1,10 @@
 // 基础节点类型
 export type BaseNodeType = 'task' | 'service' | 'event' | 'gateway' | 'expression' | 'subprocess'
+export interface BaseNodeBO {
+  $type?: string
+  cls?: string
+  [key: string]: unknown
+}
 // 基础节点对象
 export interface BaseNode {
   id: string
@@ -7,7 +12,7 @@ export interface BaseNode {
   name: string
   next: BaseNode | null
   prev: BaseNode | null
-  businessData: Record<string, unknown>
+  businessData: BaseNodeBO
 }
 // 基础任务节点
 export interface TaskNode extends BaseNode {
@@ -37,4 +42,9 @@ export interface GatewayNode extends BaseNode {
 export interface SubprocessNode extends BaseNode {
   type: 'subprocess'
   start?: EventNode
+}
+// 辅助的网关条件分支
+export interface BranchNodeList {
+  expression: ExpressionNode
+  nextNodeList: BaseNode[]
 }

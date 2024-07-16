@@ -5,11 +5,19 @@
  * @since 2024/7/12 上午10:07
  */
 
+import type { PropType } from 'vue'
 import PropsGenerator from '@/utils/common-props'
-import type { SubprocessNode } from '@/types'
+import type { FlowDirection, SubprocessNode } from '@/types'
 
 defineOptions({ name: 'SubprocessNode' })
-const $props = defineProps(PropsGenerator<SubprocessNode>())
+const $props = defineProps({
+  ...PropsGenerator<SubprocessNode>(),
+  direction: {
+    type: String as PropType<FlowDirection>,
+    default: 'vertical',
+    validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
+  },
+})
 </script>
 
 <template>
@@ -17,6 +25,6 @@ const $props = defineProps(PropsGenerator<SubprocessNode>())
     <div class="flow-node_header">
       子流程
     </div>
-    <DingFlow :data="data.start" />
+    <DingFlow :data="data.start" :direction="direction" />
   </div>
 </template>

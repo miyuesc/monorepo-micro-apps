@@ -19,13 +19,21 @@ const $props = defineProps({
   },
   canAppend: {
     type: [Boolean, Function] as PropType<CanAppend>,
-    default: true,
+    required: true,
   },
 })
 const $emits = defineEmits(['update:data'])
+
 const computedModelNode = computed<BaseNode>({
   get: () => $props.data,
   set: (node: BaseNode) => $emits('update:data', node),
+})
+
+const appendable = computed(() => {
+  if (typeof $props.canAppend === 'function') {
+    return $props.canAppend(computedModelNode.value)
+  }
+  return $props.canAppend as boolean
 })
 
 function appendNewNode(type) {
@@ -47,6 +55,6 @@ function appendNewNode(type) {
 <template>
   <div v-if="$props.data" class="flow-node__wrapper">
     <slot />
-    <NodeBehavior @append="appendNewNode" />
+    <NodeBehavior v-if="appendable" @append="appendNewNode" />
   </div>
 </template>
