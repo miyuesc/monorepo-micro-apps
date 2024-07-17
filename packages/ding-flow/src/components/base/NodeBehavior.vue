@@ -5,13 +5,28 @@
  * @since 2024/7/12 上午10:06
  */
 
-import type { ComponentInstance, Ref } from 'vue'
+import type { ComponentInstance, PropType, Ref } from 'vue'
 import { shallowRef } from 'vue'
 import TippyPopover from './TippyPopover.vue'
-import type { BaseNode, BaseNodeType } from '@/types'
+import type { BaseNode, BaseNodeType, CanAppend, CanDropped } from '@/types'
 import { getDragData } from '@/utils/element-utils'
 
 defineOptions({ name: 'NodeBehavior' })
+
+const $props = defineProps({
+  data: {
+    type: Object as PropType<BaseNode>,
+    default: () => null,
+  },
+  canDropped: {
+    type: [Boolean, Function] as PropType<CanDropped>,
+    default: true,
+  },
+  canAppend: {
+    type: [Boolean, Function] as PropType<CanAppend>,
+    default: () => (node: BaseNode) => node.businessData?.$type !== 'endEvent',
+  },
+})
 
 const $emits = defineEmits<{
   append: [type: BaseNodeType]
@@ -27,14 +42,20 @@ function emitClick(type: BaseNodeType) {
 }
 
 function emitDropNode(ev: DragEvent) {
+  ev.preventDefault()
   const node = getDragData(ev)
-  if (node) {
+  if (node && validateDrop(ev)) {
     $emits('dropped', node)
   }
 }
 
 function validateDrop(ev: DragEvent) {
   ev.preventDefault()
+  if (typeof $props.canDropped === 'function') {
+    return $props.canDropped($props.data, getDragData(ev)?.value)
+  }
+
+  return $props.canDropped
 }
 </script>
 

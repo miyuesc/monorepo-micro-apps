@@ -1,5 +1,5 @@
 import type { PropType } from 'vue'
-import type { AsyncExecutionValidator, BaseNode, CanAppend, CanDropped, CanMove, CanRemove } from '@/types'
+import type { AsyncExecutionValidator, BaseNode, CanAppend, CanDropped, CanMove, CanRemove, ExecutionValidator } from '@/types'
 
 function PropsGenerator<T>() {
   return {
@@ -26,6 +26,10 @@ function PropsGenerator<T>() {
 
     removeValidator: {
       type: Function as PropType<AsyncExecutionValidator>,
+      default: () => async () => true,
+    },
+    completenessValidator: {
+      type: Function as PropType<ExecutionValidator>,
       default: () => async () => true,
     },
   }

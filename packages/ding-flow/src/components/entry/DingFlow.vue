@@ -37,10 +37,6 @@ const nodeList = computed<BaseNode[]>(() => {
   return list
 })
 
-function transformNodeName(node: BaseNode): string {
-  return `${node.type}-node`
-}
-
 watchEffect(() => {
   $emits('update:data', startNode)
 })
@@ -54,18 +50,13 @@ watchEffect(() => {
         :key="node.id"
         v-model:data="nodeList[i]"
         :can-append="canAppend"
+        :can-dropped="canDropped"
+        :can-move="canMove"
+        :can-remove="canRemove"
+        :remove-validator="removeValidator"
+        :completeness-validator="completenessValidator"
         @click="$emits('node-click', $event)"
-      >
-        <component
-          :is="transformNodeName(node)"
-          v-model:data="nodeList[i]"
-          :direction="direction"
-          :can-append="canAppend"
-          :can-remove="i > 0 && canRemove"
-          :can-move="i > 0 && canMove"
-          :remove-validator="removeValidator"
-        />
-      </NodeWrapper>
+      />
     </div>
   </div>
 </template>

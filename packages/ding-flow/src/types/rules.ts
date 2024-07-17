@@ -9,3 +9,4 @@ export type CanDropped = boolean | CanRuleValidator
 
 // 节点操作后置可执行验证规则
 export type AsyncExecutionValidator = (node?: BaseNode) => Promise<boolean> | boolean
+export type ExecutionValidator = (node?: BaseNode) => boolean
