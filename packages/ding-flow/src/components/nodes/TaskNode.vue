@@ -5,7 +5,12 @@
  * @since 2024/7/12 上午10:06
  */
 
+import type { TaskNode } from '@/types'
+import PropsGenerator from '@/utils/common-props'
+
 defineOptions({ name: 'TaskNode' })
+
+defineProps({ ...PropsGenerator<TaskNode>() })
 </script>
 
 <template>

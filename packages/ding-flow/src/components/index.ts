@@ -26,7 +26,6 @@ const components = [
 
 function install(app: App) {
   components.forEach((component) => {
-    console.log(component)
     app.component(component.name as string, component)
   })
 }

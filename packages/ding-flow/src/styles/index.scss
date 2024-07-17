@@ -62,6 +62,9 @@
   cursor: pointer;
   align-items: safe center;
   justify-content: safe center;
+  .flow-node__movable {
+    cursor: move;
+  }
 }
 .flow-node__behavior {
   display: flex;
@@ -85,7 +88,7 @@
     flex-direction: column;
   }
   .flow-node__behavior {
-    height: 80px;
+    height: 60px;
     &.small-behavior {
       height: 40px;
     }
@@ -113,7 +116,7 @@
     flex-direction: row;
   }
   .flow-node__behavior {
-    width: 80px;
+    width: 60px;
     &.small-behavior {
       width: 40px;
     }

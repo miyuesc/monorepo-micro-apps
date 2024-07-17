@@ -12,14 +12,26 @@
 .flow-node.flow-task {
   width: var(--task-width);
   height: var(--task-height);
+  .flow-node_header {
+    color: #ffffff;
+    background-color: var(--color-primary-light-4);
+  }
 }
 .flow-node.flow-service {
   width: var(--service-width);
   height: var(--service-height);
+  .flow-node_header {
+    color: #ffffff;
+    background-color: var(--color-warning-light-4);
+  }
 }
 .flow-node.flow-expression {
   width: var(--expression-width);
   height: var(--expression-height);
+  .flow-node_header {
+    color: #ffffff;
+    background-color: var(--color-danger-light-4);
+  }
 }
 .flow-node.flow-subprocess {
   .ding-flow_wrapper {
@@ -216,11 +228,13 @@
 }
 
 /* 具体各类型节点 自定义样式 */
-.flow-node.flow-event.start-event {
-  border-width: 2px;
-  border-color: var(--color-success-light-4);
-}
-.flow-node.flow-event.end-event {
-  border-width: 4px;
-  border-color: var(--color-danger-light-4);
+.flow-node.flow-event {
+  &.start-event {
+    border-width: 2px;
+    border-color: var(--color-success-light-4);
+  }
+  &.end-event {
+    border-width: 4px;
+    border-color: var(--color-danger-light-4);
+  }
 }

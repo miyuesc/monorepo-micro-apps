@@ -54,6 +54,7 @@ watchEffect(() => {
         :key="node.id"
         v-model:data="nodeList[i]"
         :can-append="canAppend"
+        @click="$emits('node-click', $event)"
       >
         <component
           :is="transformNodeName(node)"
@@ -63,7 +64,6 @@ watchEffect(() => {
           :can-remove="i > 0 && canRemove"
           :can-move="i > 0 && canMove"
           :remove-validator="removeValidator"
-          @click="$emits('node-click', $event)"
         />
       </NodeWrapper>
     </div>

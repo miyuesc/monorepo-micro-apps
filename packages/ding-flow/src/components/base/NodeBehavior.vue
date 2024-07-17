@@ -13,23 +13,23 @@ import { getDragData } from '@/utils/element-utils'
 
 defineOptions({ name: 'NodeBehavior' })
 
-const emits = defineEmits<{
+const $emits = defineEmits<{
   append: [type: BaseNodeType]
-  drop: [node: Ref<BaseNode>]
+  dropped: [node: Ref<BaseNode>]
 }>()
 
 const triggerRef = shallowRef<HTMLDivElement>()
 const popRef = shallowRef<ComponentInstance<typeof TippyPopover>>()
 
 function emitClick(type: BaseNodeType) {
-  emits('append', type)
+  $emits('append', type)
   popRef.value?.hidden()
 }
 
 function emitDropNode(ev: DragEvent) {
   const node = getDragData(ev)
   if (node) {
-    emits('drop', node)
+    $emits('dropped', node)
   }
 }
 
