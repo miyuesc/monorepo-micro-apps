@@ -10,6 +10,7 @@ import PropsGenerator from '@/utils/common-props'
 import type { FlowDirection, SubprocessNode } from '@/types'
 
 defineOptions({ name: 'SubprocessNode' })
+
 const $props = defineProps({
   ...PropsGenerator<SubprocessNode>(),
   direction: {
@@ -25,6 +26,6 @@ const $props = defineProps({
     <div class="flow-node_header">
       子流程
     </div>
-    <DingFlow :data="data.start" :direction="direction" />
+    <DingFlowList :data="data.start" :direction="direction" />
   </div>
 </template>

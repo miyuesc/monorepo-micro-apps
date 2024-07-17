@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import DingFlow from '@/components/entry/DingFlow.vue'
+import DingFlow from '@/components/DingFlow.vue'
 import type { FlowDirection } from '@/types'
 
 const dir = ref<FlowDirection>('vertical')

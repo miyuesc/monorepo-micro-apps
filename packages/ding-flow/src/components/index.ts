@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 
-import DingFlow from './entry/DingFlow.vue'
+import DingFlowList from './entry/DingFlowList.vue'
 
 import NodeBehavior from './base/NodeBehavior.vue'
 import TippyPopover from './base/TippyPopover.vue'
@@ -13,7 +13,7 @@ import SubprocessNode from './nodes/SubprocessNode.vue'
 import TaskNode from './nodes/TaskNode.vue'
 
 const components = [
-  DingFlow,
+  DingFlowList,
   NodeBehavior,
   TippyPopover,
   EventNode,

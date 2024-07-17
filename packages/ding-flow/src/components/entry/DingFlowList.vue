@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /**
- * @desc DingFlow
+ * @desc DingFlowList
  * @author MiyueFE <https://github.com/miyuesc>
  * @since 2024/7/12 上午10:06
  */
@@ -11,7 +11,7 @@ import type { BaseNode, FlowDirection } from '@/types'
 import PropsGenerator from '@/utils/common-props'
 import { createPresetProcess } from '@/utils/element-utils'
 
-defineOptions({ name: 'DingFlow' })
+defineOptions({ name: 'DingFlowList' })
 
 const $props = defineProps({
   ...PropsGenerator<BaseNode>(),
@@ -49,6 +49,7 @@ watchEffect(() => {
         v-for="(node, i) in nodeList"
         :key="node.id"
         v-model:data="nodeList[i]"
+        :direction="direction"
         :can-append="canAppend"
         :can-dropped="canDropped"
         :can-move="canMove"

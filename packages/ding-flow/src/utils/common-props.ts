@@ -17,7 +17,7 @@ function PropsGenerator<T>() {
     },
     canMove: {
       type: [Boolean, Function] as PropType<CanMove>,
-      default: true,
+      default: () => (node: BaseNode) => node.businessData?.$type !== 'endEvent',
     },
     canDropped: {
       type: [Boolean, Function] as PropType<CanDropped>,

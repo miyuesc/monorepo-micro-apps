@@ -7,9 +7,11 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    DingFlow: typeof import('./components/entry/DingFlow.vue')['default']
+    DingFlow: typeof import('./components/DingFlow.vue')['default']
+    DingFlowList: typeof import('./components/entry/DingFlowList.vue')['default']
     EventNode: typeof import('./components/nodes/EventNode.vue')['default']
     ExpressionNode: typeof import('./components/nodes/ExpressionNode.vue')['default']
+    FlowCanvas: typeof import('./components/base/FlowCanvas.vue')['default']
     GatewayNode: typeof import('./components/nodes/GatewayNode.vue')['default']
     NodeBehavior: typeof import('./components/base/NodeBehavior.vue')['default']
     NodeWrapper: typeof import('./components/base/NodeWrapper.vue')['default']

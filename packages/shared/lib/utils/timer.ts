@@ -32,7 +32,7 @@ interface DebounceOptions {
   leading?: boolean
   trailing?: boolean
 }
-export function debounce<T extends (...args: unknown[]) => unknown>(func: T, wait: number, options?: DebounceOptions) {
+export function debounce<T extends (...args: any[]) => any>(func: T, wait: number, options?: DebounceOptions) {
   let lastArgs: unknown[] | undefined
   let lastThis: any
   let maxWait: number
@@ -147,7 +147,7 @@ interface ThrottleOptions {
   leading?: boolean
   trailing?: boolean
 }
-export function throttle<T extends (...args: unknown[]) => unknown>(func: T, wait: number, options?: ThrottleOptions) {
+export function throttle<T extends (...args: any[]) => any>(func: T, wait: number, options?: ThrottleOptions) {
   let leading = true
   let trailing = true
 

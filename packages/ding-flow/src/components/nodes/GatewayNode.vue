@@ -72,7 +72,7 @@ function addExpression() {
         :key="branch.expression.id"
         class="branch-col"
       >
-        <DingFlow
+        <DingFlowList
           v-model:data="branchesNodeList[bi].expression"
           :idx="bi"
           :direction="direction"
