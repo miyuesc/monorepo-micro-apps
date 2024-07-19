@@ -5,12 +5,22 @@
  * @since 2024/7/12 上午10:06
  */
 
-import type { TaskNode } from '@/types'
-import PropsGenerator from '@/utils/common-props'
+import type { PropType } from 'vue'
+import type { FlowDirection, TaskNode } from '@/types'
 
 defineOptions({ name: 'TaskNode' })
 
-defineProps({ ...PropsGenerator<TaskNode>() })
+defineProps({
+  data: {
+    type: Object as PropType<TaskNode>,
+    required: true,
+  },
+  direction: {
+    type: String as PropType<FlowDirection>,
+    default: 'vertical',
+    validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
+  },
+})
 </script>
 
 <template>

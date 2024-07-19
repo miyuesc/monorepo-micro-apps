@@ -5,12 +5,22 @@
  * @since 2024/7/12 上午10:06
  */
 
-import PropsGenerator from '@/utils/common-props'
-import type { ServiceNode } from '@/types'
+import type { PropType } from 'vue'
+import type { FlowDirection, ServiceNode } from '@/types'
 
 defineOptions({ name: 'ServiceNode' })
 
-defineProps({ ...PropsGenerator<ServiceNode>() })
+defineProps({
+  data: {
+    type: Object as PropType<ServiceNode>,
+    required: true,
+  },
+  direction: {
+    type: String as PropType<FlowDirection>,
+    default: 'vertical',
+    validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
+  },
+})
 </script>
 
 <template>

@@ -216,6 +216,7 @@ defineExpose({ hidden })
   .tippy-box {
     background-color: var(--color-bg-4);
     box-shadow: 0 2px 8px #00000026;
+    color: var(--color-text-2);
   }
   .tippy-arrow {
     color: var(--color-bg-4);

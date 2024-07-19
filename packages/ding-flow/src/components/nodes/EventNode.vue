@@ -5,12 +5,22 @@
  * @since 2024/7/12 上午10:06
  */
 
-import type { EventNode } from '@/types'
-import PropsGenerator from '@/utils/common-props'
+import type { PropType } from 'vue'
+import type { EventNode, FlowDirection } from '@/types'
 
 defineOptions({ name: 'EventNode' })
 
-const $props = defineProps(PropsGenerator<EventNode>())
+const $props = defineProps({
+  data: {
+    type: Object as PropType<EventNode>,
+    required: true,
+  },
+  direction: {
+    type: String as PropType<FlowDirection>,
+    default: 'vertical',
+    validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
+  },
+})
 const $emit = defineEmits(['click'])
 </script>
 

@@ -6,15 +6,16 @@
  */
 
 import type { PropType } from 'vue'
-import { computed, ref, toRef, watchEffect } from 'vue'
+import { computed } from 'vue'
 import type { BaseNode, FlowDirection } from '@/types'
-import PropsGenerator from '@/utils/common-props'
-import { createPresetProcess } from '@/utils/element-utils'
 
 defineOptions({ name: 'DingFlowList' })
 
 const $props = defineProps({
-  ...PropsGenerator<BaseNode>(),
+  data: {
+    type: Object as PropType<BaseNode>,
+    required: true,
+  },
   direction: {
     type: String as PropType<FlowDirection>,
     default: 'vertical',
@@ -23,22 +24,25 @@ const $props = defineProps({
 })
 const $emits = defineEmits(['update:data', 'node-click'])
 
-const computedCls = computed<string>(() => `ding-flow_container ding-flow_${$props.direction || 'vertical'}`)
+const startNode = computed<BaseNode>({
+  get: () => $props.data,
+  set: (v) => {
+    $emits('update:data', v)
+  },
+})
 
-const startNode = $props.data ? toRef($props, 'data') : ref(createPresetProcess())
+const computedCls = computed<string>(
+  () => `ding-flow_container ding-flow_${$props.direction || 'vertical'}`,
+)
 
 const nodeList = computed<BaseNode[]>(() => {
   const list: BaseNode[] = []
-  let nextNode: BaseNode | null = startNode.value
+  let nextNode: BaseNode | undefined = startNode.value
   while (nextNode) {
     list.push(nextNode)
     nextNode = nextNode.next
   }
   return list
-})
-
-watchEffect(() => {
-  $emits('update:data', startNode)
 })
 </script>
 
@@ -50,12 +54,6 @@ watchEffect(() => {
         :key="node.id"
         v-model:data="nodeList[i]"
         :direction="direction"
-        :can-append="canAppend"
-        :can-dropped="canDropped"
-        :can-move="canMove"
-        :can-remove="canRemove"
-        :remove-validator="removeValidator"
-        :completeness-validator="completenessValidator"
         @click="$emits('node-click', $event)"
       />
     </div>

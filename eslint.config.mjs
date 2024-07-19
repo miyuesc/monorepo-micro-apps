@@ -13,5 +13,6 @@ export default antfu({
   rules: {
     'node/prefer-global/process': 'off',
     'no-case-declarations': 'off',
+    'ts/ban-ts-comment': 'off',
   }
 })

@@ -6,16 +6,25 @@
  */
 
 import type { PropType, Ref } from 'vue'
-import { computed, ref, watchEffect } from 'vue'
+import { computed, ref } from 'vue'
 import { isUndefined } from '@miyue-mma/shared'
-import type { BaseNode, CanAppend, FlowDirection } from '@/types'
-import { appendNode, createNode, moveNode, setDragData } from '@/utils/element-utils'
-import PropsGenerator from '@/utils/common-props'
+import type { BaseNode, BaseNodeType, FlowDirection } from '@/types'
+import {
+  appendNode,
+  createNode,
+  moveNode,
+  setDragData,
+} from '@/utils/element-utils'
+import type { GlobalConfigKey } from '@/utils/global-config'
+import { getGlobalConfig } from '@/utils/global-config'
 
 defineOptions({ name: 'NodeWrapper' })
 
 const $props = defineProps({
-  ...PropsGenerator<BaseNode>(),
+  data: {
+    type: Object as PropType<BaseNode>,
+    required: true,
+  },
   direction: {
     type: String as PropType<FlowDirection>,
     default: 'vertical',
@@ -27,49 +36,58 @@ const $emits = defineEmits(['update:data', 'click'])
 
 const computedModelNode = computed<BaseNode>({
   get: () => $props.data,
-  set: (node: BaseNode) => $emits('update:data', node),
+  set: (node: BaseNode) => {
+    $emits('update:data', node)
+  },
 })
+
+async function validateProp(key: GlobalConfigKey) {
+  const config = getGlobalConfig(key)
+
+  if (isUndefined(config))
+    return true
+
+  if (typeof config === 'function') {
+    return await config(computedModelNode.value)
+  }
+
+  return config
+}
 
 const appendable = ref(false)
 const removable = ref(false)
 const movable = ref(false)
-
 const isCompleteness = ref(false)
 
-async function validateProp(key: string) {
-  if (isUndefined($props[key]))
-    return true
-
-  if (typeof $props[key] === 'function') {
-    return await $props[key](computedModelNode.value)
-  }
-
-  return $props[key]
+async function init() {
+  appendable.value = await validateProp('canAppend')
+  removable.value = await validateProp('canRemove')
+  movable.value = await validateProp('canMove')
+  isCompleteness.value = await validateProp('completenessValidator')
 }
 
-watchEffect(async () => appendable.value = await validateProp('canAppend'))
-watchEffect(async () => removable.value = await validateProp('canRemove'))
-watchEffect(async () => movable.value = await validateProp('canMove'))
-watchEffect(async () => isCompleteness.value = await validateProp('completenessValidator'))
+init()
 
-function appendNewNode(type) {
-  let canAppend: CanAppend
-  if (typeof $props.canAppend === 'function') {
-    canAppend = $props.canAppend
+function appendNewNode(
+  type: BaseNodeType,
+  name: string,
+  bo: Record<string, any> = {},
+) {
+  let canAppend = getGlobalConfig('canAppend')
+  if (typeof canAppend !== 'function') {
+    canAppend = () => canAppend as boolean
   }
-  else {
-    canAppend = () => $props.canAppend as boolean
-  }
-
   if (canAppend(computedModelNode.value)) {
-    const newNode = ref(createNode(type))
+    // @ts-expect-error
+    const newNode = ref(createNode(type, name, bo))
     appendNode(computedModelNode, newNode)
   }
 }
 
-function initDrag(event: DragEvent) {
-  setDragData(event, computedModelNode)
+function initDrag() {
+  setDragData(computedModelNode)
 }
+
 function setDropNode(node: Ref<BaseNode>) {
   if (node.value.id === computedModelNode.value.id) {
     return
@@ -98,17 +116,11 @@ function transformNodeName(node: BaseNode): string {
         :is="transformNodeName(computedModelNode)"
         v-model:data="computedModelNode"
         :direction="direction"
-        :can-append="canAppend"
-        :can-remove="canRemove"
-        :can-move="canMove"
-        :remove-validator="removeValidator"
       />
     </div>
     <NodeBehavior
       v-if="appendable"
       :data="$props.data"
-      :can-append="$props.canAppend"
-      :can-dropped="$props.canDropped"
       @append="appendNewNode"
       @dropped="setDropNode"
     />

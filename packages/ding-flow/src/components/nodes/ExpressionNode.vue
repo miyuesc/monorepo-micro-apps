@@ -5,12 +5,22 @@
  * @since 2024/7/12 上午10:07
  */
 
-import PropsGenerator from '@/utils/common-props'
-import type { ExpressionNode } from '@/types'
+import type { PropType } from 'vue'
+import type { ExpressionNode, FlowDirection } from '@/types'
 
 defineOptions({ name: 'ExpressionNode' })
 
-const $props = defineProps(PropsGenerator<ExpressionNode>())
+const $props = defineProps({
+  data: {
+    type: Object as PropType<ExpressionNode>,
+    required: true,
+  },
+  direction: {
+    type: String as PropType<FlowDirection>,
+    default: 'vertical',
+    validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
+  },
+})
 const $emits = defineEmits(['click', 'update:data'])
 </script>
 

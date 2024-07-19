@@ -79,8 +79,8 @@ export function createNode(
   name?: string,
   bo?: Record<string, unknown>,
 ): SubprocessNode
-export function createNode(
-  type: BaseNodeType,
+export function createNode<T extends BaseNodeType>(
+  type: T,
   name?: string,
   bo?: Record<string, unknown>,
 ): BaseNode {
@@ -182,31 +182,36 @@ export function moveNode(
   targetNode: Ref<BaseNode>,
   node: Ref<BaseNode>,
 ): Ref<BaseNode> {
+  setDragData()
   removeNode(node)
   return appendNode(targetNode, node)
 }
 
 /** *************************************************** 设置节点拖动状态 */
+let dragData: Ref<BaseNode> | undefined
+
 /**
  * 设置被拖拽节点
- * @param event 事件对象
+ // * @param event 事件对象
  * @param node 被拖拽节点
  */
-export function setDragData(event: DragEvent, node: Ref<BaseNode>) {
-  event.dataTransfer?.setData('node-id', node.value.id)
+export function setDragData(node?: Ref<BaseNode>) {
+  dragData = node
+  // event.dataTransfer?.setData('node-id', node.value.id)
 }
 /**
  * 获取被拖拽节点
- * @param event 事件对象
+ // * @param event 事件对象
  */
-export function getDragData(event: DragEvent) {
-  event.preventDefault()
-  const id = event.dataTransfer?.getData('node-id')
-
-  if (!id) {
-    return
-  }
-  return getNodeInMap(id)
+export function getDragData() {
+  // event.preventDefault()
+  // const id = event.dataTransfer?.getData('node-id')
+  //
+  // if (!id) {
+  //   return
+  // }
+  // return getNodeInMap(id)
+  return dragData
 }
 
 export function createPresetProcess() {

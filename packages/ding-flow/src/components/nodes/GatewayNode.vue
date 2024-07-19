@@ -6,14 +6,16 @@
  */
 
 import { type PropType, computed } from 'vue'
-import PropsGenerator from '@/utils/common-props'
 import type { BaseNode, BranchNodeList, FlowDirection, GatewayNode } from '@/types'
 import { createNode } from '@/utils/element-utils'
 
 defineOptions({ name: 'GatewayNode' })
 
 const $props = defineProps({
-  ...PropsGenerator<GatewayNode>(),
+  data: {
+    type: Object as PropType<GatewayNode>,
+    required: true,
+  },
   direction: {
     type: String as PropType<FlowDirection>,
     default: 'vertical',
@@ -76,10 +78,6 @@ function addExpression() {
           v-model:data="branchesNodeList[bi].expression"
           :idx="bi"
           :direction="direction"
-          :can-remove="canRemove"
-          :can-append="canAppend"
-          :can-move="canMove"
-          :remove-validator="removeValidator"
           @click="$emits('click', $event)"
         />
       </div>

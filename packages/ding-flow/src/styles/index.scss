@@ -12,14 +12,14 @@
 }
 .ding-flow_root {
   width: 100%;
-  height: 100%;
+  //height: 100%;
   position: absolute;
   transform-origin: 0 0;
   //transition: all ease 0.1s;
 }
 .ding-flow_wrapper {
   width: 100%;
-  height: 100%;
+  //height: 100%;
   overflow: auto;
   background-color: var(--color-bg-1);
   box-sizing: border-box;
@@ -94,7 +94,31 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
+    cursor: auto;
+    &.flow-node__droppable {
+      cursor: auto;
+    }
   }
+}
+.node-behavior__header {
+  font-size: 16px;
+}
+.node-behavior__btn-grid {
+  display: grid;
+  gap: 8px 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+.node-behavior__btn {
+  cursor: pointer;
+  display: flex;
+  padding: 8px;
+  min-width: 120px;
+  border-radius: 10px;
+  position: relative;
+  background-color: var(--color-fill-2);
+  border-color: transparent;
+  align-items: center;
+  justify-content: center;
 }
 .ding-flow_container.ding-flow_vertical {
   .flow-node__wrapper {
