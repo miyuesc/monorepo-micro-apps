@@ -22,7 +22,7 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
-const $emits = defineEmits(['update:data', 'node-click'])
+const $emits = defineEmits(['update:data', 'nodeClick'])
 
 const startNode = computed<BaseNode>({
   get: () => $props.data,
@@ -54,7 +54,7 @@ const nodeList = computed<BaseNode[]>(() => {
         :key="node.id"
         v-model:data="nodeList[i]"
         :direction="direction"
-        @click="$emits('node-click', $event)"
+        @click="$emits('nodeClick', $event)"
       />
     </div>
   </div>

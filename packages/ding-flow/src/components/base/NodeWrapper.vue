@@ -111,6 +111,7 @@ function transformNodeName(node: BaseNode): string {
       :draggable="movable"
       @dragstart.stop="initDrag"
       @click.stop="emitClick"
+      @mousedown.stop
     >
       <component
         :is="transformNodeName(computedModelNode)"

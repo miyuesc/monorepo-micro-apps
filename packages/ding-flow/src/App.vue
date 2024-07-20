@@ -45,12 +45,15 @@ body,
   padding: 0;
   position: relative;
 }
+.demo-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .demo-btns {
   display: flex;
   gap: 10px;
-  position: absolute;
-  left: 20px;
-  top: 20px;
   z-index: 10;
 }
 </style>

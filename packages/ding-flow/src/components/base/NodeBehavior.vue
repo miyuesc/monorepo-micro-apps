@@ -61,7 +61,6 @@ async function validateDrop() {
 async function toggleDroppableState(droppin: boolean) {
   dropin.value = droppin
   droppable.value = await validateDrop()
-  console.log(droppable.value, droppin)
 }
 </script>
 

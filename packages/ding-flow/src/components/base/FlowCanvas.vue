@@ -15,24 +15,33 @@ import {
 
 defineOptions({ name: 'FlowCanvas' })
 
+const $emits = defineEmits(['zoomChanged'])
+
 const canvasRoot = ref<HTMLDivElement>()
+
+const zoom = ref(1)
+
+function zoomChanger(newZoom: number) {
+  zoom.value = newZoom
+  $emits('zoomChanged', zoom.value)
+}
 
 function mousewheelHandler(e: WheelEvent) {
   if (!e.ctrlKey || e.shiftKey)
     return
 
   e.preventDefault()
-  scaleHandler(canvasRoot.value!, e)
+  scaleHandler(canvasRoot.value!, e, zoomChanger)
 }
 </script>
 
 <template>
   <div
     class="ding-flow_canvas"
-    @wheel.capture.stop="mousewheelHandler"
-    @mousedown.capture.stop="dragStartHandler"
-    @mousemove.capture.stop="e => dragHandler(canvasRoot!, e)"
-    @mouseup.capture.stop="dragEndHandler"
+    @wheel.stop="mousewheelHandler"
+    @mousedown.stop="dragStartHandler"
+    @mousemove.stop="e => dragHandler(canvasRoot!, e)"
+    @mouseup.stop="dragEndHandler"
   >
     <div ref="canvasRoot" class="ding-flow_root">
       <slot />

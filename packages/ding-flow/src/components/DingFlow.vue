@@ -60,7 +60,7 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
-const $emits = defineEmits(['update:data', 'node-click'])
+const $emits = defineEmits(['update:data', 'nodeClick', 'zoomChanged'])
 
 const computedFlowData = computed<BaseNode>({
   get: () => $props.data || ref(createPresetProcess()).value,
@@ -80,7 +80,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <FlowCanvas>
+  <FlowCanvas @zoom-changed="$emit('zoomChanged', $event)">
     <DingFlowList v-model:data="computedFlowData" :direction="direction" />
   </FlowCanvas>
 </template>

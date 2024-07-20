@@ -88,8 +88,8 @@ export function createNode<T extends BaseNodeType>(
     id: `${type}-${ids()}`,
     type,
     name: name || DEFAULT_NAME_MAP[type] || type,
-    prev: null,
-    next: null,
+    prev: undefined,
+    next: undefined,
     businessData: bo || {},
   }
 
@@ -165,8 +165,8 @@ export function removeNode(curNode: Ref<BaseNode>): Ref<BaseNode> {
     next.prev = prev
   }
 
-  curNode.value.prev = null
-  curNode.value.next = null
+  curNode.value.prev = undefined
+  curNode.value.next = undefined
 
   removeNodeInMap(curNode.value.id)
 

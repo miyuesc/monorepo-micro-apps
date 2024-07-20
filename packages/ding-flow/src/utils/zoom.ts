@@ -41,7 +41,7 @@ function setPosition(el: HTMLDivElement, x4: number, y4: number, s: number) {
   el.style.transform = `scale(${s})`
 }
 // ctrl 下缩放处理函数
-export function scaleHandler(el: HTMLDivElement, e: WheelEvent) {
+export function scaleHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom: number) => void) {
   const { x, y, deltaY } = e
 
   if (deltaY % 100 !== 0)
@@ -61,6 +61,7 @@ export function scaleHandler(el: HTMLDivElement, e: WheelEvent) {
       zoomLeft = x4
       zoomTop = y4
       setPosition(el, x4, y4, s)
+      callback?.(s)
     }
   }
   // 缩小
@@ -74,6 +75,7 @@ export function scaleHandler(el: HTMLDivElement, e: WheelEvent) {
       zoomLeft = x4
       zoomTop = y4
       setPosition(el, x4, y4, s)
+      callback?.(s)
     }
   }
 }
@@ -85,11 +87,13 @@ let startY: number = 0
 let draggingX: number = 0
 let draggingY: number = 0
 export function dragStartHandler(e: MouseEvent) {
+  e.preventDefault()
   isDragging = true
   startX = e.clientX
   startY = e.clientY
 }
 export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
+  e.preventDefault()
   if (!isDragging)
     return
 
@@ -98,7 +102,8 @@ export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
 
   setPosition(el, draggingX, draggingY, s)
 }
-export function dragEndHandler() {
+export function dragEndHandler(e: MouseEvent) {
+  e.preventDefault()
   isDragging = false
   zoomLeft = draggingX
   zoomTop = draggingY
