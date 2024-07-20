@@ -12,7 +12,7 @@
   background-color: var(--color-bg-1);
 }
 .ding-flow_root {
-  width: 100%;
+  //width: 100%;
   //height: 100%;
   position: absolute;
   transform-origin: 0 0;
@@ -23,6 +23,7 @@
   //height: 100%;
   overflow: auto;
   box-sizing: border-box;
+  pointer-events: none;
 }
 .ding-flow_container {
   display: flex;
@@ -62,6 +63,7 @@
   transition: var(--transision);
   box-sizing: border-box;
   overflow: hidden;
+  pointer-events: auto;
   &:hover {
     > .flow-node__remove {
       visibility: visible;
@@ -84,6 +86,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  pointer-events: auto;
   &::before,
   &::after {
     content: '';
@@ -96,10 +99,12 @@
     z-index: 10;
     cursor: pointer;
     &.flow-node__droppable {
-      cursor: copy;
+      //cursor: copy;
+      background-color: rgb(var(--success-8));
     }
     &.flow-node__not-droppable {
-      cursor: not-allowed;
+      //cursor: not-allowed;
+      background-color: rgb(var(--danger-8));
     }
   }
 }
@@ -109,7 +114,9 @@
 .node-behavior__btn-grid {
   display: grid;
   gap: 8px 20px;
+  margin-top: 10px;
   grid-template-columns: repeat(2, 1fr);
+  color: var(--color-text-2);
 }
 .node-behavior__btn {
   cursor: pointer;
@@ -118,6 +125,7 @@
   min-width: 120px;
   border-radius: 10px;
   position: relative;
+  color: var(--color-text-2);
   background-color: var(--color-fill-2);
   border-color: transparent;
   align-items: center;

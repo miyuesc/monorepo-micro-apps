@@ -41,6 +41,7 @@
 .flow-node.flow-gateway {
   border: unset;
   position: relative;
+  pointer-events: none;
   .ding-flow_wrapper {
     border-radius: var(--border-radius-medium);
   }

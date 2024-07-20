@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import DingFlow from '@/components/DingFlow.vue'
 import type { FlowDirection } from '@/types'
+import TippyPopover from '@/components/base/TippyPopover.vue'
 
 const dir = ref<FlowDirection>('vertical')
 function toggleDir() {
@@ -26,6 +27,9 @@ function changeZoomValue(value: number) {
 <template>
   <div class="demo-page">
     <div class="demo-btns">
+      <button class="header-tips">
+        Tips
+      </button>
       <button @click="toggleDir">
         切换排列
       </button>
@@ -37,6 +41,14 @@ function changeZoomValue(value: number) {
         <input :value="zoomValue">
       </div>
     </div>
+    <TippyPopover target=".demo-page .header-tips">
+      <template #default>
+        <p>练习项目</p>
+        <p>画布拖拽与缩放</p>
+        <p>节点拖拽移动, 拖拽前置校验, 放置前置校验</p>
+        <p>节点删除校验, 操作校验, 节点配置完整性校验</p>
+      </template>
+    </TippyPopover>
     <DingFlow :direction="dir" @zoom-changed="changeZoomValue" />
   </div>
 </template>
