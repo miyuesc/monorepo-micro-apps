@@ -29,6 +29,7 @@ const $emits = defineEmits<{
 const triggerRef = shallowRef<HTMLDivElement>()
 const popRef = shallowRef<ComponentInstance<typeof TippyPopover>>()
 const droppable = ref(false)
+const dropin = ref(false)
 
 function emitClick(type: BaseNodeType) {
   $emits('append', type, '节点')
@@ -37,6 +38,7 @@ function emitClick(type: BaseNodeType) {
 
 async function emitDropNode(ev: DragEvent) {
   ev.preventDefault()
+  dropin.value = false
   const node = getDragData()
   if (node && await validateDrop()) {
     $emits('dropped', node)
@@ -56,8 +58,10 @@ async function validateDrop() {
   return canDropped
 }
 
-async function toggleDroppableState() {
+async function toggleDroppableState(droppin: boolean) {
+  dropin.value = droppin
   droppable.value = await validateDrop()
+  console.log(droppable.value, droppin)
 }
 </script>
 
@@ -66,10 +70,10 @@ async function toggleDroppableState() {
     <div
       ref="triggerRef"
       class="flow-node__behavior-btn df-button df-button-circle df-button-primary"
-      :class="{ 'flow-node__droppable': droppable }"
+      :class="{ 'flow-node__droppable': dropin && droppable, 'flow-node__not-droppable': dropin && !droppable }"
       @drop.stop="emitDropNode"
-      @dragover.stop="toggleDroppableState"
-      @dragleave.stop="toggleDroppableState"
+      @dragover.capture.stop.prevent="toggleDroppableState(true)"
+      @dragleave.capture.stop.prevent="toggleDroppableState(false)"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -79,7 +83,7 @@ async function toggleDroppableState() {
         stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="icon icon-tabler icons-tabler-outline icon-tabler-plus"
+        class="icon"
       >
         <path d="M12 5l0 14" />
         <path d="M5 12l14 0" />

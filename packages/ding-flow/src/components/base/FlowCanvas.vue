@@ -7,9 +7,9 @@
 
 import { ref } from 'vue'
 import {
-  // dragEndHandler,
-  // dragHandler,
-  // dragStartHandler,
+  dragEndHandler,
+  dragHandler,
+  dragStartHandler,
   scaleHandler,
 } from '@/utils/zoom'
 
@@ -30,10 +30,10 @@ function mousewheelHandler(e: WheelEvent) {
   <div
     class="ding-flow_canvas"
     @wheel.capture.stop="mousewheelHandler"
+    @mousedown.capture.stop="dragStartHandler"
+    @mousemove.capture.stop="e => dragHandler(canvasRoot!, e)"
+    @mouseup.capture.stop="dragEndHandler"
   >
-    <!--    @mousedown.capture.stop="dragStartHandler" -->
-    <!--    @mousemove.capture.stop="e => dragHandler(canvasRoot!, e)" -->
-    <!--    @mouseup.capture.stop="dragEndHandler" -->
     <div ref="canvasRoot" class="ding-flow_root">
       <slot />
     </div>

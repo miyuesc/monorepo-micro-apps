@@ -41,7 +41,9 @@ const $props = defineProps({
   },
   canDropped: {
     type: [Boolean, Function] as PropType<CanDropped>,
-    default: true,
+    default: () => (target: BaseNode, node: BaseNode) => {
+      return target.next?.id !== node.id && target.id !== node.id
+    },
   },
 
   removeValidator: {

@@ -94,9 +94,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 10;
-    cursor: auto;
+    cursor: pointer;
     &.flow-node__droppable {
-      cursor: auto;
+      cursor: copy;
+    }
+    &.flow-node__not-droppable {
+      cursor: not-allowed;
     }
   }
 }
