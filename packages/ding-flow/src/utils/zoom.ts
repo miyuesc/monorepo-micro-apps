@@ -4,6 +4,14 @@
  * @since 2024/7/17 下午4:44
  */
 
+// 更新元素位置和大小
+function updateElementViewbox(el: HTMLDivElement, x4: number, y4: number, s: number) {
+  el.style.left = `${x4}px`
+  el.style.top = `${y4}px`
+  el.style.transform = `scale(${s})`
+}
+
+/** ***************** 缩放相关配置 */
 let s: number = 1 // 缩放倍率
 const zoomStep: number = 0.2 // 缩放步长
 let lasts: number = 1
@@ -22,7 +30,7 @@ function getSourcePosition(el: HTMLDivElement, s: number, x: number, y: number) 
 
   return { x2, y2 }
 }
-// 缩放后，图片需要的位移
+// 缩放后，元素需要的位移
 function getXY(s: number, x: number, y: number, x2: number, y2: number) {
   // 缩放后的位置
   const x3 = x2 * s
@@ -34,14 +42,8 @@ function getXY(s: number, x: number, y: number, x2: number, y2: number) {
 
   return { x4, y4 }
 }
-// 设置图片位置
-function setPosition(el: HTMLDivElement, x4: number, y4: number, s: number) {
-  el.style.left = `${x4}px`
-  el.style.top = `${y4}px`
-  el.style.transform = `scale(${s})`
-}
 // ctrl 下缩放处理函数
-export function scaleHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom: number) => void) {
+export function zoomHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom: number) => void) {
   const { x, y, deltaY } = e
 
   if (deltaY % 100 !== 0)
@@ -60,7 +62,7 @@ export function scaleHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
       lasts = s
       zoomLeft = x4
       zoomTop = y4
-      setPosition(el, x4, y4, s)
+      updateElementViewbox(el, x4, y4, s)
       callback?.(s)
     }
   }
@@ -74,13 +76,13 @@ export function scaleHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
       lasts = s
       zoomLeft = x4
       zoomTop = y4
-      setPosition(el, x4, y4, s)
+      updateElementViewbox(el, x4, y4, s)
       callback?.(s)
     }
   }
 }
 
-//
+/** ***************************** 画布拖拽 */
 let isDragging: boolean = false
 let startX: number = 0
 let startY: number = 0
@@ -100,11 +102,28 @@ export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
   draggingX = zoomLeft + e.clientX - startX
   draggingY = zoomTop + e.clientY - startY
 
-  setPosition(el, draggingX, draggingY, s)
+  updateElementViewbox(el, draggingX, draggingY, s)
 }
 export function dragEndHandler(e: MouseEvent) {
   e.preventDefault()
   isDragging = false
   zoomLeft = draggingX
   zoomTop = draggingY
+}
+
+// 鼠标滚动控制
+export function wheelHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom: number) => void) {
+  e.preventDefault()
+
+  if (e.ctrlKey) {
+    return zoomHandler(el, e, callback)
+  }
+
+  if (e.shiftKey) {
+    zoomLeft += e.deltaY
+    return updateElementViewbox(el, zoomLeft, zoomTop, s)
+  }
+
+  zoomTop += e.deltaY
+  return updateElementViewbox(el, zoomLeft, zoomTop, s)
 }

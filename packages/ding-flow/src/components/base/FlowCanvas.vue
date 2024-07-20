@@ -10,7 +10,7 @@ import {
   dragEndHandler,
   dragHandler,
   dragStartHandler,
-  scaleHandler,
+  wheelHandler,
 } from '@/utils/zoom'
 
 defineOptions({ name: 'FlowCanvas' })
@@ -27,11 +27,7 @@ function zoomChanger(newZoom: number) {
 }
 
 function mousewheelHandler(e: WheelEvent) {
-  if (!e.ctrlKey || e.shiftKey)
-    return
-
-  e.preventDefault()
-  scaleHandler(canvasRoot.value!, e, zoomChanger)
+  wheelHandler(canvasRoot.value!, e, zoomChanger)
 }
 </script>
 

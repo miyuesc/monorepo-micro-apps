@@ -44,7 +44,7 @@ function changeZoomValue(value: number) {
     <TippyPopover target=".demo-page .header-tips">
       <template #default>
         <p>练习项目</p>
-        <p>画布拖拽与缩放</p>
+        <p>画布拖拽与缩放, 鼠标滚动控制</p>
         <p>节点拖拽移动, 拖拽前置校验, 放置前置校验</p>
         <p>节点删除校验, 操作校验, 节点配置完整性校验</p>
       </template>
