@@ -47,7 +47,7 @@ export function scaleHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
   if (deltaY % 100 !== 0)
     return
 
-  s += deltaY * -0.01 * zoomStep
+  s += deltaY * zoomStep * -0.01
   s = Math.min(Math.max(minL, s), maxL)
 
   // 放大

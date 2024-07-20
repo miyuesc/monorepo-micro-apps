@@ -16,6 +16,11 @@ function toggleTheme() {
     document.body.setAttribute('arco-theme', 'dark')
   }
 }
+
+const zoomValue = ref(1)
+function changeZoomValue(value: number) {
+  zoomValue.value = value
+}
 </script>
 
 <template>
@@ -27,8 +32,12 @@ function toggleTheme() {
       <button @click="toggleTheme">
         切换主题
       </button>
+      <div>
+        缩放倍率
+        <input :value="zoomValue">
+      </div>
     </div>
-    <DingFlow :direction="dir" />
+    <DingFlow :direction="dir" @zoom-changed="changeZoomValue" />
   </div>
 </template>
 
