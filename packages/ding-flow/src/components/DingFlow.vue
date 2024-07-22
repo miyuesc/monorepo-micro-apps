@@ -5,8 +5,8 @@
  * @since 2024/7/17 下午5:21
  */
 
-import type { PropType } from 'vue'
-import { computed, ref, watchEffect } from 'vue'
+import type { ComponentInstance, PropType } from 'vue'
+import { computed, ref, shallowRef, watchEffect } from 'vue'
 import type {
   AsyncExecutionValidator,
   BaseNode,
@@ -19,6 +19,7 @@ import type {
 } from '@/types'
 import { createPresetProcess } from '@/utils/element-utils'
 import { setGlobalConfig } from '@/utils/global-config'
+import FlowCanvas from '@/components/base/FlowCanvas.vue'
 
 defineOptions({ name: 'DingFlow' })
 
@@ -69,6 +70,9 @@ const computedFlowData = computed<BaseNode>({
   },
 })
 
+const canvas = shallowRef<ComponentInstance<typeof FlowCanvas>>()
+const fitViewport = (padding?: number) => canvas.value?.fitViewport(padding)
+
 watchEffect(() => {
   setGlobalConfig('canAppend', $props.canAppend)
   setGlobalConfig('canRemove', $props.canRemove)
@@ -77,10 +81,14 @@ watchEffect(() => {
   setGlobalConfig('removeValidator', $props.removeValidator)
   setGlobalConfig('completenessValidator', $props.completenessValidator)
 })
+
+defineExpose({
+  fitViewport,
+})
 </script>
 
 <template>
-  <FlowCanvas @zoom-changed="$emit('zoomChanged', $event)">
+  <FlowCanvas ref="canvas" @zoom-changed="$emit('zoomChanged', $event)">
     <DingFlowList v-model:data="computedFlowData" :direction="direction" />
   </FlowCanvas>
 </template>

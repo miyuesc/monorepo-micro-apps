@@ -54,7 +54,51 @@ function initCenter() {
   }
 }
 
+function fitViewport(padding: number = 20) {
+  if (!canvasRoot.value || !canvasParent.value)
+    return
+  const { width, height } = canvasParent.value.getBoundingClientRect()
+  const { width: rootWidth, height: rootHeight }
+    = canvasRoot.value.getBoundingClientRect()
+
+  const parentWidth = width - padding * 2
+  const parentHeight = height - padding * 2
+
+  const rootRealWidth = rootWidth / zoom.value
+  const rootRealHeight = rootHeight / zoom.value
+
+  console.log('parent', parentWidth, parentHeight)
+  console.log('root', rootRealWidth, rootRealHeight)
+
+  let zoomX = 1
+  let zoomY = 1
+  let left = 0
+  let top = 0
+
+  if (parentWidth < rootRealWidth) {
+    zoomX = Math.round(parentWidth * 100 / rootRealWidth) / 100
+    left = padding
+  }
+  else {
+    left = Math.round((parentWidth - rootRealWidth) / 2)
+  }
+
+  if (parentHeight < rootRealHeight) {
+    zoomY = Math.round(parentHeight * 100 / rootRealHeight) / 100
+    top = padding
+  }
+  else {
+    top = Math.round((parentHeight - rootRealHeight) / 2)
+  }
+
+  const z = Math.min(zoomX, zoomY)
+  zoomChanger(z)
+  initCanvasViewbox(canvasRoot.value, left, top, z)
+}
+
 onMounted(() => initCenter())
+
+defineExpose({ initCanvasViewbox, fitViewport })
 </script>
 
 <template>

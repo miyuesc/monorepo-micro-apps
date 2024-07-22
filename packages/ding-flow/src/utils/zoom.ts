@@ -149,8 +149,9 @@ export function wheelHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
 }
 
 //
-export function initCanvasViewbox(el: HTMLDivElement, x: number, y: number, s = 1) {
+export function initCanvasViewbox(el: HTMLDivElement, x: number, y: number, zoom = 1) {
   zoomLeft = x
   zoomTop = y
+  s = lasts = zoom
   updateCanvasViewbox(el, zoomLeft, zoomTop, s)
 }
