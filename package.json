@@ -14,8 +14,8 @@
   ],
   "scripts": {
     "bootstrap": "pnpm install",
-    "dev:ding-flow": "cd /packages/ding-flow && pnpm run dev",
-    "build:ding-flow": "cd /packages/ding-flow && pnpm run build"
+    "dev:ding-flow": "cd ./packages/ding-flow && pnpm run dev",
+    "build:ding-flow": "cd ./packages/ding-flow && pnpm run build"
   },
   "repository": {
     "type": "git",
