@@ -111,9 +111,9 @@
 .ding-flow_horizontal {
   .flow-subprocess {
     //min-height: var(--common-width);
-  }
-  .flow-subprocess .ding-flow_wrapper {
-    padding: var(--common-padding-2) var(--common-padding-3);
+    & > .ding-flow_wrapper {
+      padding: var(--common-padding-2) var(--common-padding-3);
+    }
   }
 
   .flow-gateway {
@@ -130,10 +130,8 @@
       &::before,
       &::after {
         width: 0;
-        top: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-2));
-        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-2));
-        //top: calc(var(--common-height) / 2);
-        //bottom: calc(var(--common-height) / 2);
+        top: calc(var(--common-height) / 2 + var(--common-padding-4));
+        bottom: calc(var(--common-height) / 2 + var(--common-padding-4));
       }
       &::before {
         left: 0;
@@ -179,7 +177,7 @@
 .ding-flow_vertical {
   .flow-subprocess {
     min-width: var(--common-width);
-    .ding-flow_wrapper {
+    & > .ding-flow_wrapper {
       padding: var(--common-padding-3) var(--common-padding-2);
     }
   }
@@ -197,10 +195,8 @@
       flex-direction: row;
       &::before,
       &::after {
-        left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-2));
-        right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-2));
-        //left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
-        //right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        left: calc(var(--common-width) / 2 + var(--common-padding-4));
+        right: calc(var(--common-width) / 2 + var(--common-padding-4));
       }
       &::before {
         top: 0;
