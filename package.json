@@ -15,6 +15,7 @@
   "scripts": {
     "bootstrap": "pnpm install",
     "dev:ding-flow": "cd ./packages/ding-flow && pnpm run dev",
+    "build:shared": "cd ./packages/shared && pnpm run build",
     "build:ding-flow": "cd ./packages/ding-flow && pnpm run build"
   },
   "repository": {
