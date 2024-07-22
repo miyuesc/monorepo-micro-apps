@@ -18,6 +18,14 @@
   transform-origin: 0 0;
   //transition: all ease 0.1s;
 }
+.ding-flow_root-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 10000px;
+  height: 10000px;
+  transform-origin: 0 0;
+}
 .ding-flow_wrapper {
   width: 100%;
   //height: 100%;
@@ -63,7 +71,6 @@
   transition: var(--transision);
   box-sizing: border-box;
   overflow: hidden;
-  pointer-events: auto;
   &:hover {
     > .flow-node__remove {
       visibility: visible;
@@ -77,6 +84,7 @@
   cursor: pointer;
   align-items: safe center;
   justify-content: safe center;
+  pointer-events: none;
   .flow-node__movable {
     cursor: move;
   }
@@ -125,7 +133,7 @@
   min-width: 120px;
   border-radius: 10px;
   position: relative;
-  color: var(--color-text-2);
+  color: var(--color-text-1);
   background-color: var(--color-fill-2);
   border-color: transparent;
   align-items: center;
@@ -141,11 +149,11 @@
       height: 40px;
     }
     &::before {
-      height: 100%;
+      height: 58px;
       width: 0;
       margin: 0 auto;
-      border-left: 1px solid var(--color-border-2);
-      border-right: 1px solid var(--color-border-2);
+      border-left: 1px solid var(--color-line);
+      border-right: 1px solid var(--color-line);
     }
     &::after {
       height: 0;
@@ -154,7 +162,7 @@
       left: 50%;
       transform: translate(-50%, 100%);
       border-width: var(--arrow-width);
-      border-color: var(--color-border-2) transparent transparent transparent;
+      border-color: var(--color-line) transparent transparent transparent;
       border-style: solid;
     }
   }
@@ -170,10 +178,10 @@
     }
     &::before {
       height: 0;
-      width: 100%;
+      width: 58px;
       margin: 0 auto;
-      border-top: 1px solid var(--color-border-2);
-      border-bottom: 1px solid var(--color-border-2);
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
     }
     &::after {
       position: absolute;
@@ -182,7 +190,7 @@
       bottom: var(--arrow-width);
       transform: translate(100%, -50%);
       border-width: var(--arrow-width);
-      border-color: transparent transparent transparent var(--color-border-2);
+      border-color: transparent transparent transparent var(--color-line);
       border-style: solid;
     }
   }
@@ -192,6 +200,6 @@
   height: auto;
   padding: var(--common-padding-1) var(--common-padding-3);
   color: var(--color-text-1);
-  border-bottom: 1px solid var(--color-border-2);
+  //border-bottom: 1px solid var(--color-line);
   box-sizing: border-box;
 }

@@ -8,10 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: auto;
 }
 .flow-node.flow-task {
   width: var(--task-width);
   height: var(--task-height);
+  pointer-events: auto;
   .flow-node_header {
     color: #ffffff;
     background-color: var(--color-primary-light-4);
@@ -20,6 +22,7 @@
 .flow-node.flow-service {
   width: var(--service-width);
   height: var(--service-height);
+  pointer-events: auto;
   .flow-node_header {
     color: #ffffff;
     background-color: var(--color-warning-light-4);
@@ -28,20 +31,29 @@
 .flow-node.flow-expression {
   width: var(--expression-width);
   height: var(--expression-height);
+  pointer-events: auto;
   .flow-node_header {
     color: #ffffff;
     background-color: var(--color-danger-light-4);
   }
 }
 .flow-node.flow-subprocess {
-  .ding-flow_wrapper {
+  background: none;
+  border-color: var(--color-line);
+  > .flow-node_header {
+    background-color: var(--color-bg-1);
+    pointer-events: auto;
+  }
+  > .ding-flow_wrapper {
     border-radius: var(--border-radius-medium);
+    pointer-events: none;
   }
 }
 .flow-node.flow-gateway {
   border: unset;
   position: relative;
   pointer-events: none;
+  background: none;
   .ding-flow_wrapper {
     border-radius: var(--border-radius-medium);
   }
@@ -77,7 +89,7 @@
     &::before {
       content: '';
       position: absolute;
-      background-color: var(--color-border-2);
+      background-color: var(--color-line);
       z-index: 0;
     }
 
@@ -121,16 +133,18 @@
       &::before,
       &::after {
         width: 0;
-        top: calc(var(--common-height) / 2);
-        bottom: calc(var(--common-height) / 2);
+        top: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        //top: calc(var(--common-height) / 2);
+        //bottom: calc(var(--common-height) / 2);
       }
       &::before {
         left: 0;
-        border-left: 1px solid var(--color-border-2);
+        border-left: 2px solid var(--color-line);
       }
       &::after {
         right: 0;
-        border-right: 1px solid var(--color-border-2);
+        border-right: 2px solid var(--color-line);
       }
     }
     .branch-col {
@@ -186,16 +200,16 @@
       flex-direction: row;
       &::before,
       &::after {
-        left: calc(var(--common-width) / 2);
-        right: calc(var(--common-width) / 2);
+        left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
       }
       &::before {
         top: 0;
-        border-bottom: 1px solid var(--color-border-2);
+        border-bottom: 2px solid var(--color-line);
       }
       &::after {
         bottom: 0;
-        border-top: 1px solid var(--color-border-2);
+        border-top: 2px solid var(--color-line);
       }
     }
     .branch-col {

@@ -5,10 +5,17 @@
  */
 
 // 更新元素位置和大小
-function updateElementViewbox(el: HTMLDivElement, x4: number, y4: number, s: number) {
+export function updateCanvasViewbox(el: HTMLDivElement, x4: number, y4: number, s: number = 1) {
   el.style.left = `${x4}px`
   el.style.top = `${y4}px`
   el.style.transform = `scale(${s})`
+
+  const bg = document.querySelector('.ding-flow_canvas .ding-flow_root-bg') as HTMLDivElement
+  if (bg) {
+    bg.style.left = `${x4}px`
+    bg.style.top = `${y4}px`
+    bg.style.transform = `scale(${s}) translate(-50%, -50%)`
+  }
 }
 
 /** ***************** 缩放相关配置 */
@@ -50,7 +57,7 @@ export function zoomHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom:
     return
 
   s += deltaY * zoomStep * -0.01
-  s = Math.min(Math.max(minL, s), maxL)
+  s = Math.round(Math.min(Math.max(minL, s), maxL) * 100) / 100
 
   // 放大
   if (deltaY < 0) {
@@ -62,7 +69,7 @@ export function zoomHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom:
       lasts = s
       zoomLeft = x4
       zoomTop = y4
-      updateElementViewbox(el, x4, y4, s)
+      updateCanvasViewbox(el, x4, y4, s)
       callback?.(s)
     }
   }
@@ -76,7 +83,7 @@ export function zoomHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom:
       lasts = s
       zoomLeft = x4
       zoomTop = y4
-      updateElementViewbox(el, x4, y4, s)
+      updateCanvasViewbox(el, x4, y4, s)
       callback?.(s)
     }
   }
@@ -102,7 +109,7 @@ export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
   draggingX = zoomLeft + e.clientX - startX
   draggingY = zoomTop + e.clientY - startY
 
-  updateElementViewbox(el, draggingX, draggingY, s)
+  updateCanvasViewbox(el, draggingX, draggingY, s)
 }
 export function dragEndHandler(e: MouseEvent) {
   e.preventDefault()
@@ -121,9 +128,16 @@ export function wheelHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
 
   if (e.shiftKey) {
     zoomLeft += e.deltaY
-    return updateElementViewbox(el, zoomLeft, zoomTop, s)
+    return updateCanvasViewbox(el, zoomLeft, zoomTop, s)
   }
 
   zoomTop += e.deltaY
-  return updateElementViewbox(el, zoomLeft, zoomTop, s)
+  return updateCanvasViewbox(el, zoomLeft, zoomTop, s)
+}
+
+//
+export function initCanvasViewbox(el: HTMLDivElement, x: number, y: number, s = 1) {
+  zoomLeft = x
+  zoomTop = y
+  updateCanvasViewbox(el, zoomLeft, zoomTop, s)
 }
