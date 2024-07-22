@@ -18,18 +18,34 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [20]
+
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       # 执行npm脚本打包项目
       - name: Install and Build
         run: |
-          npm install --force
-          npm run build:ding-flow
+          pnpm install
+          pnpm run build:ding-flow
 
       - name: Deploy 🚀
         uses: cross-the-world/scp-pipeline@master
