@@ -97,6 +97,7 @@ let draggingX: number = 0
 let draggingY: number = 0
 export function dragStartHandler(e: MouseEvent) {
   e.preventDefault()
+  document.body.style.cursor = 'grabbing'
   isDragging = true
   startX = e.clientX
   startY = e.clientY
@@ -114,6 +115,7 @@ export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
 export function dragEndHandler(e: MouseEvent) {
   e.preventDefault()
   isDragging = false
+  document.body.style.cursor = 'auto'
   zoomLeft = draggingX
   zoomTop = draggingY
 }

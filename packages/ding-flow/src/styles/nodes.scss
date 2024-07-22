@@ -38,8 +38,8 @@
   }
 }
 .flow-node.flow-subprocess {
-  background: none;
   border-color: var(--color-line);
+  //background-color: var(--color-bg-1);
   > .flow-node_header {
     background-color: var(--color-bg-1);
     pointer-events: auto;
@@ -117,24 +117,21 @@
   }
 
   .flow-gateway {
-    padding-left: var(--common-padding-4);
+    padding-left: var(--common-padding-3);
     .gateway-node__behavior {
       height: 100%;
-      width: 32px;
+      width: calc(var(--common-padding-3) * 2);
       left: 0;
       top: 50%;
       transform: translate(0, -50%);
     }
     .gateway-node__branches {
       flex-direction: column;
-    }
-    .gateway-node__branches {
-      flex-direction: column;
       &::before,
       &::after {
         width: 0;
-        top: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
-        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        top: calc(var(--common-height) / 2 + var(--common-padding-4) / 2 + 10px);
+        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) / 2 + 10px);
         //top: calc(var(--common-height) / 2);
         //bottom: calc(var(--common-height) / 2);
       }
@@ -188,10 +185,10 @@
   }
 
   .flow-gateway {
-    padding-top: var(--common-padding-4);
+    padding-top: var(--common-padding-3);
     .gateway-node__behavior {
       width: 100%;
-      height: 32px;
+      height: calc(var(--common-padding-3) * 2);
       left: 50%;
       top: 0;
       transform: translate(-50%, 0);
@@ -200,8 +197,10 @@
       flex-direction: row;
       &::before,
       &::after {
-        left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
-        right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        left: calc(var(--common-width) / 2 + var(--common-padding-4) / 2 + 10px);
+        right: calc(var(--common-width) / 2 + var(--common-padding-4) / 2 + 10px);
+        //left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
+        //right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
       }
       &::before {
         top: 0;
