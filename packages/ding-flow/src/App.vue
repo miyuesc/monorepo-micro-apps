@@ -4,7 +4,7 @@ import DingFlow from '@/components/DingFlow.vue'
 import type { FlowDirection } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
 
-const dir = ref<FlowDirection>('vertical')
+const dir = ref<FlowDirection>('horizontal')
 function toggleDir() {
   dir.value = dir.value === 'vertical' ? 'horizontal' : 'vertical'
 }

@@ -74,12 +74,16 @@ function addExpression() {
         :key="branch.expression.id"
         class="branch-col"
       >
-        <DingFlowList
-          v-model:data="branchesNodeList[bi].expression"
-          :idx="bi"
-          :direction="direction"
-          @click="$emits('click', $event)"
-        />
+        <div class="branch-col_prefix" />
+        <div class="branch-col_content">
+          <DingFlowList
+            v-model:data="branchesNodeList[bi].expression"
+            :idx="bi"
+            :direction="direction"
+            @click="$emits('click', $event)"
+          />
+        </div>
+        <div class="branch-col_suffix" />
       </div>
     </div>
   </div>
