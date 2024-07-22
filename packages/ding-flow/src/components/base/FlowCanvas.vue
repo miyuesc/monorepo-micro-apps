@@ -79,9 +79,9 @@ onMounted(() => initCenter())
             d="M 10,0 L 0,0 0,10 10,10 Z"
             style="
               fill: none;
-              stroke: rgb(204, 204, 204);
+              stroke: var(--color-border-1);
               stroke-width: 1px;
-              opacity: 0.1;
+              opacity: 0.6;
             "
           />
         </pattern>
@@ -95,9 +95,9 @@ onMounted(() => initCenter())
             d="M 100,0 L 0,0 0,100 100,100 Z"
             style="
               fill: none;
-              stroke: rgb(204, 204, 204);
+              stroke: var(--color-border-2);
               stroke-width: 2px;
-              opacity: 0.2;
+              opacity: 0.8;
             "
           />
           <rect

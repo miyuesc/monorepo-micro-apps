@@ -140,11 +140,11 @@ export function wheelHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom
   }
 
   if (e.shiftKey) {
-    zoomLeft += e.deltaY
+    zoomLeft -= e.deltaY
     return updateCanvasViewbox(el, zoomLeft, zoomTop, s)
   }
 
-  zoomTop += e.deltaY
+  zoomTop -= e.deltaY
   return updateCanvasViewbox(el, zoomLeft, zoomTop, s)
 }
 
