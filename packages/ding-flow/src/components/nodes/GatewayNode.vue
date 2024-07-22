@@ -63,7 +63,7 @@ function addExpression() {
 <template>
   <div class="flow-node flow-gateway">
     <div class="gateway-node__behavior">
-      <button class="df-button df-button-primary df-button-round" @click="addExpression">
+      <button class="df-button df-button-primary df-button-mini df-button-round" @click="addExpression">
         <span>添加条件</span>
       </button>
     </div>
