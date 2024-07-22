@@ -130,8 +130,8 @@
       &::before,
       &::after {
         width: 0;
-        top: calc(var(--common-height) / 2 + var(--common-padding-4) / 2 + 10px);
-        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) / 2 + 10px);
+        top: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-2));
+        bottom: calc(var(--common-height) / 2 + var(--common-padding-4) + var(--common-padding-2));
         //top: calc(var(--common-height) / 2);
         //bottom: calc(var(--common-height) / 2);
       }
@@ -197,8 +197,8 @@
       flex-direction: row;
       &::before,
       &::after {
-        left: calc(var(--common-width) / 2 + var(--common-padding-4) / 2 + 10px);
-        right: calc(var(--common-width) / 2 + var(--common-padding-4) / 2 + 10px);
+        left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-2));
+        right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-2));
         //left: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
         //right: calc(var(--common-width) / 2 + var(--common-padding-4) + var(--common-padding-4) / 2 - 2px);
       }
