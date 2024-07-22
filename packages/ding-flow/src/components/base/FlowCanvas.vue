@@ -65,6 +65,7 @@ onMounted(() => initCenter())
     @mousedown.stop="dragStartHandler"
     @mousemove.stop="(e) => dragHandler(canvasRoot!, e)"
     @mouseup.stop="dragEndHandler"
+    @click.stop
   >
     <svg class="ding-flow_root-bg">
       <defs>

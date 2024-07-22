@@ -37,7 +37,7 @@ const $props = defineProps({
   },
   canMove: {
     type: [Boolean, Function] as PropType<CanMove>,
-    default: () => (node: BaseNode) => node.businessData?.$type !== 'endEvent',
+    default: () => (node: BaseNode) => node.businessData?.$type !== 'endEvent' && node.businessData?.$type !== 'startEvent' && node.type !== 'expression',
   },
   canDropped: {
     type: [Boolean, Function] as PropType<CanDropped>,

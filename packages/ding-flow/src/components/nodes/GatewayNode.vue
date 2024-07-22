@@ -29,12 +29,12 @@ const computedGatewayNode = computed<GatewayNode>({
   set: node => $emits('update:data', node),
 })
 
-function nextNodeTraversal(node: BaseNode | null): BaseNode[] {
+function nextNodeTraversal(node?: BaseNode): BaseNode[] {
   if (!node) {
     return []
   }
   const list: BaseNode[] = []
-  let curNode: BaseNode | null = node
+  let curNode: BaseNode | undefined = node
   while (curNode) {
     list.push(curNode)
     curNode = curNode.next

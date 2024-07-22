@@ -91,19 +91,27 @@ export function zoomHandler(el: HTMLDivElement, e: WheelEvent, callback?: (zoom:
 
 /** ***************************** 画布拖拽 */
 let isDragging: boolean = false
+let isMousedown: boolean = false
 let startX: number = 0
 let startY: number = 0
 let draggingX: number = 0
 let draggingY: number = 0
 export function dragStartHandler(e: MouseEvent) {
   e.preventDefault()
-  document.body.style.cursor = 'grabbing'
-  isDragging = true
+  isMousedown = true
   startX = e.clientX
   startY = e.clientY
 }
 export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
   e.preventDefault()
+  if (!isMousedown)
+    return
+  if (!isDragging) {
+    if (Math.abs(e.clientX - startX) > 5 || Math.abs(e.clientY - startY) > 5) {
+      document.body.style.cursor = 'grabbing'
+      isDragging = true
+    }
+  }
   if (!isDragging)
     return
 
@@ -114,10 +122,13 @@ export function dragHandler(el: HTMLDivElement, e: MouseEvent) {
 }
 export function dragEndHandler(e: MouseEvent) {
   e.preventDefault()
-  isDragging = false
-  document.body.style.cursor = 'auto'
-  zoomLeft = draggingX
-  zoomTop = draggingY
+  isMousedown = false
+  if (isDragging) {
+    isDragging = false
+    document.body.style.cursor = 'auto'
+    zoomLeft = draggingX
+    zoomTop = draggingY
+  }
 }
 
 // 鼠标滚动控制
