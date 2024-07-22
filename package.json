@@ -12,7 +12,11 @@
     "vue-app",
     "react-app"
   ],
-  "scripts": {},
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "dev:ding-flow": "cd /packages/ding-flow && pnpm run dev",
+    "build:ding-flow": "cd /packages/ding-flow && pnpm run build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/miyuesc/monorepo-micro-apps.git"

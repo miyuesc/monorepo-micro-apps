@@ -17,7 +17,6 @@
     "./lib/style.css": "./lib/style.css"
   },
   "scripts": {
-    "bootstrap": "pnpm install",
     "dev": "vite --force --open ",
     "build": "vite build",
     "build:compo": "vite build --config vite.lib.config.ts",
