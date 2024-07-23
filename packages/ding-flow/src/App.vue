@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import type { ComponentInstance } from 'vue'
-import { ref } from 'vue'
+import { ref, toRaw } from 'vue'
 import DingFlow from '@/components/DingFlow.vue'
 import type { FlowDirection } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
+import { createPresetProcess } from '@/utils/element-utils'
 
-const dir = ref<FlowDirection>('horizontal')
+const dir = ref<FlowDirection>('vertical')
 function toggleDir() {
   dir.value = dir.value === 'vertical' ? 'horizontal' : 'vertical'
 }
@@ -29,6 +30,12 @@ const dingFlowRef = ref<ComponentInstance<typeof DingFlow>>()
 function center() {
   dingFlowRef.value?.fitViewport()
 }
+
+const processData = ref(createPresetProcess())
+
+function getData() {
+  console.log(toRaw(processData.value))
+}
 </script>
 
 <template>
@@ -44,7 +51,10 @@ function center() {
         切换主题
       </button>
       <button @click="center">
-        居中
+        自适应居中
+      </button>
+      <button @click="getData">
+        数据打印
       </button>
       <div>
         缩放倍率
@@ -78,7 +88,7 @@ function center() {
         <p>节点删除校验, 操作校验, 节点配置完整性校验</p>
       </template>
     </TippyPopover>
-    <DingFlow ref="dingFlowRef" :direction="dir" @zoom-changed="changeZoomValue" />
+    <DingFlow ref="dingFlowRef" v-model:data="processData" :direction="dir" @zoom-changed="changeZoomValue" />
   </div>
 </template>
 
