@@ -67,9 +67,6 @@ function fitViewport(padding: number = 20) {
   const rootRealWidth = rootWidth / zoom.value
   const rootRealHeight = rootHeight / zoom.value
 
-  console.log('parent', parentWidth, parentHeight)
-  console.log('root', rootRealWidth, rootRealHeight)
-
   let zoomX = 1
   let zoomY = 1
   let z: number
@@ -85,13 +82,13 @@ function fitViewport(padding: number = 20) {
   }
 
   if (zoomX <= zoomY) {
-    top = Math.round((parentHeight - rootRealHeight * zoomX) / 2) + padding
-    left = padding
+    top = Math.round(Math.abs(parentHeight - rootRealHeight * zoomX) / 2) + padding
+    left = Math.round(Math.abs(parentWidth - rootRealWidth * zoomX) / 2) + padding
     z = zoomX
   }
   else {
-    left = Math.round((parentWidth - rootRealWidth * zoomY) / 2) + padding
-    top = padding
+    top = Math.round(Math.abs(parentHeight - rootRealHeight * zoomY) / 2) + padding
+    left = Math.round(Math.abs(parentWidth - rootRealWidth * zoomY) / 2) + padding
     z = zoomY
   }
 

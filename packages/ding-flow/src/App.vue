@@ -102,6 +102,8 @@ body,
   justify-content: center;
   padding: 20px;
   border: 2px solid var(--color-border-3);
+  background-color: var(--color-bg-1);
+  color: var(--color-text-1);
 }
 .demo-btns {
   display: flex;

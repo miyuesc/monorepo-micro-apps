@@ -1,7 +1,7 @@
 /*流程相关参数*/
 :root {
   --transision: all 0.1s cubic-bezier(0, 0, 1, 1);
-  --arrow-width: 6px;
+  --arrow-width: 7px;
 
   --text-size-1: 12px;
   --text-size-2: 14px;
@@ -32,10 +32,12 @@
 }
 
 body,body[arco-theme=dark] {
-  --color-line: rgb(250, 250, 250);
+  --color-line-rgb: 250, 250, 250;
+  --color-line: rgb(var(--color-line-rgb));
 }
 body {
-  --color-line: rgb(5, 5, 5);
+  --color-line-rgb: 5, 5, 5;
+  --color-line: rgb(var(--color-line-rgb));
 }
 
 /* 主题来源：arco-design 懂车帝PC2B 主题 {@link https://arco.design/themes/preview/58}*/

@@ -38,7 +38,8 @@
   }
 }
 .flow-node.flow-subprocess {
-  border-color: var(--color-line);
+  border-width: 2px;
+  border-color: rgba(var(--color-line-rgb), 0.4);
   background-color: unset;
   > .flow-node_header {
     background-color: var(--color-bg-1);
@@ -117,22 +118,20 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      //height: 0;
-      //flex: 1;
       &:first-child {
         > .branch-col_prefix {
-          height: 50%;
+          height: calc(50% + 1px);
           align-self: flex-end;
-          border-top: 1px solid var(--color-line);
+          border-top: 2px solid var(--color-line);
           border-bottom: none;
           &::before {
             content: unset;
           }
         }
         > .branch-col_suffix {
-          height: 50%;
+          height: calc(50% + 1px);
           align-self: flex-end;
-          border-top: 1px solid var(--color-line);
+          border-top: 2px solid var(--color-line);
           border-bottom: none;
           &::before {
             content: unset;
@@ -141,19 +140,19 @@
       }
       &:last-child {
         > .branch-col_prefix {
-          height: 50%;
+          height: calc(50% + 1px);
           align-self: flex-start;
           border-top: none;
-          border-bottom: 1px solid var(--color-line);
+          border-bottom: 2px solid var(--color-line);
           &::before {
             content: unset;
           }
         }
         > .branch-col_suffix {
-          height: 50%;
+          height: calc(50% + 1px);
           align-self: flex-start;
           border-top: none;
-          border-bottom: 1px solid var(--color-line);
+          border-bottom: 2px solid var(--color-line);
           &::before {
             content: unset;
           }
@@ -169,7 +168,7 @@
         width: var(--common-padding-5);
         flex-shrink: 0;
         flex-grow: 0;
-        border-left: 1px solid var(--color-line);
+        border-left: 2px solid var(--color-line);
         box-sizing: border-box;
         position: relative;
         &::before {
@@ -178,14 +177,14 @@
           left: 0;
           right: 0;
           top: 50%;
-          border-top: 1px solid var(--color-line);
+          border-top: 2px solid var(--color-line);
         }
       }
       & > .branch-col_suffix {
         width: 100%;
         height: 100%;
         flex: 1;
-        border-right: 1px solid var(--color-line);
+        border-right: 2px solid var(--color-line);
         box-sizing: border-box;
         position: relative;
         &::before {
@@ -193,8 +192,9 @@
           position: absolute;
           left: 0;
           right: 0;
-          top: 50%;
-          border-top: 1px solid var(--color-line);
+          top: calc(50% - 1px);
+          height: 2px;
+          background-color: var(--color-line);
         }
       }
 
@@ -235,18 +235,18 @@
       align-items: center;
       &:first-child {
         > .branch-col_prefix {
-          width: 50%;
+          width: calc(50% + 1px);
           align-self: flex-end;
-          border-left: 1px solid var(--color-line);
+          border-left: 2px solid var(--color-line);
           border-right: none;
           &::before {
             content: unset;
           }
         }
         > .branch-col_suffix {
-          width: 50%;
+          width: calc(50% + 1px);
           align-self: flex-end;
-          border-left: 1px solid var(--color-line);
+          border-left: 2px solid var(--color-line);
           border-right: none;
           &::before {
             content: unset;
@@ -255,18 +255,18 @@
       }
       &:last-child {
         > .branch-col_prefix {
-          width: 50%;
+          width: calc(50% + 1px);
           align-self: flex-start;
           border-left: none;
-          border-right: 1px solid var(--color-line);
+          border-right: 2px solid var(--color-line);
           &::before {
             content: unset;
           }
         }
         > .branch-col_suffix {
-          width: 50%;
+          width: calc(50% + 1px);
           align-self: flex-start;
-          border-right: 1px solid var(--color-line);
+          border-right: 2px solid var(--color-line);
           border-left: none;
           &::before {
             content: unset;
@@ -282,7 +282,7 @@
         width: 100%;
         height: var(--common-padding-5);
         flex-shrink: 0;
-        border-top: 1px solid var(--color-line);
+        border-top: 2px solid var(--color-line);
         box-sizing: border-box;
         position: relative;
         &::before {
@@ -290,15 +290,16 @@
           position: absolute;
           top: 0;
           bottom: 0;
-          left: 50%;
-          border-left: 1px solid var(--color-line);
+          left: calc(50% - 1px);
+          width: 2px;
+          background-color: var(--color-line);
         }
       }
       & > .branch-col_suffix {
         width: 100%;
         height: 100%;
         flex: 1;
-        border-bottom: 1px solid var(--color-line);
+        border-bottom: 2px solid var(--color-line);
         box-sizing: border-box;
         position: relative;
         &::before {
@@ -306,8 +307,9 @@
           position: absolute;
           top: 0;
           bottom: 0;
-          left: 50%;
-          border-left: 1px solid var(--color-line);
+          left: calc(50% - 1px);
+          width: 2px;
+          background-color: var(--color-line);
         }
       }
 
@@ -321,7 +323,7 @@
 /* 具体各类型节点 自定义样式 */
 .flow-node.flow-event {
   &.start-event {
-    border-width: 1px;
+    border-width: 2px;
     border-color: var(--color-success-light-4);
   }
   &.end-event {

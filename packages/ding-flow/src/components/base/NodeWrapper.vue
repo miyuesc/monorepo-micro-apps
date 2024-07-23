@@ -68,6 +68,7 @@ async function init() {
 
 init()
 
+// 追加节点
 function appendNewNode(
   type: BaseNodeType,
   name: string,
@@ -84,10 +85,10 @@ function appendNewNode(
   }
 }
 
+// 拖拽与放置
 function initDrag() {
   setDragData(computedModelNode)
 }
-
 function setDropNode(node: Ref<BaseNode>) {
   if (node.value.id === computedModelNode.value.id) {
     return
@@ -95,6 +96,7 @@ function setDropNode(node: Ref<BaseNode>) {
   moveNode(computedModelNode, node)
 }
 
+// 点击事件
 function emitClick() {
   $emits('click', computedModelNode.value)
 }

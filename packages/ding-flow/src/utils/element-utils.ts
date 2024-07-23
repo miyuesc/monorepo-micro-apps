@@ -117,7 +117,7 @@ export function createNode<T extends BaseNodeType>(
         $type: 'startEvent',
         cls: 'start-event',
       })
-      subprocessStart.next = createNode('event', '结束', { $type: 'endEvent' })
+      subprocessStart.next = createNode('event', '结束', { $type: 'endEvent', cls: 'end-event' })
       return {
         ...base,
         start: subprocessStart,
@@ -128,6 +128,7 @@ export function createNode<T extends BaseNodeType>(
       return base
   }
 }
+
 /**
  * 追加新节点
  * @param curNode 当前节点
