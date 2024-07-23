@@ -72,26 +72,29 @@ function fitViewport(padding: number = 20) {
 
   let zoomX = 1
   let zoomY = 1
-  let left = 0
-  let top = 0
+  let z: number
+  let left: number
+  let top: number
 
   if (parentWidth < rootRealWidth) {
     zoomX = Math.round(parentWidth * 100 / rootRealWidth) / 100
-    left = padding
-  }
-  else {
-    left = Math.round((parentWidth - rootRealWidth) / 2)
   }
 
   if (parentHeight < rootRealHeight) {
     zoomY = Math.round(parentHeight * 100 / rootRealHeight) / 100
-    top = padding
-  }
-  else {
-    top = Math.round((parentHeight - rootRealHeight) / 2)
   }
 
-  const z = Math.min(zoomX, zoomY)
+  if (zoomX <= zoomY) {
+    top = Math.round((parentHeight - rootRealHeight * zoomX) / 2) + padding
+    left = padding
+    z = zoomX
+  }
+  else {
+    left = Math.round((parentWidth - rootRealWidth * zoomY) / 2) + padding
+    top = padding
+    z = zoomY
+  }
+
   zoomChanger(z)
   initCanvasViewbox(canvasRoot.value, left, top, z)
 }
