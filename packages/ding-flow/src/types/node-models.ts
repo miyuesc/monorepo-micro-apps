@@ -10,8 +10,9 @@ export interface BaseNode {
   id: string
   type: string
   name: string
-  next?: BaseNode
-  prev?: BaseNode
+  $next?: BaseNode
+  $prev?: BaseNode
+  $parent?: BaseNode
   businessData: BaseNodeBO
 }
 // 基础任务节点

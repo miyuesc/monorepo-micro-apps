@@ -40,7 +40,7 @@ const nodeList = computed<BaseNode[]>(() => {
   let nextNode: BaseNode | undefined = startNode.value
   while (nextNode) {
     list.push(nextNode)
-    nextNode = nextNode.next
+    nextNode = nextNode.$next
   }
   return list
 })

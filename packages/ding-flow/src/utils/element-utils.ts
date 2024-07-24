@@ -51,36 +51,43 @@ export const DEFAULT_NAME_MAP = {
  */
 export function createNode(
   type: 'gateway',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): GatewayNode
 export function createNode(
   type: 'expression',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): ExpressionNode
 export function createNode(
   type: 'task',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): TaskNode
 export function createNode(
   type: 'service',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): ServiceNode
 export function createNode(
   type: 'event',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): EventNode
 export function createNode(
   type: 'subprocess',
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): SubprocessNode
 export function createNode<T extends BaseNodeType>(
   type: T,
+  parent?: BaseNode,
   name?: string,
   bo?: Record<string, unknown>,
 ): BaseNode {
@@ -88,18 +95,17 @@ export function createNode<T extends BaseNodeType>(
     id: `${type}-${ids()}`,
     type,
     name: name || DEFAULT_NAME_MAP[type] || type,
-    prev: undefined,
-    next: undefined,
+    $prev: undefined,
+    $next: undefined,
+    $parent: parent,
     businessData: bo || {},
   }
 
   switch (type) {
     case 'gateway':
       const expressions: ExpressionNode[] = []
-      const expressionNode1: ExpressionNode = createNode('expression', '条件1')
-      const expressionNode2: ExpressionNode = createNode('expression', '条件2')
-      expressionNode1.parent = base as GatewayNode
-      expressionNode2.parent = base as GatewayNode
+      const expressionNode1: ExpressionNode = createNode('expression', base, '条件1')
+      const expressionNode2: ExpressionNode = createNode('expression', base, '条件2')
       expressions.push(expressionNode1, expressionNode2)
       return {
         ...base,
@@ -113,11 +119,11 @@ export function createNode<T extends BaseNodeType>(
     case 'task':
       return { ...base } as TaskNode
     case 'subprocess':
-      const subprocessStart = createNode('event', '开始', {
+      const subprocessStart = createNode('event', base, '开始', {
         $type: 'startEvent',
         cls: 'start-event',
       })
-      subprocessStart.next = createNode('event', '结束', { $type: 'endEvent', cls: 'end-event' })
+      subprocessStart.$next = createNode('event', base, '结束', { $type: 'endEvent', cls: 'end-event' })
       return {
         ...base,
         start: subprocessStart,
@@ -138,14 +144,14 @@ export function appendNode(
   curNode: Ref<BaseNode>,
   newNode: Ref<BaseNode>,
 ): Ref<BaseNode> {
-  const nextNode = curNode.value.next
+  const nextNode = curNode.value.$next
 
-  curNode.value.next = newNode.value
-  newNode.value.prev = curNode.value
+  curNode.value.$next = newNode.value
+  newNode.value.$prev = curNode.value
 
   if (nextNode) {
-    nextNode.prev = newNode.value
-    newNode.value.next = nextNode
+    nextNode.$prev = newNode.value
+    newNode.value.$next = nextNode
   }
 
   setNodeInMap(newNode)
@@ -157,17 +163,17 @@ export function appendNode(
  * @param curNode 被移除的目标节点
  */
 export function removeNode(curNode: Ref<BaseNode>): Ref<BaseNode> {
-  const prev = curNode.value.prev
-  const next = curNode.value.next
-  if (prev) {
-    prev.next = next
+  const $prev = curNode.value.$prev
+  const $next = curNode.value.$next
+  if ($prev) {
+    $prev.$next = $next
   }
-  if (next) {
-    next.prev = prev
+  if ($next) {
+    $next.$prev = $prev
   }
 
-  curNode.value.prev = undefined
-  curNode.value.next = undefined
+  curNode.value.$prev = undefined
+  curNode.value.$next = undefined
 
   removeNodeInMap(curNode.value.id)
 
@@ -216,14 +222,14 @@ export function getDragData() {
 }
 
 export function createPresetProcess() {
-  const start = createNode('event', '开始', {
+  const start = createNode('event', undefined, '开始', {
     $type: 'startEvent',
     cls: 'start-event',
   })
-  const end = createNode('event', '结束', {
+  const end = createNode('event', undefined, '结束', {
     $type: 'endEvent',
     cls: 'end-event',
   })
-  start.next = end
+  start.$next = end
   return start
 }

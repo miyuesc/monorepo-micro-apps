@@ -47,11 +47,11 @@ const $props = defineProps({
 
   removeValidator: {
     type: Function as PropType<AsyncExecutionValidator>,
-    default: () => async () => true,
+    default: undefined,
   },
   completenessValidator: {
     type: Function as PropType<ExecutionValidator>,
-    default: () => async () => true,
+    default: undefined,
   },
   direction: {
     type: String as PropType<FlowDirection>,

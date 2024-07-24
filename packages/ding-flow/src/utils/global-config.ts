@@ -10,6 +10,7 @@ import type {
   CanMove,
   CanRemove,
   ExecutionValidator,
+  SubprocessNode,
 } from '@/types'
 
 export interface GlobalConfig {
@@ -22,7 +23,7 @@ export interface GlobalConfig {
 }
 export type GlobalConfigKey = keyof GlobalConfig
 
-export const defaultAppendValidator: CanMove = (node) => {
+export const defaultAppendValidator: CanAppend = (node) => {
   if (!node)
     return false
   return node.businessData?.$type !== 'endEvent'
@@ -34,10 +35,19 @@ export const defaultMoveValidator: CanMove = (node) => {
     && node.businessData?.$type !== 'startEvent'
     && node.type !== 'expression'
 }
-export const defaultDropValidator: CanMove = (target, node) => {
+export const defaultDropValidator: CanDropped = (target, node) => {
   if (!node)
     return false
-  return target!.next?.id !== node.id && target!.id !== node.id
+  return target!.$next?.id !== node.id && target!.id !== node.id
+}
+export const defaultCompletenessValidator: ExecutionValidator = (target) => {
+  if (!target)
+    return false
+  if (target.type === 'expression')
+    return !!target.businessData.expression
+  if (target.type === 'subprocess')
+    return !!(target as SubprocessNode).start
+  return true
 }
 
 export const globalConfig: GlobalConfig = {
@@ -46,7 +56,7 @@ export const globalConfig: GlobalConfig = {
   canMove: defaultMoveValidator,
   canDropped: defaultDropValidator,
   removeValidator: async () => true,
-  completenessValidator: () => true,
+  completenessValidator: defaultCompletenessValidator,
 }
 
 export function setGlobalConfig<K extends GlobalConfigKey>(

@@ -41,14 +41,14 @@ const computedModelNode = computed<BaseNode>({
   },
 })
 
-async function validateProp(key: GlobalConfigKey) {
+function validateProp(key: GlobalConfigKey) {
   const config = getGlobalConfig(key)
 
   if (isUndefined(config))
     return true
 
   if (typeof config === 'function') {
-    return await config(computedModelNode.value)
+    return config(computedModelNode.value) as boolean
   }
 
   return config
@@ -57,16 +57,21 @@ async function validateProp(key: GlobalConfigKey) {
 const appendable = ref(false)
 const removable = ref(false)
 const movable = ref(false)
-const isCompleteness = ref(false)
+// const isCompleteness = ref(false)
 
-async function init() {
-  appendable.value = await validateProp('canAppend')
-  removable.value = await validateProp('canRemove')
-  movable.value = await validateProp('canMove')
-  isCompleteness.value = await validateProp('completenessValidator')
+function init() {
+  appendable.value = validateProp('canAppend')
+  removable.value = validateProp('canRemove')
+  movable.value = validateProp('canMove')
+  // isCompleteness.value = validateProp('completenessValidator')
 }
 
 init()
+
+// 校验提示
+const isCompleteness = computed(() => {
+  return validateProp('completenessValidator')
+})
 
 // 追加节点
 function appendNewNode(
@@ -80,7 +85,7 @@ function appendNewNode(
   }
   if (canAppend(computedModelNode.value)) {
     // @ts-expect-error
-    const newNode = ref(createNode(type, name, bo))
+    const newNode = ref(createNode(type, computedModelNode.value?.$parent, name, bo))
     appendNode(computedModelNode, newNode)
   }
 }
@@ -109,7 +114,10 @@ function transformNodeName(node: BaseNode): string {
 <template>
   <div v-if="$props.data" class="flow-node__wrapper">
     <div
-      :class="`flow-node__container ${movable ? 'flow-node__movable' : ''}`"
+      class="flow-node__container" :class="{
+        'flow-node__movable': movable,
+        'flow-node__uncompleted': !isCompleteness,
+      }"
       :draggable="movable"
       @dragstart.stop="initDrag"
       @click.stop="emitClick"

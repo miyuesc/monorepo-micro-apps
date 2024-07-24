@@ -37,7 +37,7 @@ function nextNodeTraversal(node?: BaseNode): BaseNode[] {
   let curNode: BaseNode | undefined = node
   while (curNode) {
     list.push(curNode)
-    curNode = curNode.next
+    curNode = curNode.$next
   }
   return list
 }
@@ -47,14 +47,14 @@ const branchesNodeList = computed<BranchNodeList[]>(() => {
   for (const ex of expressions) {
     branches.push({
       expression: ex,
-      nextNodeList: nextNodeTraversal(ex.next),
+      nextNodeList: nextNodeTraversal(ex.$next),
     })
   }
   return branches
 })
 
 function addExpression() {
-  const newExpression = createNode('expression', `条件-${computedGatewayNode.value.expressions.length + 1}`)
+  const newExpression = createNode('expression', computedGatewayNode.value, `条件-${computedGatewayNode.value.expressions.length + 1}`)
   newExpression.parent = computedGatewayNode.value
   computedGatewayNode.value.expressions.push(newExpression)
 }

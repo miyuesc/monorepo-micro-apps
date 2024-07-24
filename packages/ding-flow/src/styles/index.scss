@@ -30,7 +30,7 @@
 }
 .ding-flow_wrapper {
   width: 100%;
-  overflow: auto;
+  overflow: visible;
   box-sizing: border-box;
   pointer-events: none;
 }
@@ -86,8 +86,13 @@
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  .flow-node__movable {
+  .flow-node__container.flow-node__movable {
     cursor: move;
+  }
+  .flow-node__container.flow-node__uncompleted {
+    .flow-node {
+      box-shadow: 0 0 10px 0 var(--color-danger-light-4);
+    }
   }
 }
 .flow-node__behavior {
