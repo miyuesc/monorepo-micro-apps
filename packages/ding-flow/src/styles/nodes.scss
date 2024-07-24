@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   pointer-events: auto;
+  user-select: none;
 }
 .flow-node.flow-task {
   width: var(--task-width);

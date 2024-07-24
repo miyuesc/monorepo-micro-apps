@@ -91,7 +91,8 @@ function appendNewNode(
 }
 
 // 拖拽与放置
-function initDrag() {
+function initDrag(e: DragEvent) {
+  e.dataTransfer?.setDragImage(e.target! as HTMLDivElement, -6, -6)
   setDragData(computedModelNode)
 }
 function setDropNode(node: Ref<BaseNode>) {

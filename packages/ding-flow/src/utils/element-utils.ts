@@ -149,6 +149,9 @@ export function appendNode(
   curNode.value.$next = newNode.value
   newNode.value.$prev = curNode.value
 
+  // 更新 parent
+  newNode.value.$parent = curNode.value.$parent
+
   if (nextNode) {
     nextNode.$prev = newNode.value
     newNode.value.$next = nextNode

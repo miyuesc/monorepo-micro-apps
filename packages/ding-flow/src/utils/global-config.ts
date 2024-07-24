@@ -38,6 +38,17 @@ export const defaultMoveValidator: CanMove = (node) => {
 export const defaultDropValidator: CanDropped = (target, node) => {
   if (!node)
     return false
+
+  if (node.type === 'gateway' || node.type === 'subprocess') {
+    let $parent = target?.$parent
+    while ($parent) {
+      if ($parent.id === node.id) {
+        return false
+      }
+      $parent = $parent.$parent
+    }
+  }
+
   return target!.$next?.id !== node.id && target!.id !== node.id
 }
 export const defaultCompletenessValidator: ExecutionValidator = (target) => {
