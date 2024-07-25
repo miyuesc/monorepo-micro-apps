@@ -22,7 +22,13 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
-const $emits = defineEmits(['click', 'update:data'])
+const $emits = defineEmits([
+  'update:data',
+  'nodeClick',
+  'nodeDblclick',
+  'nodeHover',
+  'nodeContextmenu',
+])
 
 const computedGatewayNode = computed<GatewayNode>({
   get: () => $props.data,
@@ -80,7 +86,10 @@ function addExpression() {
             v-model:data="branchesNodeList[bi].expression"
             :idx="bi"
             :direction="direction"
-            @click="$emits('click', $event)"
+            @node-click="$emits('nodeClick', $event)"
+            @node-dblclick="$emits('nodeDblclick', $event)"
+            @node-hover="$emits('nodeHover', $event)"
+            @node-contextmenu="$emits('nodeContextmenu', $event)"
           />
         </div>
         <div class="branch-col_suffix" />

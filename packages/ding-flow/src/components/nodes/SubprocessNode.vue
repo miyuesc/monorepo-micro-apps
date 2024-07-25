@@ -10,7 +10,7 @@ import type { FlowDirection, SubprocessNode } from '@/types'
 
 defineOptions({ name: 'SubprocessNode' })
 
-const $props = defineProps({
+defineProps({
   data: {
     type: Object as PropType<SubprocessNode>,
     required: true,
@@ -21,6 +21,13 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
+const $emits = defineEmits([
+  'update:data',
+  'nodeClick',
+  'nodeDblclick',
+  'nodeHover',
+  'nodeContextmenu',
+])
 </script>
 
 <template>
@@ -28,6 +35,12 @@ const $props = defineProps({
     <div class="flow-node_header">
       子流程
     </div>
-    <DingFlowList :data="data.start!" :direction="direction" />
+    <DingFlowList
+      :data="data.start!" :direction="direction"
+      @node-click="$emits('nodeClick', $event)"
+      @node-dblclick="$emits('nodeDblclick', $event)"
+      @node-hover="$emits('nodeHover', $event)"
+      @node-contextmenu="$emits('nodeContextmenu', $event)"
+    />
   </div>
 </template>

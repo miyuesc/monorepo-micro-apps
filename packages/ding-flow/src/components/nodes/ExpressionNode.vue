@@ -10,7 +10,7 @@ import type { ExpressionNode, FlowDirection } from '@/types'
 
 defineOptions({ name: 'ExpressionNode' })
 
-const $props = defineProps({
+defineProps({
   data: {
     type: Object as PropType<ExpressionNode>,
     required: true,
@@ -21,7 +21,6 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
-const $emits = defineEmits(['click', 'update:data'])
 </script>
 
 <template>
