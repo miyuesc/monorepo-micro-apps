@@ -59,17 +59,38 @@ const $props = defineProps({
     validator: (v: FlowDirection) => ['vertical', 'horizontal'].includes(v),
   },
 })
-const $emits = defineEmits(['update:data', 'nodeClick', 'zoomChanged'])
+const $emits = defineEmits([
+  'update:data',
+  'zoomChanged',
+  'nodeClick',
+  'nodeDblclick',
+  'nodeHover',
+  'nodeContextmenu',
+])
 
+const root = ref<BaseNode>()
 const computedFlowData = computed<BaseNode>({
   get: () => $props.data || ref(createPresetProcess()).value,
   set: (v) => {
     $emits('update:data', v)
   },
 })
+const computedVisibleFlowData = computed<BaseNode>({
+  get: () => {
+    if (root.value) {
+      return root.value
+    }
+    return computedFlowData.value
+  },
+  set: () => $emits('update:data', computedFlowData.value),
+})
 
 const canvas = shallowRef<ComponentInstance<typeof FlowCanvas>>()
 const fitViewport = (padding?: number) => canvas.value?.fitViewport(padding)
+
+function toggleRoot(r?: BaseNode) {
+  root.value = r
+}
 
 watchEffect(() => {
   setGlobalConfig('canAppend', $props.canAppend)
@@ -82,11 +103,19 @@ watchEffect(() => {
 
 defineExpose({
   fitViewport,
+  toggleRoot,
 })
 </script>
 
 <template>
   <FlowCanvas ref="canvas" @zoom-changed="$emit('zoomChanged', $event)">
-    <DingFlowList v-model:data="computedFlowData" :direction="direction" />
+    <DingFlowList
+      v-model:data="computedVisibleFlowData"
+      :direction="direction"
+      @node-click="$emits('nodeClick', $event)"
+      @node-dblclick="$emits('nodeDblclick', $event)"
+      @node-hover="$emits('nodeHover', $event)"
+      @node-contextmenu="$emits('nodeContextmenu', $event)"
+    />
   </FlowCanvas>
 </template>

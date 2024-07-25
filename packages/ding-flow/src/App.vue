@@ -2,11 +2,13 @@
 import type { ComponentInstance } from 'vue'
 import { ref, toRaw } from 'vue'
 import DingFlow from '@/components/DingFlow.vue'
-import type { FlowDirection } from '@/types'
+import type { BaseNode, FlowDirection, SubprocessNode } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
 import { createPresetProcess } from '@/utils/element-utils'
 
 const dir = ref<FlowDirection>('vertical')
+const dingFlowRef = ref<ComponentInstance<typeof DingFlow>>()
+
 function toggleDir() {
   dir.value = dir.value === 'vertical' ? 'horizontal' : 'vertical'
 }
@@ -25,7 +27,14 @@ function changeZoomValue(value: number) {
   zoomValue.value = value
 }
 
-const dingFlowRef = ref<ComponentInstance<typeof DingFlow>>()
+function toggleRoot(node?: BaseNode) {
+  if (!node) {
+    return dingFlowRef.value?.toggleRoot()
+  }
+  if (node.type === 'subprocess') {
+    dingFlowRef.value?.toggleRoot((node as SubprocessNode).start)
+  }
+}
 
 function center() {
   dingFlowRef.value?.fitViewport()
@@ -52,6 +61,9 @@ function getData() {
       </button>
       <button @click="center">
         自适应居中
+      </button>
+      <button @click="toggleRoot()">
+        还原根节点
       </button>
       <button @click="getData">
         数据打印
@@ -86,9 +98,10 @@ function getData() {
         <p>画布拖拽与缩放, 鼠标滚动控制</p>
         <p>节点拖拽移动, 拖拽前置校验, 放置前置校验</p>
         <p>节点删除校验, 操作校验, 节点配置完整性校验</p>
+        <p>双击进入子流程</p>
       </template>
     </TippyPopover>
-    <DingFlow ref="dingFlowRef" v-model:data="processData" :direction="dir" @zoom-changed="changeZoomValue" />
+    <DingFlow ref="dingFlowRef" v-model:data="processData" :direction="dir" @zoom-changed="changeZoomValue" @node-dblclick="toggleRoot" />
   </div>
 </template>
 

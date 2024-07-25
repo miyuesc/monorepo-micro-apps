@@ -32,7 +32,7 @@ const $props = defineProps({
   },
 })
 
-const $emits = defineEmits(['update:data', 'click'])
+const $emits = defineEmits(['update:data', 'click', 'dblclick', 'hover', 'contextmenu'])
 
 const computedModelNode = computed<BaseNode>({
   get: () => $props.data,
@@ -102,9 +102,18 @@ function setDropNode(node: Ref<BaseNode>) {
   moveNode(computedModelNode, node)
 }
 
-// 点击事件
+// 事件
 function emitClick() {
   $emits('click', computedModelNode.value)
+}
+function emitDblclick() {
+  $emits('dblclick', computedModelNode.value)
+}
+function emitHover() {
+  $emits('hover', computedModelNode.value)
+}
+function emitContextmenu() {
+  $emits('contextmenu', computedModelNode.value)
 }
 
 function transformNodeName(node: BaseNode): string {
@@ -122,6 +131,9 @@ function transformNodeName(node: BaseNode): string {
       :draggable="movable"
       @dragstart.stop="initDrag"
       @click.stop="emitClick"
+      @dblclick.stop="emitDblclick"
+      @mouseover.stop="emitHover"
+      @contextmenu.stop="emitContextmenu"
       @mousedown.stop
     >
       <component
