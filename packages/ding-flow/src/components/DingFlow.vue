@@ -6,7 +6,7 @@
  */
 
 import type { ComponentInstance, PropType } from 'vue'
-import { computed, ref, shallowRef, watchEffect } from 'vue'
+import { computed, nextTick, ref, shallowRef, watchEffect } from 'vue'
 import type {
   AsyncExecutionValidator,
   BaseNode,
@@ -112,6 +112,7 @@ const fitViewport = (padding?: number) => canvas.value?.fitViewport(padding)
 
 function toggleRoot(r?: SubprocessNode) {
   root.value = r
+  nextTick(() => fitViewport())
 }
 function breadcrumbClick(i: BreadcrumbItem) {
   if (i.disabled)
