@@ -2,7 +2,7 @@
 import type { ComponentInstance } from 'vue'
 import { ref, toRaw } from 'vue'
 import DingFlow from '@/components/DingFlow.vue'
-import type { BaseNode, FlowDirection, SubprocessNode } from '@/types'
+import type { BaseNode, FlowDirection } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
 import { createPresetProcess } from '@/utils/element-utils'
 
@@ -28,12 +28,7 @@ function changeZoomValue(value: number) {
 }
 
 function toggleRoot(node?: BaseNode) {
-  if (!node) {
-    return dingFlowRef.value?.toggleRoot()
-  }
-  if (node.type === 'subprocess') {
-    dingFlowRef.value?.toggleRoot((node as SubprocessNode).start)
-  }
+  dingFlowRef.value?.toggleRoot(node)
 }
 
 function center() {

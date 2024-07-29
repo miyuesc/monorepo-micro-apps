@@ -16,8 +16,9 @@ import type {
   CanRemove,
   ExecutionValidator,
   FlowDirection,
+  SubprocessNode,
 } from '@/types'
-import { createPresetProcess } from '@/utils/element-utils'
+import { createPresetProcess, getNodeInMap } from '@/utils/element-utils'
 import { setGlobalConfig } from '@/utils/global-config'
 import FlowCanvas from '@/components/base/FlowCanvas.vue'
 
@@ -68,7 +69,7 @@ const $emits = defineEmits([
   'nodeContextmenu',
 ])
 
-const root = ref<BaseNode>()
+const root = ref<SubprocessNode>()
 const computedFlowData = computed<BaseNode>({
   get: () => $props.data || ref(createPresetProcess()).value,
   set: (v) => {
@@ -78,18 +79,44 @@ const computedFlowData = computed<BaseNode>({
 const computedVisibleFlowData = computed<BaseNode>({
   get: () => {
     if (root.value) {
-      return root.value
+      return root.value.start!
     }
     return computedFlowData.value
   },
   set: () => $emits('update:data', computedFlowData.value),
 })
+interface BreadcrumbItem {
+  id: string
+  label: string
+  disabled: boolean
+  node?: BaseNode
+}
+const computedBreadcrumbList = computed<BreadcrumbItem[] | undefined>(() => {
+  if (!root.value) {
+    return undefined
+  }
+
+  const list: BreadcrumbItem[] = []
+  let parent: BaseNode | undefined = root.value
+  while (parent) {
+    const disabled: boolean = parent.id === root.value.id
+    list.unshift({ node: parent, id: parent.id, label: parent.name || parent.type, disabled })
+    parent = parent.$parent
+  }
+  list.unshift({ label: '根节点', id: '__root', disabled: false })
+  return list
+})
 
 const canvas = shallowRef<ComponentInstance<typeof FlowCanvas>>()
 const fitViewport = (padding?: number) => canvas.value?.fitViewport(padding)
 
-function toggleRoot(r?: BaseNode) {
+function toggleRoot(r?: SubprocessNode) {
   root.value = r
+}
+function breadcrumbClick(i: BreadcrumbItem) {
+  if (i.disabled)
+    return
+  toggleRoot(i.node ? getNodeInMap(i.node.id)?.value as SubprocessNode : undefined)
 }
 
 watchEffect(() => {
@@ -109,6 +136,26 @@ defineExpose({
 
 <template>
   <FlowCanvas ref="canvas" @zoom-changed="$emit('zoomChanged', $event)">
+    <template #header>
+      <div v-show="computedBreadcrumbList" class="ding-flow_breadcrumbs">
+        <div
+          v-for="(i, idx) in computedBreadcrumbList"
+          :key="i.id"
+          class="ding-flow_breadcrumb-item"
+        >
+          <span v-show="idx > 0" class="ding-flow_breadcrumb-item-tag">
+            >
+          </span>
+          <span
+            class="ding-flow_breadcrumb-item-label"
+            :class="{
+              'breadcrumb-item_is-disabled': i.disabled,
+            }"
+            @click="breadcrumbClick(i)"
+          >{{ i.label }}</span>
+        </div>
+      </div>
+    </template>
     <DingFlowList
       v-model:data="computedVisibleFlowData"
       :direction="direction"

@@ -31,8 +31,8 @@ const popRef = shallowRef<ComponentInstance<typeof TippyPopover>>()
 const droppable = ref(false)
 const dropin = ref(false)
 
-function emitClick(type: BaseNodeType) {
-  $emits('append', type, '节点')
+function emitClick(type: BaseNodeType, name: string) {
+  $emits('append', type, name)
   popRef.value?.hidden()
 }
 
@@ -93,19 +93,19 @@ async function toggleDroppableState(droppin: boolean) {
         <div>
           <span class="node-behavior__header">添加节点</span>
           <div class="node-behavior__btn-grid">
-            <button class="node-behavior__btn" @click.stop="emitClick('task')">
+            <button class="node-behavior__btn" @click.stop="emitClick('task', '任务节点')">
               任务
             </button>
-            <button class="node-behavior__btn" @click.stop="emitClick('service')">
+            <button class="node-behavior__btn" @click.stop="emitClick('service', '服务节点')">
               服务
             </button>
-            <button class="node-behavior__btn" @click.stop="emitClick('event')">
+            <button class="node-behavior__btn" @click.stop="emitClick('event', '事件')">
               事件
             </button>
-            <button class="node-behavior__btn" @click.stop="emitClick('gateway')">
+            <button class="node-behavior__btn" @click.stop="emitClick('gateway', '网关节点')">
               网关
             </button>
-            <button class="node-behavior__btn" @click.stop="emitClick('subprocess')">
+            <button class="node-behavior__btn" @click.stop="emitClick('subprocess', '子流程')">
               子流程
             </button>
           </div>

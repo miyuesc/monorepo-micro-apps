@@ -15,6 +15,29 @@
   position: absolute;
   transform-origin: 0 0;
 }
+.ding-flow_breadcrumbs {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  .ding-flow_breadcrumb-item {
+    line-height: 24px;
+  }
+  .ding-flow_breadcrumb-item-tag {
+    font-size: 20px;
+    padding: 0 8px;
+  }
+  .ding-flow_breadcrumb-item-label {
+    cursor: pointer;
+    color: var(--color-primary-light-4);
+    &.breadcrumb-item_is-disabled {
+      cursor: not-allowed;
+      color: var(--color-primary-light-2);
+    }
+  }
+}
 .ding-flow_root-bg {
   position: absolute;
   left: 0;

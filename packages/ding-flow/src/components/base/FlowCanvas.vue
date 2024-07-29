@@ -111,6 +111,7 @@ defineExpose({ initCanvasViewbox, fitViewport })
     @mouseup.stop="dragEndHandler"
     @click.stop
   >
+    <slot name="header" />
     <svg class="ding-flow_root-bg">
       <defs>
         <pattern
