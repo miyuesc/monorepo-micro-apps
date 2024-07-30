@@ -6,6 +6,7 @@ import DingFlow from '@/components/DingFlow.vue'
 import type { BaseNode, FlowDirection, SubprocessNode } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
 import { createPresetProcess } from '@/utils/element-utils'
+import { toJson } from '@/utils/transform'
 
 const dir = ref<FlowDirection>('vertical')
 const dingFlowRef = ref<ComponentInstance<typeof DingFlow>>()
@@ -39,7 +40,7 @@ function center() {
 const processData = ref(createPresetProcess())
 
 function getData() {
-  console.log(toRaw(processData.value))
+  console.log(toJson(toRaw(processData.value)))
 }
 </script>
 
@@ -59,8 +60,8 @@ function getData() {
         <a-button type="primary" @click="toggleRoot()">
           还原根节点
         </a-button>
-        <a-button type="primary" @click="getData">
-          数据打印
+        <a-button type="primary" @click="getData()">
+          打印数据
         </a-button>
 
         <a-button type="primary" class="header-tips">

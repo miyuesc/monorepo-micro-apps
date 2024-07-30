@@ -126,7 +126,7 @@ export function createNode<T extends BaseNodeType>(
       subprocessStart.$next = createNode('event', base, '结束', { $type: 'endEvent', cls: 'end-event' })
       return {
         ...base,
-        start: subprocessStart,
+        $start: subprocessStart,
       } as SubprocessNode
     case 'event':
       return { ...base } as EventNode

@@ -3,8 +3,6 @@
  * @author MiyueFE <https://github.com/miyuesc>
  * @since 2024/7/30 下午9:16
  */
-import type { Ref } from 'vue'
-import { isRef } from 'vue'
 import type { BaseNode, BaseNodeBO, GatewayNode, SubprocessNode } from '@/types'
 
 interface NodeJson {
@@ -12,6 +10,10 @@ interface NodeJson {
   type: string
   name: string
   businessData: BaseNodeBO
+
+  nextNode?: NodeJson
+  childNode?: NodeJson
+  expressionNodes?: NodeJson[]
 
   $nextRef?: BaseNode['id']
   $prevRef?: BaseNode['id']
@@ -23,10 +25,30 @@ interface NodeJson {
   $defaultRef?: BaseNode['id']
 }
 
-export function toJson(node: BaseNode | Ref<BaseNode>) {
-  if (isRef(node)) {
-    node = node.value
+export function toJson(node: BaseNode): NodeJson | undefined {
+  if (!node)
+    return undefined
+
+  const result: NodeJson = nodeToJson(node)
+
+  let parent: NodeJson = result
+  let cur: BaseNode | undefined = node.$next
+  while (cur) {
+    const nextNode = nodeToJson(cur)
+
+    // 特殊处理子流程
+    if (cur.type === 'subprocess') {
+      console.log(cur)
+      nextNode.childNode = toJson((cur as SubprocessNode).$start as BaseNode)
+    }
+
+    parent.nextNode = nextNode
+
+    cur = cur.$next
+    parent = nextNode
   }
+
+  return result
 }
 
 export function nodeToJson(node: BaseNode) {
@@ -46,7 +68,7 @@ export function nodeToJson(node: BaseNode) {
   const $nextRef = $next?.id
   const $prevRef = $prev?.id
   const $parentRef = $parent?.id
-  const expressionRefs = expressions?.map(e => nodeToJson(e))
+  const expressionRefs = expressions?.map(e => toJson(e)!)
   const $startRef = $start?.id
   const $defaultRef = $default?.id
 

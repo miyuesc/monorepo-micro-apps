@@ -36,7 +36,7 @@ const $emits = defineEmits([
       子流程
     </div>
     <DingFlowList
-      :data="data.start!" :direction="direction"
+      :data="data.$start!" :direction="direction"
       @node-click="$emits('nodeClick', $event)"
       @node-dblclick="$emits('nodeDblclick', $event)"
       @node-hover="$emits('nodeHover', $event)"
