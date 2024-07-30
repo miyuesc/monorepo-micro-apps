@@ -57,7 +57,7 @@ export const defaultCompletenessValidator: ExecutionValidator = (target) => {
   if (target.type === 'expression')
     return !!target.businessData.expression
   if (target.type === 'subprocess')
-    return !!(target as SubprocessNode).start
+    return !!(target as SubprocessNode).$start
   return true
 }
 

@@ -31,18 +31,18 @@ export interface EventNode extends BaseNode {
 export interface ExpressionNode extends BaseNode {
   type: 'expression'
   expression: string
-  parent?: GatewayNode
+  $parent?: GatewayNode
 }
 // 基础网关节点
 export interface GatewayNode extends BaseNode {
   type: 'gateway'
-  expressions: ExpressionNode[]
-  default?: ExpressionNode
+  $expressions: ExpressionNode[]
+  $default?: ExpressionNode
 }
 // 基础子流程节点
 export interface SubprocessNode extends BaseNode {
   type: 'subprocess'
-  start?: EventNode
+  $start?: EventNode
 }
 // 辅助的网关条件分支
 export interface BranchNodeList {

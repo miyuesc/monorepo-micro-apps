@@ -79,7 +79,7 @@ const computedFlowData = computed<BaseNode>({
 const computedVisibleFlowData = computed<BaseNode>({
   get: () => {
     if (root.value) {
-      return root.value.start!
+      return root.value.$start!
     }
     return computedFlowData.value
   },

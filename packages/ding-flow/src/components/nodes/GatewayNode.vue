@@ -49,7 +49,7 @@ function nextNodeTraversal(node?: BaseNode): BaseNode[] {
 }
 const branchesNodeList = computed<BranchNodeList[]>(() => {
   const branches: BranchNodeList[] = []
-  const expressions = computedGatewayNode.value.expressions
+  const expressions = computedGatewayNode.value.$expressions
   for (const ex of expressions) {
     branches.push({
       expression: ex,
@@ -60,9 +60,8 @@ const branchesNodeList = computed<BranchNodeList[]>(() => {
 })
 
 function addExpression() {
-  const newExpression = createNode('expression', computedGatewayNode.value, `条件-${computedGatewayNode.value.expressions.length + 1}`)
-  newExpression.parent = computedGatewayNode.value
-  computedGatewayNode.value.expressions.push(newExpression)
+  const newExpression = createNode('expression', computedGatewayNode.value, `条件-${computedGatewayNode.value.$expressions.length + 1}`)
+  computedGatewayNode.value.$expressions.push(newExpression)
 }
 </script>
 

@@ -103,13 +103,13 @@ export function createNode<T extends BaseNodeType>(
 
   switch (type) {
     case 'gateway':
-      const expressions: ExpressionNode[] = []
+      const $expressions: ExpressionNode[] = []
       const expressionNode1: ExpressionNode = createNode('expression', base, '条件1')
       const expressionNode2: ExpressionNode = createNode('expression', base, '条件2')
-      expressions.push(expressionNode1, expressionNode2)
+      $expressions.push(expressionNode1, expressionNode2)
       return {
         ...base,
-        expressions,
+        $expressions,
         default: expressionNode1,
       } as GatewayNode
     case 'expression':
