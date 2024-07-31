@@ -51,6 +51,7 @@
     "@arco-design/web-vue": "^2.56.0",
     "@micro-zoe/micro-app": "1.0.0-rc.5",
     "echarts": "^5.5.0",
+    "ids": "^1.0.5",
     "lucide-vue-next": "^0.417.0",
     "pinia": "^2.1.7",
     "react": "^18.3.1",

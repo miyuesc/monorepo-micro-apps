@@ -92,7 +92,7 @@ export function createNode<T extends BaseNodeType>(
   bo?: Record<string, unknown>,
 ): BaseNode {
   const base: BaseNode = {
-    id: `${type}-${ids()}`,
+    id: ids(type),
     type,
     name: name || DEFAULT_NAME_MAP[type] || type,
     $prev: undefined,

@@ -17,6 +17,9 @@ importers:
       echarts:
         specifier: ^5.5.0
         version: 5.5.0
+      ids:
+        specifier: ^1.0.5
+        version: 1.0.5
       lucide-vue-next:
         specifier: ^0.417.0
         version: 0.417.0(vue@3.4.27(typescript@5.4.5))
@@ -2101,6 +2104,9 @@ packages:
   human-signals@5.0.0:
     resolution: {integrity: sha512-AXcZb6vzzrFAUE61HnN4mpLqd/cSIwNQjtNWR0euPm6y0iqx3G4gOXaIDdtdDwZmhwe82LA6+zinmW4UBWVePQ==}
     engines: {node: '>=16.17.0'}
+
+  ids@1.0.5:
+    resolution: {integrity: sha512-XQ0yom/4KWTL29sLG+tyuycy7UmeaM/79GRtSJq6IG9cJGIPeBz5kwDCguie3TwxaMNIc3WtPi0cTa1XYHicpw==}
 
   ignore@5.3.1:
     resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
@@ -5460,6 +5466,8 @@ snapshots:
   human-signals@2.1.0: {}
 
   human-signals@5.0.0: {}
+
+  ids@1.0.5: {}
 
   ignore@5.3.1: {}
 
