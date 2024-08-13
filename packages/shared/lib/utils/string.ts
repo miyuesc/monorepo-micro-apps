@@ -24,7 +24,7 @@ export function slash(str: string) {
 export function capitalize(str: string): string {
   if (!str || str.length === 0)
     return ''
-  const lower = str.toLowerCase()
+  const lower = str
   return lower.substring(0, 1).toUpperCase() + lower.substring(1, lower.length)
 }
 
@@ -107,14 +107,14 @@ export function template(str: string, ...args: any[]): string {
   if (isObject(firstArg)) {
     const vars = firstArg as Record<string, any>
     return str.replace(
-      /{([\w\d]+)}/g,
+      /\{(\w+)\}/g,
       (_, key) =>
         vars[key]
         || ((typeof fallback === 'function' ? fallback(key) : fallback) ?? key),
     )
   }
   else {
-    return str.replace(/{(\d+)}/g, (_, key) => {
+    return str.replace(/\{(\d+)\}/g, (_, key) => {
       const index = Number(key)
       if (Number.isNaN(index))
         return key
@@ -155,6 +155,6 @@ export function randomId(length: number): string {
  * 转对象路径数组
  */
 export function toPathArray(path: string): string[] {
-  const regex = /\[(\d+)]/g
+  const regex = /\[(\d+)\]/g
   return path.replace(regex, (_, number) => `.${number}.`).split('.').filter(s => s.trim())
 }

@@ -46,6 +46,14 @@ export const DEFAULT_NAME_MAP = {
   subprocess: '子流程',
   expression: '条件',
 }
+export const DEFAULT_BPMN_TYPE_MAP = {
+  event: 'event',
+  gateway: 'exclusiveGateway',
+  task: 'task',
+  service: 'serviceTask',
+  subprocess: 'subProcess',
+  expression: 'sequenceFlow',
+}
 /**
  * 创建节点
  */
@@ -98,7 +106,7 @@ export function createNode<T extends BaseNodeType>(
     $prev: undefined,
     $next: undefined,
     $parent: parent,
-    businessData: bo || {},
+    businessData: { $type: DEFAULT_BPMN_TYPE_MAP[type] || type, ...(bo || {}) },
   }
 
   switch (type) {

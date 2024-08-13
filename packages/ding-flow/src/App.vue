@@ -6,7 +6,9 @@ import DingFlow from '@/components/DingFlow.vue'
 import type { BaseNode, FlowDirection, SubprocessNode } from '@/types'
 import TippyPopover from '@/components/base/TippyPopover.vue'
 import { createPresetProcess } from '@/utils/element-utils'
-import { toJson } from '@/utils/transform'
+import { transformToJson, transformToXML } from '@/utils/transform'
+import { moddle } from '@/bpmn-moddle'
+import mockXml from '@/utils/mock-xml'
 
 const dir = ref<FlowDirection>('vertical')
 const dingFlowRef = ref<ComponentInstance<typeof DingFlow>>()
@@ -40,7 +42,19 @@ function center() {
 const processData = ref(createPresetProcess())
 
 function getData() {
-  console.log(toJson(toRaw(processData.value)))
+  console.log(transformToJson(toRaw(processData.value)))
+}
+
+async function parseXML() {
+  // moddle.parseXML(mockXml)
+  const parseResult = await moddle.fromXML(mockXml, 'bpmn:Definitions')
+  console.log(parseResult)
+}
+async function generateXML() {
+  // const definitions = moddle.create<BpmnDefinitions>('bpmn:Definitions')
+  // definitions.rootElements = [createBpmnProcess({ name: 'ceshi', id: ids('process') })]
+  const { xml } = await transformToXML(processData.value)
+  console.log(xml)
 }
 </script>
 
@@ -63,6 +77,12 @@ function getData() {
         <a-button type="primary" @click="getData()">
           打印数据
         </a-button>
+        <a-button type="primary" @click="parseXML()">
+          测试xml解析
+        </a-button>
+        <a-button type="primary" @click="generateXML()">
+          测试xml生成
+        </a-button>
 
         <a-button type="primary" class="header-tips">
           <template #icon>
@@ -80,7 +100,13 @@ function getData() {
           <p>双击进入子流程</p>
         </template>
       </TippyPopover>
-      <DingFlow ref="dingFlowRef" v-model:data="processData" :direction="dir" @zoom-changed="changeZoomValue" @node-dblclick="toggleRoot" />
+      <DingFlow
+        ref="dingFlowRef"
+        v-model:data="processData"
+        :direction="dir"
+        @zoom-changed="changeZoomValue"
+        @node-dblclick="toggleRoot"
+      />
     </div>
   </a-config-provider>
 </template>

@@ -19,6 +19,7 @@ declare module 'vue' {
     RouterView: typeof import('vue-router')['RouterView']
     ServiceNode: typeof import('./components/nodes/ServiceNode.vue')['default']
     SubprocessNode: typeof import('./components/nodes/SubprocessNode.vue')['default']
+    SubProcessNode: typeof import('./components/nodes/SubProcessNode.vue')['default']
     TaskNode: typeof import('./components/nodes/TaskNode.vue')['default']
     TippyPopover: typeof import('./components/base/TippyPopover.vue')['default']
   }

@@ -17,6 +17,7 @@ import {
 } from '@/utils/element-utils'
 import type { GlobalConfigKey } from '@/utils/global-config'
 import { getGlobalConfig } from '@/utils/global-config'
+import { capitalize } from '@/utils/tools'
 
 defineOptions({ name: 'NodeWrapper' })
 
@@ -117,7 +118,7 @@ function emitContextmenu() {
 }
 
 function transformNodeName(node: BaseNode): string {
-  return `${node.type}-node`
+  return `${capitalize(node.type)}Node`
 }
 </script>
 

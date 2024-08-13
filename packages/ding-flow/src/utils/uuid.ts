@@ -1,10 +1,10 @@
 import Ids from 'ids'
 
-const idsCreator = new Ids()
+const idsCreator = new Ids([32, 36, 1])
 
 export function ids(prefix: string, simple: boolean = true) {
   if (simple) {
-    return idsCreator.nextPrefixed(prefix)
+    return idsCreator.nextPrefixed(`${prefix}-`)
   }
 
   if (typeof crypto.randomUUID === 'function') {

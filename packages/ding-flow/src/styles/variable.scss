@@ -31,13 +31,8 @@
   --expression-height: var(--common-height);
 }
 
-body,body[arco-theme=dark] {
-  --color-line-rgb: 250, 250, 250;
-  --color-line: rgb(var(--color-line-rgb));
-}
 body {
-  --color-line-rgb: 5, 5, 5;
-  --color-line: rgb(var(--color-line-rgb));
+  --color-line: var(--color-text-2);
 }
 
 /* 主题来源：arco-design 懂车帝PC2B 主题 {@link https://arco.design/themes/preview/58}*/
