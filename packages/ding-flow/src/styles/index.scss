@@ -9,7 +9,7 @@
   height: 100%;
   position: relative;
   overflow: hidden;
-  background-color: var(--color-bg-1);
+  background-color: var(--container-bg);
 }
 .ding-flow_root {
   position: absolute;
@@ -88,7 +88,7 @@
 /*流程节点通用*/
 .flow-node {
   border-radius: var(--border-radius-medium);
-  border: 1px solid var(--color-border-3);
+  //border: 1px solid var(--color-border-3);
   position: relative;
   background-color: var(--color-bg-1);
   z-index: 10;
@@ -171,7 +171,7 @@
     flex-direction: column;
   }
   .flow-node__behavior {
-    height: 60px;
+    height: 100px;
     width: 2px;
     &.small-behavior {
       height: 40px;
@@ -201,7 +201,7 @@
     flex-direction: row;
   }
   .flow-node__behavior {
-    width: 60px;
+    width: 100px;
     height: 2px;
     &.small-behavior {
       width: 40px;

@@ -326,10 +326,12 @@
 /* 具体各类型节点 自定义样式 */
 .flow-node.flow-event {
   &.start-event {
+    border-style: solid;
     border-width: 2px;
     border-color: var(--color-success-light-4);
   }
   &.end-event {
+    border-style: solid;
     border-width: 4px;
     border-color: var(--color-danger-light-4);
   }

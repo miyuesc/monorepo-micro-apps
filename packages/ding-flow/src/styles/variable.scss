@@ -32,7 +32,7 @@
 }
 
 body {
-  --color-line: var(--color-text-2);
+  --color-line: #a1b8d3;
 }
 
 /* 主题来源：arco-design 懂车帝PC2B 主题 {@link https://arco.design/themes/preview/58}*/
@@ -401,6 +401,7 @@ body[arco-theme=dark] {
 }
 
 body {
+  --container-bg: #eaecf0;
   --color-white: #fff;
   --color-black: #000;
   --color-border: rgb(var(--gray-3));
@@ -500,6 +501,7 @@ body {
 }
 
 body[arco-theme=dark] {
+  --container-bg: #17171a;
   --color-white: hsla(0,0%,100%,0.9);
   --color-black: #000;
   --color-border: #333335;
