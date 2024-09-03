@@ -1,0 +1,24 @@
+@import '@bpmn-io/properties-panel/assets/properties-panel.css';
+@import 'bpmn-js/dist/assets/diagram-js.css';
+@import 'bpmn-js/dist/assets/bpmn-js.css';
+@import 'bpmn-js/dist/assets/bpmn-font/css/bpmn.css';
+
+html,
+body,
+#root {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root {
+  display: flex;
+}
+.designer {
+  flex: 1;
+}
+.panel {
+  width: 400px;
+}

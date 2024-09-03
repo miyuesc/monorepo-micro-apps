@@ -8,6 +8,7 @@ export default antfu({
     }
   },
   vue: true,
+  react: true,
   node: true,
   typescript: true,
   rules: {
