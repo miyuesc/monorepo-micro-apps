@@ -30,7 +30,6 @@
   "dependencies": {
     "@miyue-mma/shared": "workspace:^",
     "bpmn-moddle": "^9.0.1",
-    "normalize.css": "^8.0.1",
     "tippy.js": "^6.3.7"
   },
   "devDependencies": {

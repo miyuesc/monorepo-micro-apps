@@ -1,0 +1,17 @@
+{
+  "name": "app-animations",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@miyue-mma/shared": "workspace:^"
+  },
+  "devDependencies": {
+    "vue-tsc": "^2.0.29"
+  }
+}
