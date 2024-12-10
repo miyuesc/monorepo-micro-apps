@@ -144,6 +144,16 @@ importers:
 
   applications/app-home: {}
 
+  applications/app-led-simulator:
+    dependencies:
+      '@miyue-mma/shared':
+        specifier: workspace:^
+        version: link:../../packages/shared
+    devDependencies:
+      vue-tsc:
+        specifier: ^2.0.29
+        version: 2.1.4(typescript@5.4.5)
+
   applications/app-process:
     dependencies:
       '@bpmn-io/properties-panel':
