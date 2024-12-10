@@ -1,12 +1,28 @@
 <script setup lang="ts">
 import { ConfigProvider, TabPane, Tabs } from '@arco-design/web-vue'
+import { ref } from 'vue'
+
+const params = ref<any[]>([])
 </script>
 
 <template>
   <ConfigProvider size="mini">
     <Tabs>
       <TabPane key="1" title="Query参数">
-        <ParamsEditor />
+        <ParamsEditor
+          v-model="params"
+          :config="[
+            {
+              paramLabel: '属性名',
+              paramKey: 'fieldName',
+              pattern: /^[A-Za-z][A-Za-z0-9]*$/,
+              unrepeatable: true,
+              helpMessage: '属性名只能由字母作为开头，并且只能由字母或数字组成',
+            },
+            { paramLabel: '描述名称', paramKey: 'fieldLabel' },
+            { paramLabel: '默认值', paramKey: 'fieldValue' },
+          ]"
+        />
       </TabPane>
       <TabPane key="2" title="Path参数">
         Content of Tab Panel 2
