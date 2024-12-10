@@ -1,0 +1,35 @@
+{
+  "name": "@miyue-mma/params-edtior",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "main": "./lib/params-edtior.cjs",
+  "module": "./lib/params-edtior.js",
+  "exports": {
+    ".": {
+      "import": "./lib/params-edtior.js",
+      "require": "./lib/params-edtior.cjs"
+    },
+    "./lib/style.css": "./lib/style.css"
+  },
+  "scripts": {
+    "dev": "vite --force --open ",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miyuesc/monorepo-micro-apps.git"
+  },
+  "dependencies": {
+    "@miyue-mma/shared": "workspace:^"
+  },
+  "devDependencies": {
+    "unplugin-vue-components": "^0.27.2"
+  }
+}

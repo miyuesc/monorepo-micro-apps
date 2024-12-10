@@ -189,6 +189,16 @@ importers:
         specifier: ^9.13.1
         version: 9.13.1(vue@3.4.27(typescript@5.4.5))
 
+  packages/params-edtor:
+    dependencies:
+      '@miyue-mma/shared':
+        specifier: workspace:^
+        version: link:../shared
+    devDependencies:
+      unplugin-vue-components:
+        specifier: ^0.27.2
+        version: 0.27.2(@babel/parser@7.24.5)(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
+
   packages/shared:
     dependencies:
       echarts:
