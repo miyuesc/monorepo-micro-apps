@@ -15,6 +15,7 @@ declare module 'vue' {
     GatewayNode: typeof import('./components/nodes/GatewayNode.vue')['default']
     NodeBehavior: typeof import('./components/base/NodeBehavior.vue')['default']
     NodeWrapper: typeof import('./components/base/NodeWrapper.vue')['default']
+    ParamsEditor: typeof import('./components/ParamsEditor.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     ServiceNode: typeof import('./components/nodes/ServiceNode.vue')['default']
