@@ -11,6 +11,7 @@ declare module 'vue' {
     ParamsEditor: typeof import('./components/ParamsEditor.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SelectPopover: typeof import('./components/SelectPopover.vue')['default']
     ValidatorInput: typeof import('./components/ValidatorInput.vue')['default']
   }
 }

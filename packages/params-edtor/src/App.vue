@@ -1,8 +1,17 @@
 <script setup lang="ts">
 import { ConfigProvider, TabPane, Tabs } from '@arco-design/web-vue'
 import { ref } from 'vue'
+import SelectPopover from '@/components/SelectPopover.vue'
 
 const params = ref<any[]>([])
+const options = [
+  { value: 'BOOLEAN', label: '布尔' },
+  { value: 'STRING', label: '字符串' },
+  { value: 'INTEGER', label: '整形' },
+  { value: 'FLOAT', label: '浮点' },
+  { value: 'DOUBLE', label: '双精度' },
+  { value: 'DATE', label: '日期' },
+]
 </script>
 
 <template>
@@ -13,12 +22,18 @@ const params = ref<any[]>([])
           v-model="params"
           :config="[
             {
-              paramLabel: '属性名',
+              paramLabel: '参数名',
               paramKey: 'fieldName',
               pattern: { exp: /^[A-Za-z][A-Za-z0-9]*$/, message: '属性名只能由字母作为开头，并且只能由字母或数字组成' },
               unrepeatable: true,
               required: true,
               helpMessage: '属性名只能由字母作为开头，并且只能由字母或数字组成',
+            },
+            {
+              paramLabel: '类型',
+              paramKey: 'type',
+              component: SelectPopover,
+              componentProps: { options, defaultValue: 'STRING', block: true },
             },
             { paramLabel: '描述名称', paramKey: 'fieldLabel', required: true },
             { paramLabel: '默认值', paramKey: 'fieldValue' },

@@ -8,8 +8,8 @@
 import type { PropType } from 'vue'
 import { computed, nextTick, ref, watch } from 'vue'
 
-import { Input, Tooltip } from '@arco-design/web-vue'
-import { IconQuestionCircle } from '@arco-design/web-vue/es/icon'
+import { Input, Popconfirm, Tooltip } from '@arco-design/web-vue'
+import { IconMinusCircle, IconQuestionCircle } from '@arco-design/web-vue/es/icon'
 import { debounce } from '@miyue-mma/shared'
 import type { ParamsEditorConfig } from '@/types/ParamsEditor'
 
@@ -22,12 +22,7 @@ const props = defineProps({
   },
   config: {
     type: Array as PropType<Array<ParamsEditorConfig>>,
-    default: () => [
-      { paramLabel: '参数名', paramKey: 'fieldName' },
-      { paramLabel: '类型', paramKey: 'type', helpMessage: '123123' },
-      { paramLabel: '描述', paramKey: 'fieldLabel' },
-      { paramLabel: '默认值', paramKey: 'fieldValue' },
-    ],
+    default: () => [],
   },
   rowKey: {
     type: String as PropType<string>,
@@ -35,6 +30,10 @@ const props = defineProps({
   },
   columnLayout: {
     type: String as PropType<string>,
+  },
+  confirmText: {
+    type: String as PropType<string>,
+    default: '确定删除这个参数吗？',
   },
   removeEffect: {
     type: Function as PropType<(item: any) => Promise<boolean>>,
@@ -101,40 +100,61 @@ function setRefMap(el: any, key: string) {
     }
   }
 }
-function validateUnique(config: ParamsEditorConfig, val: string, curIdx: number) {
-  const { key, pattern, unrepeatable, required, paramLabel } = config
+function validateUnique(config: ParamsEditorConfig, val: string) {
+  const { paramKey, pattern, unrepeatable, required, paramLabel } = config
   // 必填验证
   if (required && !val) {
     return `${paramLabel}不能为空`
   }
   // 正则验证
-  if (pattern && pattern.exp) {
-    if (!pattern.exp.test(val)) {
-      return pattern.message
+  if (pattern) {
+    const expressions = Array.isArray(pattern) ? pattern : [pattern]
+    for (const expression of expressions) {
+      if (!expression.exp.test(val)) {
+        return expression.message
+      }
     }
   }
   // 重复验证
   if (unrepeatable) {
     const idx: number[] = []
     computedParamData.value.forEach((item, index) => {
-      if (item[key] === val && index !== curIdx) {
+      if (item[paramKey] === val) {
         idx.push(index + 1)
       }
     })
     if (idx.length > 1) {
-      return `与第 ${idx.join(',')} 行重复`
+      return `第 ${idx.join('，')} 行重复`
     }
   }
 }
+
 const debounceAddRow = debounce((key: string) => {
-  computedParamData.value.push({ ...appendItem.value })
+  const newItem: any = {}
+  for (const p of computedParamItems.value) {
+    newItem[p.paramKey] = p.defaultValue
+  }
+  computedParamData.value.push({ ...newItem, ...appendItem.value })
   appendItem.value = {}
   emitChange(computedParamData.value)
   nextTick(() => {
     const idx = computedParamData.value.length - 1
-    inputRefs.value[key]?.[idx]?.focus()
+    inputRefs.value[key]?.[idx]?.focus?.()
   })
 }, 0)
+
+function removeRow(idx: number, item: any) {
+  if (props.removeEffect) {
+    props.removeEffect(item).then((res) => {
+      if (res) {
+        computedParamData.value.splice(idx, 1)
+      }
+    })
+  }
+  else {
+    computedParamData.value.splice(idx, 1)
+  }
+}
 </script>
 
 <template>
@@ -149,17 +169,27 @@ const debounceAddRow = debounce((key: string) => {
         </div>
         <div v-if="editable" class="params-editor_header-appender" />
       </div>
-      <div class="params-editor_table" :style="computedGridStyles">
+      <div class="params-editor_table" :style="{ ...computedGridStyles, padding: computedParamData.length ? '10px 0' : '0' }">
         <template v-for="(param, idx) in computedParamData" :key="idx">
           <div v-for="j in computedParamItems" :key="j.paramKey" class="params-editor_table-item">
-            <ValidatorInput
-              v-if="j.required"
+            <component
+              :is="j.component"
+              v-if="j.component"
               :ref="(el) => setRefMap(el, j.paramKey)"
               v-model="param[j.paramKey]"
               :disabled="disabled"
               :readonly="readonly"
               :placeholder="j.paramLabel"
-              :validator="(val) => validateUnique(j, val, idx)"
+              v-bind="j.componentProps || {}"
+            />
+            <ValidatorInput
+              v-else-if="j.required"
+              :ref="(el) => setRefMap(el, j.paramKey)"
+              v-model="param[j.paramKey]"
+              :disabled="disabled"
+              :readonly="readonly"
+              :placeholder="j.paramLabel"
+              :validator="(val) => validateUnique(j, val)"
             />
             <Input
               v-else
@@ -172,13 +202,30 @@ const debounceAddRow = debounce((key: string) => {
           </div>
 
           <div v-if="editable" class="params-editor_table-item">
-            删除
+            <Popconfirm
+              content="确定删除吗？"
+              @confirm="() => removeRow(idx, param)"
+              @cancel="() => {}"
+            >
+              <span class="params-editor_table-remove">
+                <IconMinusCircle />
+              </span>
+            </Popconfirm>
           </div>
         </template>
       </div>
       <div v-if="editable" class="params-editor_appender" :style="computedGridStyles">
         <div v-for="i in computedParamItems" :key="i.paramKey" class="params-editor_appender-item">
+          <component
+            :is="i.component"
+            v-if="i.component"
+            v-model="appendItem[i.paramKey]"
+            v-bind="i.componentProps || {}"
+            :placeholder="i.paramLabel"
+            @change="() => debounceAddRow(i.paramKey)"
+          />
           <Input
+            v-else
             v-model="appendItem[i.paramKey]"
             :placeholder="i.paramLabel"
             @input="() => debounceAddRow(i.paramKey)"
@@ -200,18 +247,17 @@ const debounceAddRow = debounce((key: string) => {
   display: grid;
   gap: 0.5rem;
 }
-.params-editor_table,
-.params-editor_appender {
-  padding-top: 10px;
-}
 
 .params-editor_header {
   line-height: 32px;
+  border-bottom: 1px solid #f0f0f0;
   .params-editor_header-title-icon {
     padding-right: 10px;
   }
 }
+
 .params-editor_table {
+  padding: 10px 0;
   .params-editor_table-item-icon {
     &.validate-error {
       color: red;
@@ -220,5 +266,12 @@ const debounceAddRow = debounce((key: string) => {
       color: green;
     }
   }
+
+  .params-editor_table-remove {
+    cursor: pointer;
+    color: red;
+  }
+}
+.params-editor_appender {
 }
 </style>

@@ -18,6 +18,10 @@ const props = defineProps({
     type: [String, Number, Boolean] as PropType<string | number | boolean>,
     default: false,
   },
+  disabled: {
+    type: Boolean as PropType<boolean>,
+    default: false,
+  },
 })
 const emits = defineEmits(['change', 'update:value'])
 const slots = defineSlots<{
@@ -28,6 +32,8 @@ const slots = defineSlots<{
 const checked = computed(() => props.value === props.checkedValue)
 
 function handleClick() {
+  if (props.disabled)
+    return
   const newValue = checked.value ? props.unCheckedValue : props.checkedValue
   emits('change', newValue)
   emits('update:value', newValue)
@@ -35,7 +41,7 @@ function handleClick() {
 </script>
 
 <template>
-  <Button v-bind="$attrs" :type="checked ? 'primary' : 'default'" @click="handleClick">
+  <Button v-bind="$attrs" :type="checked ? 'primary' : undefined" :disabled="disabled" @click="handleClick">
     <template #icon>
       <slot name="icon" />
       <template v-if="!slots.icon">
