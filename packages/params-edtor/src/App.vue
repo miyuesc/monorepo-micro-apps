@@ -15,11 +15,12 @@ const params = ref<any[]>([])
             {
               paramLabel: '属性名',
               paramKey: 'fieldName',
-              pattern: /^[A-Za-z][A-Za-z0-9]*$/,
+              pattern: { exp: /^[A-Za-z][A-Za-z0-9]*$/, message: '属性名只能由字母作为开头，并且只能由字母或数字组成' },
               unrepeatable: true,
+              required: true,
               helpMessage: '属性名只能由字母作为开头，并且只能由字母或数字组成',
             },
-            { paramLabel: '描述名称', paramKey: 'fieldLabel' },
+            { paramLabel: '描述名称', paramKey: 'fieldLabel', required: true },
             { paramLabel: '默认值', paramKey: 'fieldValue' },
           ]"
         />

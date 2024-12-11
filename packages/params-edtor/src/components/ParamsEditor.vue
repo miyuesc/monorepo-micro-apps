@@ -101,6 +101,31 @@ function setRefMap(el: any, key: string) {
     }
   }
 }
+function validateUnique(config: ParamsEditorConfig, val: string, curIdx: number) {
+  const { key, pattern, unrepeatable, required, paramLabel } = config
+  // 必填验证
+  if (required && !val) {
+    return `${paramLabel}不能为空`
+  }
+  // 正则验证
+  if (pattern && pattern.exp) {
+    if (!pattern.exp.test(val)) {
+      return pattern.message
+    }
+  }
+  // 重复验证
+  if (unrepeatable) {
+    const idx: number[] = []
+    computedParamData.value.forEach((item, index) => {
+      if (item[key] === val && index !== curIdx) {
+        idx.push(index + 1)
+      }
+    })
+    if (idx.length > 1) {
+      return `与第 ${idx.join(',')} 行重复`
+    }
+  }
+}
 const debounceAddRow = debounce((key: string) => {
   computedParamData.value.push({ ...appendItem.value })
   appendItem.value = {}
@@ -127,12 +152,22 @@ const debounceAddRow = debounce((key: string) => {
       <div class="params-editor_table" :style="computedGridStyles">
         <template v-for="(param, idx) in computedParamData" :key="idx">
           <div v-for="j in computedParamItems" :key="j.paramKey" class="params-editor_table-item">
-            <Input
+            <ValidatorInput
+              v-if="j.required"
               :ref="(el) => setRefMap(el, j.paramKey)"
               v-model="param[j.paramKey]"
               :disabled="disabled"
               :readonly="readonly"
               :placeholder="j.paramLabel"
+              :validator="(val) => validateUnique(j, val, idx)"
+            />
+            <Input
+              v-else
+              :ref="(el) => setRefMap(el, j.paramKey)"
+              v-model="param[j.paramKey]"
+              :placeholder="j.paramLabel"
+              :disabled="disabled"
+              :readonly="readonly"
             />
           </div>
 
@@ -154,7 +189,7 @@ const debounceAddRow = debounce((key: string) => {
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .params-editor_wrap {
   width: 100%;
 }
@@ -174,6 +209,16 @@ const debounceAddRow = debounce((key: string) => {
   line-height: 32px;
   .params-editor_header-title-icon {
     padding-right: 10px;
+  }
+}
+.params-editor_table {
+  .params-editor_table-item-icon {
+    &.validate-error {
+      color: red;
+    }
+    &.validate-success {
+      color: green;
+    }
   }
 }
 </style>
