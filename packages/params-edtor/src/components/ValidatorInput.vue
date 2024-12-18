@@ -100,7 +100,7 @@ defineExpose({
 </script>
 
 <template>
-  <Input v-bind="$attrs" ref="inputRef" v-model="computedModelValue" :error="modelValueValidate.error">
+  <Input v-bind="$attrs" ref="inputRef" v-model="computedModelValue" :disabled="disabled" :error="modelValueValidate.error">
     <template v-if="suffixVisible" #suffix>
       <Tooltip v-if="modelValueValidate.error" :content="modelValueValidate.message">
         <IconCloseCircle class="params-editor_table-item-icon validate-error" />

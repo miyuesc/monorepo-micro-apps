@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
 import { computed, onMounted, ref } from 'vue'
+import type { PopoverInstance } from '@arco-design/web-vue'
 import { Popover } from '@arco-design/web-vue'
 
 defineOptions({ name: 'SelectPopover' })
@@ -25,19 +26,27 @@ const props = defineProps({
     type: String as PropType<string>,
     default: '请选择',
   },
-  placement: {
+  placeholder: {
     type: String as PropType<string>,
+    default: '请选择',
+  },
+  placement: {
+    type: String as PropType<PopoverInstance['position']>,
     default: 'right',
   },
   defaultValue: {
     type: [String, Number, Boolean, Object] as PropType<any>,
+  },
+  initial: {
+    type: Boolean as PropType<boolean>,
+    default: false,
   },
 })
 
 const emits = defineEmits(['change', 'update:modelValue', 'update:popover-visible'])
 
 const slots = defineSlots<{
-  icon: () => any
+  append: () => any
   default: () => any
 }>()
 
@@ -57,7 +66,6 @@ const computedOptions = computed<SelectOptions[]>(() => {
   return options
 })
 const computedLabel = computed(() => {
-  console.log(props.modelValue, computedOptions.value, computedOptions.value.find(item => item.value === props.modelValue))
   return computedOptions.value.find(item => item.value === props.modelValue)?.label
 })
 
@@ -109,7 +117,7 @@ interface SelectOptions {
 }
 
 onMounted(() => {
-  if (props.defaultValue !== undefined) {
+  if (props.initial && props.defaultValue !== undefined) {
     emits('change', props.defaultValue)
     emits('update:modelValue', props.defaultValue)
   }
@@ -119,53 +127,79 @@ defineExpose({ togglePopover, showPopover, hidePopover })
 </script>
 
 <template>
-  <span :class="computedClasses">
+  <span :class="computedClasses" @click.stop="() => block && togglePopover()">
     <Popover v-model:popup-visible="popVisible" trigger="click" :title="title" :position="placement">
       <template #content>
         <div class="select-popover_list">
           <div
             v-for="i in computedOptions"
-            :key="i.value" class="select-popover_item"
+            :key="i.value"
+            class="select-popover_item"
             :class="modelValue === i.value ? 'select-popover_item-selected' : ''"
             @click="updateModelValue(i)"
           >{{ i.label }}</div>
         </div>
       </template>
-      <span class="select-popover_label" @click="togglePopover">
-        <span v-if="!slots.default">{{ computedLabel }}</span>
+      <span>
+        <span v-show="modelValue !== undefined" class="select-popover_label" @click.stop="togglePopover">
+          <span v-if="!slots.default">{{ computedLabel }}</span>
+        </span>
+        <span
+          v-show="modelValue === undefined"
+          class="select-popover_placeholder"
+          @click.stop="togglePopover"
+        >
+          <span v-if="!slots.default">{{ placeholder }}</span>
+        </span>
       </span>
     </Popover>
     <slot name="append" />
   </span>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .select-popover_wrap {
   display: inline-block;
   padding: 0 6px;
   transition: all ease 0.2s;
-  &.select-popover_wrap-block {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid #d9d9d9;
-    line-height: 22px;
-    height: 22px;
-    border-radius: 2px;
-    &:hover {
-      border-color: #0958d9;
-    }
-  }
+  position: relative;
   &.select-popover_wrap-disabled {
     cursor: not-allowed;
     .select-popover_label {
       color: rgba(0, 0, 0, 0.45);
     }
   }
+  &.select-popover_wrap-block {
+    display: flex;
+    width: 100%;
+    height: 24px;
+    line-height: 22px;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid #d9d9d9;
+    border-radius: var(--border-radius-small);
+    padding-right: 12px;
+    padding-left: 12px;
+    color: var(--color-text-1);
+    font-size: 12px;
+    &:hover {
+      cursor: pointer;
+      border-color: #40a9ff;
+    }
+  }
 
   .select-popover_label {
     cursor: pointer;
-    font-size: 12px;
+    //font-size: 14px;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .select-popover_placeholder {
+    cursor: pointer;
+    //font-size: 12px;
+    color: rgba(0, 0, 0, 0.45);
     &:hover {
       text-decoration: underline;
     }

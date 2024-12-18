@@ -10,7 +10,6 @@ import { computed, nextTick, ref, watch } from 'vue'
 
 import { Input, Popconfirm, Tooltip } from '@arco-design/web-vue'
 import { IconMinusCircle, IconQuestionCircle } from '@arco-design/web-vue/es/icon'
-import { debounce } from '@miyue-mma/shared'
 import type { ParamsEditorConfig } from '@/types/ParamsEditor'
 
 defineOptions({ name: 'ParamsEditor' })
@@ -46,6 +45,16 @@ const props = defineProps({
     type: Boolean as PropType<boolean>,
     default: false,
   },
+  // 允许添加
+  allowAdd: {
+    type: Boolean as PropType<boolean>,
+    default: true,
+  },
+  // 允许移除
+  allowDelete: {
+    type: Boolean as PropType<boolean>,
+    default: true,
+  },
 })
 
 const emits = defineEmits(['update:modelValue', 'change'])
@@ -63,7 +72,7 @@ const computedGridStyles = computed(() => {
     return { gridTemplateColumns: props.columnLayout }
   }
   let repeatColumns = `repeat(${computedParamItems.value.length}, 1fr)`
-  if (editable.value) {
+  if (editable.value && props.allowDelete) {
     repeatColumns = `${repeatColumns} 60px`
   }
   return { gridTemplateColumns: repeatColumns }
@@ -101,7 +110,11 @@ function setRefMap(el: any, key: string) {
   }
 }
 function validateUnique(config: ParamsEditorConfig, val: string) {
-  const { paramKey, pattern, unrepeatable, required, paramLabel } = config
+  const { paramKey, pattern, unrepeatable, required, paramLabel, disabled } = config
+  // 不可编辑时直接忽略
+  if (disabled) {
+    return
+  }
   // 必填验证
   if (required && !val) {
     return `${paramLabel}不能为空`
@@ -129,32 +142,55 @@ function validateUnique(config: ParamsEditorConfig, val: string) {
   }
 }
 
-const debounceAddRow = debounce((key: string) => {
+function debounceAddRow(key: string) {
   const newItem: any = {}
   for (const p of computedParamItems.value) {
     newItem[p.paramKey] = p.defaultValue
   }
-  computedParamData.value.push({ ...newItem, ...appendItem.value })
-  appendItem.value = {}
-  emitChange(computedParamData.value)
+  computedParamData.value.push({})
   nextTick(() => {
     const idx = computedParamData.value.length - 1
     inputRefs.value[key]?.[idx]?.focus?.()
+    computedParamData.value[idx] = { ...newItem, ...appendItem.value }
+    appendItem.value = {}
+    emitChange(computedParamData.value)
   })
-}, 0)
+}
 
-function removeRow(idx: number, item: any) {
-  if (props.removeEffect) {
-    props.removeEffect(item).then((res) => {
-      if (res) {
-        computedParamData.value.splice(idx, 1)
-      }
-    })
+async function removeRow(idx: number, item: any) {
+  if (!editable.value)
+    return
+  try {
+    let canRemove = true
+    if (props.removeEffect) {
+      canRemove = await props.removeEffect(item)
+    }
+    if (canRemove) {
+      const values = [...computedParamData.value]
+      values.splice(idx, 1)
+      computedParamData.value = values
+    }
   }
-  else {
-    computedParamData.value.splice(idx, 1)
+  catch (e) {
+    console.error(e)
   }
 }
+
+function validate() {
+  return new Promise((resolve, reject) => {
+    for (const param of computedParamData.value) {
+      for (const config of computedParamItems.value) {
+        if (validateUnique(config, param[config.paramKey])) {
+          reject(new Error('参数校验失败'))
+          return
+        }
+      }
+    }
+    resolve(true)
+  })
+}
+
+defineExpose({ validate })
 </script>
 
 <template>
@@ -165,11 +201,11 @@ function removeRow(idx: number, item: any) {
           <Tooltip v-if="i.helpMessage" :content="i.helpMessage">
             <IconQuestionCircle class="params-editor_header-title-icon" />
           </Tooltip>
-          <span>{{ i.paramLabel }}</span>
+          <span>{{ i.paramLabel || '' }}</span>
         </div>
-        <div v-if="editable" class="params-editor_header-appender" />
+        <div v-if="editable && allowDelete" class="params-editor_header-appender" />
       </div>
-      <div class="params-editor_table" :style="{ ...computedGridStyles, padding: computedParamData.length ? '10px 0' : '0' }">
+      <div class="params-editor_table" :style="computedGridStyles">
         <template v-for="(param, idx) in computedParamData" :key="idx">
           <div v-for="j in computedParamItems" :key="j.paramKey" class="params-editor_table-item">
             <component
@@ -177,7 +213,7 @@ function removeRow(idx: number, item: any) {
               v-if="j.component"
               :ref="(el) => setRefMap(el, j.paramKey)"
               v-model="param[j.paramKey]"
-              :disabled="disabled"
+              :disabled="j.disabled || disabled"
               :readonly="readonly"
               :placeholder="j.paramLabel"
               v-bind="j.componentProps || {}"
@@ -186,7 +222,7 @@ function removeRow(idx: number, item: any) {
               v-else-if="j.required"
               :ref="(el) => setRefMap(el, j.paramKey)"
               v-model="param[j.paramKey]"
-              :disabled="disabled"
+              :disabled="j.disabled || disabled"
               :readonly="readonly"
               :placeholder="j.paramLabel"
               :validator="(val) => validateUnique(j, val)"
@@ -194,17 +230,17 @@ function removeRow(idx: number, item: any) {
             <Input
               v-else
               :ref="(el) => setRefMap(el, j.paramKey)"
-              v-model="param[j.paramKey]"
+              v-model:value="param[j.paramKey]"
               :placeholder="j.paramLabel"
-              :disabled="disabled"
+              :disabled="j.disabled || disabled"
               :readonly="readonly"
             />
           </div>
 
-          <div v-if="editable" class="params-editor_table-item">
+          <div v-if="editable && allowDelete" class="params-editor_table-item">
             <Popconfirm
-              content="确定删除吗？"
-              @confirm="() => removeRow(idx, param)"
+              :content="confirmText"
+              @ok="() => removeRow(idx, param)"
               @cancel="() => {}"
             >
               <span class="params-editor_table-remove">
@@ -214,22 +250,24 @@ function removeRow(idx: number, item: any) {
           </div>
         </template>
       </div>
-      <div v-if="editable" class="params-editor_appender" :style="computedGridStyles">
+      <div v-if="editable && allowAdd" class="params-editor_appender" :style="computedGridStyles">
         <div v-for="i in computedParamItems" :key="i.paramKey" class="params-editor_appender-item">
-          <component
-            :is="i.component"
-            v-if="i.component"
-            v-model="appendItem[i.paramKey]"
-            v-bind="i.componentProps || {}"
-            :placeholder="i.paramLabel"
-            @change="() => debounceAddRow(i.paramKey)"
-          />
-          <Input
-            v-else
-            v-model="appendItem[i.paramKey]"
-            :placeholder="i.paramLabel"
-            @input="() => debounceAddRow(i.paramKey)"
-          />
+          <template v-if="i.showAppender !== false">
+            <component
+              :is="i.component"
+              v-if="i.component"
+              v-model="appendItem[i.paramKey]"
+              v-bind="i.componentProps || {}"
+              :placeholder="i.paramLabel"
+              @change="() => debounceAddRow(i.paramKey)"
+            />
+            <Input
+              v-else
+              v-model:value="appendItem[i.paramKey]"
+              :placeholder="i.paramLabel"
+              @input="() => debounceAddRow(i.paramKey)"
+            />
+          </template>
         </div>
       </div>
     </div>
@@ -257,7 +295,7 @@ function removeRow(idx: number, item: any) {
 }
 
 .params-editor_table {
-  padding: 10px 0;
+  padding-top: 10px;
   .params-editor_table-item-icon {
     &.validate-error {
       color: red;
@@ -273,5 +311,6 @@ function removeRow(idx: number, item: any) {
   }
 }
 .params-editor_appender {
+  padding-top: 0.5rem;
 }
 </style>
