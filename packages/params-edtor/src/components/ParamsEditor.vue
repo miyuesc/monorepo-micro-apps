@@ -259,13 +259,13 @@ defineExpose({ validate })
               v-model="appendItem[i.paramKey]"
               v-bind="i.componentProps || {}"
               :placeholder="i.paramLabel"
-              @change="() => debounceAddRow(i.paramKey)"
+              @change="debounceAddRow(i.paramKey)"
             />
             <Input
               v-else
-              v-model:value="appendItem[i.paramKey]"
+              v-model="appendItem[i.paramKey]"
               :placeholder="i.paramLabel"
-              @input="() => debounceAddRow(i.paramKey)"
+              @input="debounceAddRow(i.paramKey)"
             />
           </template>
         </div>
