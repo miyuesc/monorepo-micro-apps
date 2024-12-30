@@ -1,5 +1,13 @@
 /**
+ * @categoryDescription Dom Event
+ * dom 事件绑定
+ * @showCategories
+ * @module
+ */
+
+/**
  * 元素事件绑定
+ * @category Dom Event
  * @param el
  * @param event
  * @param listener
