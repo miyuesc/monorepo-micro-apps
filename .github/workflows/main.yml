@@ -48,7 +48,7 @@ jobs:
           pnpm run build:shared
           pnpm run build:ding-flow
 
-      - name: Deploy 🚀
+      - name: Deploy DingFlow 🚀
         uses: cross-the-world/scp-pipeline@master
         with:
           host: ${{ secrets.DR_HOST }}
@@ -58,3 +58,14 @@ jobs:
           connect_timeout: 10s
           local: './packages/ding-flow/dist/*'
           remote: /web-site/ding-flow
+
+      - name: Deploy SharedUtils 🚀
+        uses: cross-the-world/scp-pipeline@master
+        with:
+          host: ${{ secrets.DR_HOST }}
+          user: ${{ secrets.DR_USER }}
+          pass: ${{ secrets.DR_PASS }}
+          port: ${{ secrets.DR_PORT }}
+          connect_timeout: 10s
+          local: './packages/shared/docs/.vitepress/dist*'
+          remote: /web-site/shared-utils

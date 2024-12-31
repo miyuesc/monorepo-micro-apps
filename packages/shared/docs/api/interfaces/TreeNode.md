@@ -4,4 +4,6 @@
 
 ## 可索引
 
- \[`key`: `string`\]: `unknown`
+```ts
+[key: string]: unknown
+```

@@ -75,12 +75,14 @@ export function camel(str: string): string {
 }
 
 /**
- * @link https://github.com/antfu/utils/blob/main/src/string.ts
- * Dead simple template engine, just like Python's `.format()`
- * Support passing variables as either in index based or object/name based approach
- * While using object/name based approach, you can pass a fallback value as the third argument
- *
  * @category String
+ *
+ * @description
+ * 非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
+ * 您可以传递一个后备值作为第三个参数
+ *
+ * @link https://github.com/antfu/utils/blob/main/src/string.ts
+ *
  * @example
  * ```
  * const result = template(
@@ -88,14 +90,11 @@ export function camel(str: string): string {
  *   'Inès',
  *   'Anthony'
  * ) // Hello Inès! My name is Anthony.
- * ```
  *
- * ```
  * const result = namedTemplate(
  *   '{greet}! My name is {name}.',
  *   { greet: 'Hello', name: 'Anthony' }
  * ) // Hello! My name is Anthony.
- * ```
  *
  * const result = namedTemplate(
  *   '{greet}! My name is {name}.',

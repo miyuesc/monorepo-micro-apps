@@ -48,6 +48,6 @@
   "private": false,
   "devDependencies": {
     "typedoc": "^0.27.6",
-    "typedoc-plugin-markdown": "^4.3.3"
+    "typedoc-plugin-markdown": "^4.4.0"
   }
 }

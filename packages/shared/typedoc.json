@@ -15,6 +15,12 @@
     "title.memberPage": "{name}"
   },
   "navigation": {
-    "includeCategories": true
-  }
+    "includeCategories": true,
+    "includeGroups": true,
+    "includeFolders": true,
+    "compactFolders": false,
+    "excludeReferences": true
+  },
+  "groupReferencesByType": true,
+  "categorizeByGroup": true
 }

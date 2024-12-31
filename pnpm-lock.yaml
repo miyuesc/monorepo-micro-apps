@@ -209,7 +209,7 @@ importers:
         version: 5.5.0
       typedoc-vitepress-theme:
         specifier: ^1.1.1
-        version: 1.1.1(typedoc-plugin-markdown@4.3.3(typedoc@0.27.6(typescript@5.4.5)))
+        version: 1.1.1(typedoc-plugin-markdown@4.4.0(typedoc@0.27.6(typescript@5.4.5)))
       vitepress:
         specifier: ^1.5.0
         version: 1.5.0(@algolia/client-search@5.18.0)(@types/node@20.12.11)(@types/react@18.3.3)(axios@1.6.8)(postcss@8.4.49)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(sass@1.77.7)(search-insights@2.17.3)(typescript@5.4.5)
@@ -218,8 +218,8 @@ importers:
         specifier: ^0.27.6
         version: 0.27.6(typescript@5.4.5)
       typedoc-plugin-markdown:
-        specifier: ^4.3.3
-        version: 4.3.3(typedoc@0.27.6(typescript@5.4.5))
+        specifier: ^4.4.0
+        version: 4.4.0(typedoc@0.27.6(typescript@5.4.5))
 
   packages/shared-react: {}
 
@@ -4159,8 +4159,8 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
 
-  typedoc-plugin-markdown@4.3.3:
-    resolution: {integrity: sha512-kESCcNRzOcFJATLML2FoCfaTF9c0ujmbZ+UXsJvmNlFLS3v8tDKfDifreJXvXWa9d8gUcetZqOqFcZ/7+Ba34Q==}
+  typedoc-plugin-markdown@4.4.0:
+    resolution: {integrity: sha512-4207DYcxJGWQRrEVTza7XkIo7ldhuEzJBaZO6dX5ogUGlvWeRTo4uiN+R1F11ttJGh4toLtxrpoi2wTTP+nEwA==}
     engines: {node: '>= 18'}
     peerDependencies:
       typedoc: 0.27.x
@@ -8904,13 +8904,13 @@ snapshots:
 
   type-fest@0.8.1: {}
 
-  typedoc-plugin-markdown@4.3.3(typedoc@0.27.6(typescript@5.4.5)):
+  typedoc-plugin-markdown@4.4.0(typedoc@0.27.6(typescript@5.4.5)):
     dependencies:
       typedoc: 0.27.6(typescript@5.4.5)
 
-  typedoc-vitepress-theme@1.1.1(typedoc-plugin-markdown@4.3.3(typedoc@0.27.6(typescript@5.4.5))):
+  typedoc-vitepress-theme@1.1.1(typedoc-plugin-markdown@4.4.0(typedoc@0.27.6(typescript@5.4.5))):
     dependencies:
-      typedoc-plugin-markdown: 4.3.3(typedoc@0.27.6(typescript@5.4.5))
+      typedoc-plugin-markdown: 4.4.0(typedoc@0.27.6(typescript@5.4.5))
 
   typedoc@0.27.6(typescript@5.4.5):
     dependencies:
