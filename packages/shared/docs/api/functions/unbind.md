@@ -10,30 +10,36 @@ function unbind<K>(
    capture?): void
 ```
 
-元素事件解绑
-
-## Type Parameters
+## 类型参数
 
 • **K** *extends* keyof `HTMLElementEventMap`
 
-## Parameters
+## 参数
 
 ### el
 
 `HTMLElement`
 
+元素
+
 ### event
 
 `K`
+
+事件名称
 
 ### listener
 
 (`this`, `ev`) => `any`
 
+回调函数
+
 ### capture?
 
 `boolean`
 
-## Returns
+是否捕获阶段
+
+## 返回
 
 `void`

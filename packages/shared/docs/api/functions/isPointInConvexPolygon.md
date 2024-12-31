@@ -8,16 +8,20 @@ function isPointInConvexPolygon(polygon, point): boolean
 
 判断点是否在图形内
 
-## Parameters
+## 参数
 
 ### polygon
 
 [`IPoint`](../interfaces/IPoint.md)[]
 
+多边形坐标数组
+
 ### point
 
 [`IPoint`](../interfaces/IPoint.md)
 
-## Returns
+点
+
+## 返回
 
 `boolean`

@@ -1,8 +1,10 @@
 {
-  "$schema": "https://typedoc.org/schema.json",
+  "$schema": "https://typedoc-plugin-markdown.org/schema.json",
   "entryPoints": ["./lib/index.ts"],
   "out": "./docs/api",
+  "outputFileStrategy": "members",
   "plugin": ["typedoc-plugin-markdown", "typedoc-vitepress-theme"],
+  "lang": "zh",
   "githubPages": false,
   "readme": "none",
   "indexFormat": "table",

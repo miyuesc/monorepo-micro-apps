@@ -2,7 +2,7 @@
 
 # Size
 
-## Properties
+## 属性
 
 ### height
 

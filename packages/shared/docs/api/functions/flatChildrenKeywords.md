@@ -6,9 +6,7 @@
 function flatChildrenKeywords(node, props): string[]
 ```
 
-获取一个树节点的所有子节点数组 ( 场景：将一个组织的 code 与该组织的子组织 code 合并到一个数组 )
-
-## Parameters
+## 参数
 
 ### node
 
@@ -22,7 +20,7 @@ function flatChildrenKeywords(node, props): string[]
 
 默认关键字
 
-## Returns
+## 返回
 
 `string`[]
 

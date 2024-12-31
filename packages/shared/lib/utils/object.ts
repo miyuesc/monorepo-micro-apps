@@ -2,6 +2,14 @@ import { toPathArray } from './string'
 import { isArray, isNoNullable, isNullable, isPrimitive, isString, notEmptyArray } from './typed'
 
 /**
+ * @categoryDescription Object
+ * 对象相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * @category Object
  * 简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
  * @param {object} target
  * @param {object} source
@@ -27,6 +35,7 @@ export function simpleMerge<T extends object>(target: T | Partial<T>, source: T)
 }
 
 /**
+ * @category Object
  * 深拷贝
  * @param { object } obj
  * @param { [object] } hash
@@ -69,6 +78,7 @@ export interface FlatChildrenKeysProps {
   children?: string
 }
 /**
+ * @category Object
  * 获取一个树节点的所有子节点数组 ( 场景：将一个组织的 code 与该组织的子组织 code 合并到一个数组 )
  * @param {object} node 包含子节点的数据对象
  * @param { ?{children?: string, key?: string}} props 默认关键字
@@ -96,7 +106,10 @@ export function flatChildrenKeywords(node: TreeNode, props: FlatChildrenKeysProp
 }
 
 /**
+ * @category Object
  * 判断对象是否具有指定路径的属性
+ * @param {object} obj 待判断对象
+ * @param {string|string[]} path 属性路径
  */
 export function has(obj: Record<string, any>, path: string | string[]): boolean {
   if (!isNoNullable(obj))

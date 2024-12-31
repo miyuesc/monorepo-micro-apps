@@ -1,6 +1,14 @@
 import { isNumber, isUndefined } from './typed'
 
 /**
+ * @categoryDescription Number
+ * 数字相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * @category Number
  * 范围内随机数
  * @param [min] 最小值
  * @param [max] 最大值
@@ -20,10 +28,11 @@ export function randomNum(min?: number, max?: number, integer: boolean = false):
 }
 
 /**
- * 是否在指定范围内
- * @param target
- * @param min
- * @param max
+ * @category Number
+ * 数字是否在指定范围内
+ * @param target 目标数字
+ * @param min 最小值
+ * @param max 最大值
  * @return boolean
  */
 export function inRange(target: number, min: number, max: number): boolean {
@@ -31,8 +40,9 @@ export function inRange(target: number, min: number, max: number): boolean {
 }
 
 /**
+ * @category Number
  * 是否是素数
- * @param num
+ * @param num 目标数字
  * @return boolean
  */
 export function isPrime(num: number): boolean {
@@ -54,10 +64,11 @@ export function isPrime(num: number): boolean {
 }
 
 /**
- * 限制 num 在指定范围内
- * @param num
- * @param min
- * @param max
+ * @category Number
+ * 限制 num 在指定范围内的随机数
+ * @param num 目标数字
+ * @param min 最小值
+ * @param max 最大值
  * @return number
  */
 export function limitInRange(num: number, min: number, max: number): number {

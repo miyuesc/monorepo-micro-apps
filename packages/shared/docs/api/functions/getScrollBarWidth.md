@@ -6,14 +6,12 @@
 function getScrollBarWidth(element): number
 ```
 
-滚动条尺寸
-
-## Parameters
+## 参数
 
 ### element
 
 `HTMLElement`
 
-## Returns
+## 返回
 
 `number`

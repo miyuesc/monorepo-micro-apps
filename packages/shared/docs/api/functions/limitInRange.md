@@ -9,23 +9,27 @@ function limitInRange(
    max): number
 ```
 
-限制 num 在指定范围内
-
-## Parameters
+## 参数
 
 ### num
 
 `number`
 
+目标数字
+
 ### min
 
 `number`
+
+最小值
 
 ### max
 
 `number`
 
-## Returns
+最大值
+
+## 返回
 
 `number`
 

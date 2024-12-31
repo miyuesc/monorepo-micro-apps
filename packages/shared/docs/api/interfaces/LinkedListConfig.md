@@ -2,10 +2,12 @@
 
 # LinkedListConfig
 
-## Properties
+## 属性
 
 ### maxLength
 
 ```ts
 maxLength: number;
 ```
+
+最大长度

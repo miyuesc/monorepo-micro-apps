@@ -6,16 +6,12 @@
 function pascal(str): string
 ```
 
-多单词首字母大写
-
-pascal('hello world')   -> 'HelloWorld'
-
-## Parameters
+## 参数
 
 ### str
 
 `string`
 
-## Returns
+## 返回
 
 `string`

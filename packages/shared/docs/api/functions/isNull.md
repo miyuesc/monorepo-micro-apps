@@ -6,12 +6,14 @@
 function isNull(val): val is null
 ```
 
-## Parameters
+## 参数
 
 ### val
 
 `unknown`
 
-## Returns
+待判断的值
+
+## 返回
 
 `val is null`

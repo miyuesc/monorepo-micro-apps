@@ -6,6 +6,6 @@
 function post(): void
 ```
 
-## Returns
+## 返回
 
 `void`

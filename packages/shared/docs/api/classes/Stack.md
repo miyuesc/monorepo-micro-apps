@@ -1,30 +1,41 @@
 [@miyue-mma/shared](../index.md) / Stack
 
-# Stack
+# Stack\<T\>
 
-## Constructors
+Stack
+栈
+
+## 类型参数
+
+• **T**
+
+## 构造函数
 
 ### new Stack()
 
 ```ts
-new Stack(config, preset): Stack
+new Stack<T>(config, preset): Stack<T>
 ```
 
-#### Parameters
+#### 参数
 
 ##### config
 
 [`StackConfig`](../interfaces/StackConfig.md)
 
+栈配置
+
 ##### preset
 
-`unknown`[] = `[]`
+`T`[] = `[]`
 
-#### Returns
+预设数据
 
-[`Stack`](Stack.md)
+#### 返回
 
-## Properties
+[`Stack`](Stack.md)\<`T`\>
+
+## 属性
 
 ### \_config
 
@@ -37,50 +48,58 @@ _config: StackConfig;
 ### \_stack
 
 ```ts
-_stack: unknown[];
+_stack: T[];
 ```
 
-## Methods
+## 方法
 
 ### clear()
 
 ```ts
-clear(): Stack
+clear(): Stack<T>
 ```
 
-#### Returns
+清空栈
 
-[`Stack`](Stack.md)
+#### 返回
+
+[`Stack`](Stack.md)\<`T`\>
 
 ***
 
 ### enter()
 
 ```ts
-enter(element): Stack
+enter(element): Stack<T>
 ```
 
-#### Parameters
+入栈
+
+#### 参数
 
 ##### element
 
-`unknown`
+`T`
 
-#### Returns
+入栈元素
 
-[`Stack`](Stack.md)
+#### 返回
+
+[`Stack`](Stack.md)\<`T`\>
 
 ***
 
 ### get()
 
 ```ts
-get(): unknown[]
+get(): T[]
 ```
 
-#### Returns
+获取栈数据
 
-`unknown`[]
+#### 返回
+
+`T`[]
 
 ***
 
@@ -90,7 +109,9 @@ get(): unknown[]
 isEmpty(): boolean
 ```
 
-#### Returns
+判断栈是否为空
+
+#### 返回
 
 `boolean`
 
@@ -99,24 +120,28 @@ isEmpty(): boolean
 ### out()
 
 ```ts
-out(): unknown
+out(): undefined | T
 ```
 
-#### Returns
+出栈
 
-`unknown`
+#### 返回
+
+`undefined` \| `T`
 
 ***
 
 ### peek()
 
 ```ts
-peek(): unknown
+peek(): T
 ```
 
-#### Returns
+查看栈顶元素
 
-`unknown`
+#### 返回
+
+`T`
 
 ***
 
@@ -126,6 +151,8 @@ peek(): unknown
 size(): number
 ```
 
-#### Returns
+获取栈的大小
+
+#### 返回
 
 `number`

@@ -6,6 +6,6 @@
 function randomHexColor(): string
 ```
 
-## Returns
+## 返回
 
 `string`

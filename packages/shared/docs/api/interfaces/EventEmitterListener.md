@@ -6,17 +6,17 @@
 interface EventEmitterListener(...args): unknown
 ```
 
-## Parameters
+## 参数
 
 ### args
 
 ...`unknown`[]
 
-## Returns
+## 返回
 
 `unknown`
 
-## Properties
+## 属性
 
 ### context?
 

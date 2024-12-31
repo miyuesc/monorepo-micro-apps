@@ -11,7 +11,7 @@ function eRadialGradient(
    cord?): graphic.RadialGradient
 ```
 
-## Parameters
+## 参数
 
 ### x
 
@@ -33,6 +33,6 @@ function eRadialGradient(
 
 `boolean`
 
-## Returns
+## 返回
 
 `graphic.RadialGradient`

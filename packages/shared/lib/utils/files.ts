@@ -1,10 +1,18 @@
 import { isNumber } from './typed'
 
 /**
+ * @categoryDescription File
+ * 文件相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * @category File
  * 文件下载
- * @param buffer
- * @param fileName
- * @param type
+ * @param buffer 文件流
+ * @param fileName 文件名
+ * @param type 文件类型
  */
 export function downloadFile(buffer: BlobPart, fileName: string, type: string) {
   const blob = new Blob([buffer], { type })
@@ -20,7 +28,9 @@ export function downloadFile(buffer: BlobPart, fileName: string, type: string) {
 }
 
 /**
+ * @category File
  * 字节数转义
+ * @param bytes 字节数
  */
 export function bytesToSize(bytes: number) {
   if (!isNumber(bytes))

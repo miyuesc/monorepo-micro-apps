@@ -6,12 +6,14 @@
 function isPlainObject(val): val is object
 ```
 
-## Parameters
+## 参数
 
 ### val
 
 `unknown`
 
-## Returns
+待判断的值
+
+## 返回
 
 `val is object`

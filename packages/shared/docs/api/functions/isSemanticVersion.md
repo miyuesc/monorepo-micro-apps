@@ -6,7 +6,7 @@
 function isSemanticVersion(str, strict?): boolean
 ```
 
-## Parameters
+## 参数
 
 ### str
 
@@ -16,6 +16,8 @@ function isSemanticVersion(str, strict?): boolean
 
 `boolean`
 
-## Returns
+是否严格模式
+
+## 返回
 
 `boolean`

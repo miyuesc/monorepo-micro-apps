@@ -2,7 +2,7 @@
 
 # GenerateLabelProps
 
-## Properties
+## 属性
 
 ### children?
 

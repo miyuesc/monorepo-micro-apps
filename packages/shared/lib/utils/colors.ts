@@ -1,4 +1,14 @@
-// 随机生成十六进制颜色
+/**
+ * @categoryDescription Colors
+ * 颜色相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * @category Colors
+ * 随机生成十六进制颜色
+ */
 export function randomHexColor(): string {
   let hex: string = Math.floor(Math.random() * 16777216).toString(16) // 生成 ffffff 以内16进制数
   while (hex.length < 6) {
@@ -7,16 +17,20 @@ export function randomHexColor(): string {
   }
   return `#${hex}` // 返回‘#’开头16进制颜色
 }
-
-// 随机生成RGB颜色
+/**
+ * @category Colors
+ * 随机生成RGB颜色
+ */
 export function randomRgbColor(): string {
   const r = Math.floor(Math.random() * 256) // 随机生成256以内r值
   const g = Math.floor(Math.random() * 256) // 随机生成256以内g值
   const b = Math.floor(Math.random() * 256) // 随机生成256以内b值
   return `rgb(${r},${g},${b})` // 返回rgb(r,g,b)格式颜色
 }
-
-// 随机生成RGBA颜色
+/**
+ * @category Colors
+ * 随机生成RGBA颜色
+ */
 export function randomRgbaColor(): string {
   const r = Math.floor(Math.random() * 256) // 随机生成256以内r值
   const g = Math.floor(Math.random() * 256) // 随机生成256以内g值
@@ -25,6 +39,11 @@ export function randomRgbaColor(): string {
   return `rgb(${r},${g},${b},${alpha})` // 返回rgba(r,g,b,a)格式颜色
 }
 
+/**
+ * @category Colors
+ * RGB颜色转十六进制颜色
+ * @param rgb RGB颜色
+ */
 export function rgbToHex(rgb: string): string | undefined {
   const match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/)
   if (!match)
@@ -43,6 +62,11 @@ export function rgbToHex(rgb: string): string | undefined {
   return `#${rHex}${gHex}${bHex}`
 }
 
+/**
+ * @category Colors
+ * 十六进制颜色转RGB颜色
+ * @param hex 十六进制颜色
+ */
 export function hexToRgb(hex: string): string | undefined {
   const hexRegex = /^#?([a-f\d]{3}|[a-f\d]{6})$/i
   const hexMatch = hex.match(hexRegex)

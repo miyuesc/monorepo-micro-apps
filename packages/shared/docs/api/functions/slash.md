@@ -6,14 +6,12 @@
 function slash(str): string
 ```
 
-将反斜杠替换为斜杠
-
-## Parameters
+## 参数
 
 ### str
 
 `string`
 
-## Returns
+## 返回
 
 `string`

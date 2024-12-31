@@ -8,6 +8,6 @@ type Nullable<T> = T | null | undefined;
 
 Null or whatever
 
-## Type Parameters
+## 类型参数
 
 • **T**

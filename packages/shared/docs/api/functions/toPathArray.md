@@ -6,14 +6,14 @@
 function toPathArray(path): string[]
 ```
 
-转对象路径数组
-
-## Parameters
+## 参数
 
 ### path
 
 `string`
 
-## Returns
+对象路径
+
+## 返回
 
 `string`[]

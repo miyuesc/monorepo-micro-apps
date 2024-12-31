@@ -2,7 +2,7 @@
 
 # IPoint
 
-## Properties
+## 属性
 
 ### x
 

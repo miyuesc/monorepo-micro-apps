@@ -6,14 +6,12 @@
 function uniqueId(prefix?): string
 ```
 
-递增 Id
-
-## Parameters
+## 参数
 
 ### prefix?
 
 `string`
 
-## Returns
+## 返回
 
 `string`

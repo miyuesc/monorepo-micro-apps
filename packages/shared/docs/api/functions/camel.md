@@ -6,16 +6,12 @@
 function camel(str): string
 ```
 
-转驼峰命名
-
-camel('hello world')   -> 'helloWorld'
-
-## Parameters
+## 参数
 
 ### str
 
 `string`
 
-## Returns
+## 返回
 
 `string`

@@ -6,14 +6,14 @@
 function bytesToSize(bytes): string
 ```
 
-字节数转义
-
-## Parameters
+## 参数
 
 ### bytes
 
 `number`
 
-## Returns
+字节数
+
+## 返回
 
 `string`

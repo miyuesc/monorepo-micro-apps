@@ -11,35 +11,43 @@ function delegate<K>(
    capture?): object
 ```
 
-代理事件
-
-## Type Parameters
+## 类型参数
 
 • **K** *extends* keyof `HTMLElementEventMap`
 
-## Parameters
+## 参数
 
 ### element
 
 `HTMLElement`
 
+代理的元素
+
 ### event
 
 `K`
+
+事件名称
 
 ### selector
 
 `string`
 
+实际元素的选择器
+
 ### callback
 
 (`element`, `ev`) => `unknown`
+
+回调函数
 
 ### capture?
 
 `boolean`
 
-## Returns
+是否捕获阶段
+
+## 返回
 
 `object`
 
@@ -49,6 +57,6 @@ function delegate<K>(
 unbind: () => void;
 ```
 
-#### Returns
+#### 返回
 
 `void`

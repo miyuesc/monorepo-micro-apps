@@ -2,7 +2,7 @@
 
 # GradientColorStop
 
-## Properties
+## 属性
 
 ### color
 

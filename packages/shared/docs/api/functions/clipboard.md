@@ -6,12 +6,14 @@
 function clipboard(text): Promise<void>
 ```
 
-## Parameters
+## 参数
 
 ### text
 
 `string`
 
-## Returns
+待复制的文本
+
+## 返回
 
 `Promise`\<`void`\>

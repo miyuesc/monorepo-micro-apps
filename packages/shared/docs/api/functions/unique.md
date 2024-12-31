@@ -8,16 +8,18 @@ function unique<T>(array): T[]
 
 数组去重
 
-## Type Parameters
+## 类型参数
 
 • **T**
 
-## Parameters
+## 参数
 
 ### array
 
 `T`[]
 
-## Returns
+待去重数组
+
+## 返回
 
 `T`[]

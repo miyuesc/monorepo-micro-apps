@@ -2,7 +2,7 @@
 
 # FlatProps
 
-## Properties
+## 属性
 
 ### children?
 

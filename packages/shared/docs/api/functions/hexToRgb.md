@@ -6,12 +6,14 @@
 function hexToRgb(hex): string | undefined
 ```
 
-## Parameters
+## 参数
 
 ### hex
 
 `string`
 
-## Returns
+十六进制颜色
+
+## 返回
 
 `string` \| `undefined`

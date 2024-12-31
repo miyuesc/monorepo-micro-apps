@@ -2,7 +2,7 @@
 
 # EventEmitter
 
-## Constructors
+## 构造函数
 
 ### new EventEmitter()
 
@@ -10,67 +10,11 @@
 new EventEmitter(): EventEmitter
 ```
 
-#### Returns
+#### 返回
 
 [`EventEmitter`](EventEmitter.md)
 
-## Methods
-
-### \_addListener()
-
-```ts
-_addListener(
-   type, 
-   fn, 
-   context?, 
-   once?): EventEmitter
-```
-
-#### Parameters
-
-##### type
-
-`string`
-
-##### fn
-
-[`EventEmitterListener`](../interfaces/EventEmitterListener.md)
-
-##### context?
-
-`unknown`
-
-##### once?
-
-`boolean`
-
-#### Returns
-
-[`EventEmitter`](EventEmitter.md)
-
-***
-
-### \_removeListener()
-
-```ts
-_removeListener(type, fn?): EventEmitter
-```
-
-#### Parameters
-
-##### type
-
-`string`
-
-##### fn?
-
-[`EventEmitterListener`](../interfaces/EventEmitterListener.md)
-
-#### Returns
-
-[`EventEmitter`](EventEmitter.md)
-
-***
+## 方法
 
 ### addListener()
 
@@ -82,9 +26,13 @@ addListener(
    once?): EventEmitter
 ```
 
-#### Parameters
+注册事件订阅函数
+
+#### 参数
 
 ##### type
+
+事件类型
 
 `string` | `string`[]
 
@@ -92,15 +40,21 @@ addListener(
 
 [`EventEmitterListener`](../interfaces/EventEmitterListener.md)
 
+回调函数
+
 ##### context?
 
 `unknown`
+
+上下文
 
 ##### once?
 
 `boolean`
 
-#### Returns
+是否只执行一次
+
+#### 返回
 
 [`EventEmitter`](EventEmitter.md)
 
@@ -112,17 +66,23 @@ addListener(
 emit(type, ...rest): false | EventEmitter
 ```
 
-#### Parameters
+触发事件
+
+#### 参数
 
 ##### type
 
 `string`
 
+事件类型
+
 ##### rest
 
 ...`any`[]
 
-#### Returns
+回调函数参数
+
+#### 返回
 
 `false` \| [`EventEmitter`](EventEmitter.md)
 
@@ -134,7 +94,9 @@ emit(type, ...rest): false | EventEmitter
 eventNames(): (string | symbol)[]
 ```
 
-#### Returns
+获取所有已经订阅的事件
+
+#### 返回
 
 (`string` \| `symbol`)[]
 
@@ -146,17 +108,23 @@ eventNames(): (string | symbol)[]
 hasListener(type, fn): boolean
 ```
 
-#### Parameters
+检查是否存在事件订阅函数
+
+#### 参数
 
 ##### type
 
 `string`
 
+事件类型
+
 ##### fn
 
 [`EventEmitterListener`](../interfaces/EventEmitterListener.md)
 
-#### Returns
+回调函数参数
+
+#### 返回
 
 `boolean`
 
@@ -170,13 +138,17 @@ listeners(type):
   | EventEmitterListener[]
 ```
 
-#### Parameters
+获取某个事件的所有订阅函数
+
+#### 参数
 
 ##### type
 
 `string`
 
-#### Returns
+事件类型
+
+#### 返回
 
   \| `undefined`
   \| [`EventEmitterListener`](../interfaces/EventEmitterListener.md)[]
@@ -189,13 +161,17 @@ listeners(type):
 listenersCount(type): number
 ```
 
-#### Parameters
+获取某个事件的订阅函数数量
+
+#### 参数
 
 ##### type
 
 `string`
 
-#### Returns
+事件类型
+
+#### 返回
 
 `number`
 
@@ -210,21 +186,29 @@ on(
    context?): EventEmitter
 ```
 
-#### Parameters
+注册事件订阅函数
+
+#### 参数
 
 ##### type
 
 `string`
 
+事件类型
+
 ##### fn
 
 `any`
+
+回调函数
 
 ##### context?
 
 `any`
 
-#### Returns
+上下文
+
+#### 返回
 
 [`EventEmitter`](EventEmitter.md)
 
@@ -239,21 +223,29 @@ once(
    context?): EventEmitter
 ```
 
-#### Parameters
+注册事件订阅函数，只执行一次
+
+#### 参数
 
 ##### type
 
 `string`
 
+事件类型
+
 ##### fn
 
 `any`
+
+回调函数
 
 ##### context?
 
 `any`
 
-#### Returns
+上下文
+
+#### 返回
 
 [`EventEmitter`](EventEmitter.md)
 
@@ -265,13 +257,17 @@ once(
 removeAllListeners(type?): any
 ```
 
-#### Parameters
+移除事件订阅函数，指定类型时移除该类型的所有订阅函数，不指定类型时移除所有
+
+#### 参数
 
 ##### type?
 
 `string`
 
-#### Returns
+事件类型
+
+#### 返回
 
 `any`
 
@@ -283,9 +279,13 @@ removeAllListeners(type?): any
 removeListener(type, fn?): EventEmitter
 ```
 
-#### Parameters
+移除事件订阅函数，指定 fn 时只移除指定的 fn，不指定 fn 时移除所有
+
+#### 参数
 
 ##### type
+
+事件类型
 
 `string` | `string`[]
 
@@ -293,6 +293,8 @@ removeListener(type, fn?): EventEmitter
 
 [`EventEmitterListener`](../interfaces/EventEmitterListener.md)
 
-#### Returns
+回调函数参数
+
+#### 返回
 
 [`EventEmitter`](EventEmitter.md)

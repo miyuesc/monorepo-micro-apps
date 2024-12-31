@@ -9,11 +9,7 @@ function insert(
    insertStr): string
 ```
 
-在指定位置插入字符串
-
-insertString('hello world', 6, 'my ') -> 'hello my world'
-
-## Parameters
+## 参数
 
 ### str
 
@@ -27,6 +23,6 @@ insertString('hello world', 6, 'my ') -> 'hello my world'
 
 `string`
 
-## Returns
+## 返回
 
 `string`

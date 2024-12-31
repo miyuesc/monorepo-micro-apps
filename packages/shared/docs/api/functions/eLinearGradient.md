@@ -12,7 +12,7 @@ function eLinearGradient(
    cord?): graphic.LinearGradient
 ```
 
-## Parameters
+## 参数
 
 ### x1
 
@@ -38,6 +38,6 @@ function eLinearGradient(
 
 `boolean`
 
-## Returns
+## 返回
 
 `graphic.LinearGradient`

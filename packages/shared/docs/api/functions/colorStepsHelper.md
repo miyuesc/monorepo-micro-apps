@@ -6,12 +6,12 @@
 function colorStepsHelper(colors?): GradientColorStop[] | undefined
 ```
 
-## Parameters
+## 参数
 
 ### colors?
 
 [`GradientColorStop`](../interfaces/GradientColorStop.md)[] | `string`[]
 
-## Returns
+## 返回
 
 [`GradientColorStop`](../interfaces/GradientColorStop.md)[] \| `undefined`

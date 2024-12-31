@@ -9,13 +9,13 @@ function setTranslate(
    y): void
 ```
 
-设置元素 transform: translate 移动
-
-## Parameters
+## 参数
 
 ### element
 
 `HTMLElement`
+
+HTMLElement
 
 ### x
 
@@ -25,6 +25,6 @@ function setTranslate(
 
 `string` | `number`
 
-## Returns
+## 返回
 
 `void`

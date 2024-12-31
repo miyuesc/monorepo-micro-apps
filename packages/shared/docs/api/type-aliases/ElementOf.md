@@ -8,6 +8,6 @@ type ElementOf<T> = T extends infer E[] ? E : never;
 
 Infers the element type of an array
 
-## Type Parameters
+## 类型参数
 
 • **T**

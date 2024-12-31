@@ -6,14 +6,12 @@
 function isScroll(element): boolean
 ```
 
-是否存在滚动条
-
-## Parameters
+## 参数
 
 ### element
 
 `HTMLElement`
 
-## Returns
+## 返回
 
 `boolean`

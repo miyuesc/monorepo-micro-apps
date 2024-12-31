@@ -11,24 +11,30 @@ function generateLabel<T>(
 
 根据指定值，将指定属性名组装为字符串
 
-## Type Parameters
+## 类型参数
 
 • **T** *extends* `Record`\<`string`, `unknown`\>
 
-## Parameters
+## 参数
 
 ### data
 
 `T`[]
 
+源对象数组
+
 ### value
 
 `unknown`
+
+指定值
 
 ### props
 
 [`GenerateLabelProps`](../interfaces/GenerateLabelProps.md) = `{}`
 
-## Returns
+配置项
+
+## 返回
 
 `string` \| `undefined`

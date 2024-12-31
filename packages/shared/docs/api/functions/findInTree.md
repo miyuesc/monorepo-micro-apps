@@ -11,24 +11,30 @@ function findInTree<T>(
 
 在树形数组中查找指定元素
 
-## Type Parameters
+## 类型参数
 
 • **T** *extends* `Record`\<`string`, `unknown`\>
 
-## Parameters
+## 参数
 
 ### tree
 
 `T`[]
 
+源数组
+
 ### finder
 
 (`i`, `idx`) => `boolean`
+
+查找函数
 
 ### props
 
 [`TreeArrayProps`](../interfaces/TreeArrayProps.md) = `{}`
 
-## Returns
+配置项
+
+## 返回
 
 `T` \| `undefined`

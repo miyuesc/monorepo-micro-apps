@@ -8,20 +8,24 @@ function diff<T>(source, target): T[]
 
 数组差异项
 
-## Type Parameters
+## 类型参数
 
 • **T**
 
-## Parameters
+## 参数
 
 ### source
 
 `T`[] = `[]`
 
+源数组
+
 ### target
 
 `T`[] = `[]`
 
-## Returns
+目标数组
+
+## 返回
 
 `T`[]

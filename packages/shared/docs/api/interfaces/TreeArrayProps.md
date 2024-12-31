@@ -2,7 +2,7 @@
 
 # TreeArrayProps
 
-## Properties
+## 属性
 
 ### children?
 

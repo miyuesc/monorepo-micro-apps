@@ -6,16 +6,18 @@
 function isPromise<T>(val): val is Promise<T>
 ```
 
-## Type Parameters
+## 类型参数
 
 • **T** = `any`
 
-## Parameters
+## 参数
 
 ### val
 
 `unknown`
 
-## Returns
+待判断的值
+
+## 返回
 
 `val is Promise<T>`

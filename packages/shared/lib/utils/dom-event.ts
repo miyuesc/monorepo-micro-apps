@@ -6,12 +6,12 @@
  */
 
 /**
- * 元素事件绑定
  * @category Dom Event
- * @param el
- * @param event
- * @param listener
- * @param capture
+ * 元素事件绑定
+ * @param el 元素
+ * @param event 事件名称
+ * @param listener 回调函数
+ * @param capture 是否捕获阶段
  */
 export function bind<K extends keyof HTMLElementEventMap>(
   el: HTMLElement,
@@ -27,11 +27,12 @@ export function bind<K extends keyof HTMLElementEventMap>(
 }
 
 /**
+ * @category Dom Event
  * 元素事件解绑
- * @param el
- * @param event
- * @param listener
- * @param capture
+ * @param el 元素
+ * @param event 事件名称
+ * @param listener 回调函数
+ * @param capture 是否捕获阶段
  */
 export function unbind<K extends keyof HTMLElementEventMap>(
   el: HTMLElement,
@@ -43,12 +44,13 @@ export function unbind<K extends keyof HTMLElementEventMap>(
 }
 
 /**
- * 代理事件
- * @param element
- * @param event
- * @param selector
- * @param callback
- * @param capture
+ * @category Dom Event
+ * 事件代理
+ * @param element 代理的元素
+ * @param event 事件名称
+ * @param selector 实际元素的选择器
+ * @param callback 回调函数
+ * @param capture 是否捕获阶段
  */
 export function delegate<K extends keyof HTMLElementEventMap>(
   element: HTMLElement,

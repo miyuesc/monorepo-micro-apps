@@ -2,7 +2,7 @@
 
 # template()
 
-## Call Signature
+## 调用签名
 
 ```ts
 function template(
@@ -11,7 +11,7 @@ function template(
    fallback?): string
 ```
 
-### Parameters
+### 参数
 
 #### str
 
@@ -25,18 +25,18 @@ function template(
 
 `string` | (`key`) => `string`
 
-### Returns
+### 返回
 
 `string`
 
-### Link
+### 链接
 
 https://github.com/antfu/utils/blob/main/src/string.ts
 Dead simple template engine, just like Python's `.format()`
 Support passing variables as either in index based or object/name based approach
 While using object/name based approach, you can pass a fallback value as the third argument
 
-### Example
+### 示例
 
 ```
 const result = template(
@@ -60,13 +60,13 @@ const result = namedTemplate(
 ) // Hello! My name is placeholder.
 ```
 
-## Call Signature
+## 调用签名
 
 ```ts
 function template(str, ...args): string
 ```
 
-### Parameters
+### 参数
 
 #### str
 
@@ -76,18 +76,18 @@ function template(str, ...args): string
 
 ...(`undefined` \| `null` \| `string` \| `number` \| `bigint`)[]
 
-### Returns
+### 返回
 
 `string`
 
-### Link
+### 链接
 
 https://github.com/antfu/utils/blob/main/src/string.ts
 Dead simple template engine, just like Python's `.format()`
 Support passing variables as either in index based or object/name based approach
 While using object/name based approach, you can pass a fallback value as the third argument
 
-### Example
+### 示例
 
 ```
 const result = template(

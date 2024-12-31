@@ -8,16 +8,16 @@ type Constructor<T> = (...args) => T;
 
 Constructor
 
-## Type Parameters
+## 类型参数
 
 • **T** = `void`
 
-## Parameters
+## 参数
 
 ### args
 
 ...`any`[]
 
-## Returns
+## 返回
 
 `T`

@@ -6,7 +6,7 @@
 function isIP(str, withPort?): boolean
 ```
 
-## Parameters
+## 参数
 
 ### str
 
@@ -16,6 +16,6 @@ function isIP(str, withPort?): boolean
 
 `boolean`
 
-## Returns
+## 返回
 
 `boolean`

@@ -6,29 +6,35 @@
 function toMap<T>(
    data, 
    key, 
-props): Record<string, boolean | T>
+props): Record<string, T | boolean>
 ```
 
 转成对象结构
 
-## Type Parameters
+## 类型参数
 
 • **T** *extends* `Record`\<`string`, `unknown`\>
 
-## Parameters
+## 参数
 
 ### data
 
 `T`[]
 
+源对象数组
+
 ### key
 
 `string`
+
+指定属性名
 
 ### props
 
 [`ToMapProps`](../interfaces/ToMapProps.md) = `{}`
 
-## Returns
+配置项
 
-`Record`\<`string`, `boolean` \| `T`\>
+## 返回
+
+`Record`\<`string`, `T` \| `boolean`\>

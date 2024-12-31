@@ -6,12 +6,14 @@
 function sleep(timeout): CancelablePromise
 ```
 
-## Parameters
+## 参数
 
 ### timeout
 
 `number`
 
-## Returns
+延迟时间
 
-`CancelablePromise`
+## 返回
+
+[`CancelablePromise`](../interfaces/CancelablePromise.md)

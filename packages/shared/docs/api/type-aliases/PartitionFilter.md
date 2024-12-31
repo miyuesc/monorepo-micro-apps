@@ -6,11 +6,11 @@
 type PartitionFilter<T> = (i, idx, arr) => any;
 ```
 
-## Type Parameters
+## 类型参数
 
 • **T**
 
-## Parameters
+## 参数
 
 ### i
 
@@ -24,6 +24,6 @@ type PartitionFilter<T> = (i, idx, arr) => any;
 
 readonly `T`[]
 
-## Returns
+## 返回
 
 `any`

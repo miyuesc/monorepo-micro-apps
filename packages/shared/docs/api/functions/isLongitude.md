@@ -6,12 +6,12 @@
 function isLongitude(str): boolean
 ```
 
-## Parameters
+## 参数
 
 ### str
 
 `string`
 
-## Returns
+## 返回
 
 `boolean`

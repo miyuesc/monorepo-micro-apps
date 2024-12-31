@@ -6,16 +6,12 @@
 function capitalize(str): string
 ```
 
-首字母大写
-
-capitalize('hello')   -> 'Hello'
-
-## Parameters
+## 参数
 
 ### str
 
 `string`
 
-## Returns
+## 返回
 
 `string`

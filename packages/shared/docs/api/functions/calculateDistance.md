@@ -6,9 +6,9 @@
 function calculateDistance(point1, point2): number
 ```
 
-计算距离
+计算两点之间的距离
 
-## Parameters
+## 参数
 
 ### point1
 
@@ -18,6 +18,6 @@ function calculateDistance(point1, point2): number
 
 [`IPoint`](../interfaces/IPoint.md)
 
-## Returns
+## 返回
 
 `number`

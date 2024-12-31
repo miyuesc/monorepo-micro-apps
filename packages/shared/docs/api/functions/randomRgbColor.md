@@ -6,6 +6,6 @@
 function randomRgbColor(): string
 ```
 
-## Returns
+## 返回
 
 `string`

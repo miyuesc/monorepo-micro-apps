@@ -2,7 +2,7 @@
 
 # FlatChildrenKeysProps
 
-## Properties
+## 属性
 
 ### children?
 

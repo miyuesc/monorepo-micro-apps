@@ -8,6 +8,6 @@ type Awaitable<T> = T | PromiseLike<T>;
 
 Promise, or maybe not
 
-## Type Parameters
+## 类型参数
 
 • **T**

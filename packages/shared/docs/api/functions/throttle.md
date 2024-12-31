@@ -9,11 +9,11 @@ function throttle<T>(
    options?): (this, ...cargs) => unknown
 ```
 
-## Type Parameters
+## 类型参数
 
 • **T** *extends* (...`args`) => `any`
 
-## Parameters
+## 参数
 
 ### func
 
@@ -25,13 +25,13 @@ function throttle<T>(
 
 ### options?
 
-`ThrottleOptions`
+[`ThrottleOptions`](../interfaces/ThrottleOptions.md)
 
-## Returns
+## 返回
 
 `Function`
 
-### Parameters
+### 参数
 
 #### this
 
@@ -41,7 +41,7 @@ function throttle<T>(
 
 ...`unknown`[]
 
-### Returns
+### 返回
 
 `unknown`
 
@@ -51,7 +51,7 @@ function throttle<T>(
 cancel: () => void;
 ```
 
-#### Returns
+#### 返回
 
 `void`
 
@@ -61,6 +61,6 @@ cancel: () => void;
 flush: () => unknown;
 ```
 
-#### Returns
+#### 返回
 
 `unknown`

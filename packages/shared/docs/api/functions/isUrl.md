@@ -6,7 +6,7 @@
 function isUrl(str, withProtocol?): boolean
 ```
 
-## Parameters
+## 参数
 
 ### str
 
@@ -16,6 +16,8 @@ function isUrl(str, withProtocol?): boolean
 
 `boolean`
 
-## Returns
+是否包含协议
+
+## 返回
 
 `boolean`

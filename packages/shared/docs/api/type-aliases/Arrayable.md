@@ -8,6 +8,6 @@ type Arrayable<T> = T | T[];
 
 Array, or not yet
 
-## Type Parameters
+## 类型参数
 
 • **T**

@@ -2,7 +2,7 @@
 
 # ToMapProps
 
-## Properties
+## 属性
 
 ### flatOptions?
 

@@ -1,30 +1,41 @@
 [@miyue-mma/shared](../index.md) / Queue
 
-# Queue
+# Queue\<T\>
 
-## Constructors
+Queue
+队列
+
+## 类型参数
+
+• **T**
+
+## 构造函数
 
 ### new Queue()
 
 ```ts
-new Queue(config, preset): Queue
+new Queue<T>(config, preset): Queue<T>
 ```
 
-#### Parameters
+#### 参数
 
 ##### config
 
 [`QueueConfig`](../interfaces/QueueConfig.md)
 
+队列配置
+
 ##### preset
 
-`unknown`[] = `[]`
+`T`[] = `[]`
 
-#### Returns
+预设数据
 
-[`Queue`](Queue.md)
+#### 返回
 
-## Properties
+[`Queue`](Queue.md)\<`T`\>
+
+## 属性
 
 ### \_config
 
@@ -37,50 +48,58 @@ _config: QueueConfig;
 ### \_queue
 
 ```ts
-_queue: unknown[];
+_queue: T[];
 ```
 
-## Methods
+## 方法
 
 ### clear()
 
 ```ts
-clear(): Queue
+clear(): Queue<T>
 ```
 
-#### Returns
+清空队列
 
-[`Queue`](Queue.md)
+#### 返回
+
+[`Queue`](Queue.md)\<`T`\>
 
 ***
 
 ### enter()
 
 ```ts
-enter(element): Queue
+enter(element): Queue<T>
 ```
 
-#### Parameters
+入队列
+
+#### 参数
 
 ##### element
 
-`unknown`
+`T`
 
-#### Returns
+入队列元素
 
-[`Queue`](Queue.md)
+#### 返回
+
+[`Queue`](Queue.md)\<`T`\>
 
 ***
 
 ### get()
 
 ```ts
-get(): unknown[]
+get(): T[]
 ```
 
-#### Returns
+获取队列数据
 
-`unknown`[]
+#### 返回
+
+`T`[]
 
 ***
 
@@ -90,7 +109,9 @@ get(): unknown[]
 isEmpty(): boolean
 ```
 
-#### Returns
+判断队列是否为空
+
+#### 返回
 
 `boolean`
 
@@ -99,24 +120,28 @@ isEmpty(): boolean
 ### out()
 
 ```ts
-out(): unknown
+out(): undefined | T
 ```
 
-#### Returns
+出队列
 
-`unknown`
+#### 返回
+
+`undefined` \| `T`
 
 ***
 
 ### peek()
 
 ```ts
-peek(): unknown
+peek(): T
 ```
 
-#### Returns
+获取队列头部元素
 
-`unknown`
+#### 返回
+
+`T`
 
 ***
 
@@ -126,6 +151,8 @@ peek(): unknown
 size(): number
 ```
 
-#### Returns
+获取队列的大小
+
+#### 返回
 
 `number`

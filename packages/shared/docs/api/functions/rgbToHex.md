@@ -6,12 +6,14 @@
 function rgbToHex(rgb): string | undefined
 ```
 
-## Parameters
+## 参数
 
 ### rgb
 
 `string`
 
-## Returns
+RGB颜色
+
+## 返回
 
 `string` \| `undefined`

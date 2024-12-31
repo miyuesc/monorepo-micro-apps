@@ -2,6 +2,6 @@
 
 # TreeNode
 
-## Indexable
+## 可索引
 
  \[`key`: `string`\]: `unknown`

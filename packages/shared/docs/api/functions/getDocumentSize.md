@@ -6,8 +6,6 @@
 function getDocumentSize(): Size
 ```
 
-文档尺寸
-
-## Returns
+## 返回
 
 [`Size`](../interfaces/Size.md)

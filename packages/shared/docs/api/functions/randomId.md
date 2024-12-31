@@ -6,14 +6,12 @@
 function randomId(length): string
 ```
 
-伪随机 Id
-
-## Parameters
+## 参数
 
 ### length
 
 `number`
 
-## Returns
+## 返回
 
 `string`

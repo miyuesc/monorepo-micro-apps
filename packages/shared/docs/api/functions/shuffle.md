@@ -8,16 +8,18 @@ function shuffle<T>(array): T[]
 
 随机打乱数组
 
-## Type Parameters
+## 类型参数
 
 • **T**
 
-## Parameters
+## 参数
 
 ### array
 
 `T`[]
 
-## Returns
+待打乱数组
+
+## 返回
 
 `T`[]

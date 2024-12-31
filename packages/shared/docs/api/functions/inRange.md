@@ -9,23 +9,27 @@ function inRange(
    max): boolean
 ```
 
-是否在指定范围内
-
-## Parameters
+## 参数
 
 ### target
 
 `number`
 
+目标数字
+
 ### min
 
 `number`
+
+最小值
 
 ### max
 
 `number`
 
-## Returns
+最大值
+
+## 返回
 
 `boolean`
 

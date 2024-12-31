@@ -1,6 +1,14 @@
 import { isObject } from './typed'
 
 /**
+ * @categoryDescription String
+ * 字符串相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * @category String
  * 在指定位置插入字符串
  *
  * insertString('hello world', 6, 'my ') -> 'hello my world'
@@ -10,6 +18,7 @@ export function insert(str: string, index: number, insertStr: string): string {
 }
 
 /**
+ * @category String
  * 将反斜杠替换为斜杠
  */
 export function slash(str: string) {
@@ -17,6 +26,7 @@ export function slash(str: string) {
 }
 
 /**
+ * @category String
  * 首字母大写
  *
  * capitalize('hello')   -> 'Hello'
@@ -29,9 +39,10 @@ export function capitalize(str: string): string {
 }
 
 /**
+ * @category String
  * 多单词首字母大写
  *
- * pascal('hello world')   -> 'HelloWorld'
+ * pascal('hello world')  -> 'HelloWorld'
  */
 export function pascal(str: string): string {
   const parts = str?.split(/[.\-\s_]/).map(x => x.toLowerCase()) ?? []
@@ -43,9 +54,10 @@ export function pascal(str: string): string {
 }
 
 /**
+ * @category String
  * 转驼峰命名
  *
- * camel('hello world')   -> 'helloWorld'
+ * camel('hello world')  -> 'helloWorld'
  */
 export function camel(str: string): string {
   const parts
@@ -126,6 +138,7 @@ export function template(str: string, ...args: any[]): string {
 let idCounter: number = 0
 
 /**
+ * @category String
  * 递增 Id
  * @param prefix
  */
@@ -135,6 +148,7 @@ export function uniqueId(prefix?: string) {
 }
 
 /**
+ * @category String
  * 伪随机 Id
  * @param length
  */
@@ -152,7 +166,9 @@ export function randomId(length: number): string {
 }
 
 /**
+ * @category String
  * 转对象路径数组
+ * @param path 对象路径
  */
 export function toPathArray(path: string): string[] {
   const regex = /\[(\d+)\]/g

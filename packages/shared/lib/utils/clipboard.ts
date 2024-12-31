@@ -1,5 +1,16 @@
-// https://github.com/feross/clipboard-copy/blob/master/index.js
+/**
+ * @categoryDescription Clipboard
+ * 类型判断相关方法
+ * @see {@link https://github.com/feross/clipboard-copy/blob/master/index.js}
+ * @showCategories
+ * @module
+ */
 
+/**
+ * @category Clipboard
+ * 复制文本到剪贴板
+ * @param text 待复制的文本
+ */
 export async function clipboard(text: string) {
   if (navigator.clipboard?.writeText) {
     try {

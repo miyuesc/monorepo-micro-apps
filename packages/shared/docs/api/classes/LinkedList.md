@@ -1,26 +1,35 @@
 [@miyue-mma/shared](../index.md) / LinkedList
 
-# LinkedList
+# LinkedList\<T\>
 
-## Constructors
+LinkedList
+链表
+
+## 类型参数
+
+• **T**
+
+## 构造函数
 
 ### new LinkedList()
 
 ```ts
-new LinkedList(config): LinkedList
+new LinkedList<T>(config): LinkedList<T>
 ```
 
-#### Parameters
+#### 参数
 
 ##### config
 
 [`LinkedListConfig`](../interfaces/LinkedListConfig.md)
 
-#### Returns
+链表配置
 
-[`LinkedList`](LinkedList.md)
+#### 返回
 
-## Properties
+[`LinkedList`](LinkedList.md)\<`T`\>
+
+## 属性
 
 ### \_config
 
@@ -33,56 +42,44 @@ _config: LinkedListConfig;
 ### \_list
 
 ```ts
-_list: LinkedListNode[];
+_list: LinkedListNode<T>[];
 ```
 
-## Methods
-
-### \_createListNode()
-
-```ts
-_createListNode(value): LinkedListNode
-```
-
-#### Parameters
-
-##### value
-
-`unknown`
-
-#### Returns
-
-[`LinkedListNode`](../interfaces/LinkedListNode.md)
-
-***
+## 方法
 
 ### append()
 
 ```ts
-append(value): LinkedListNode
+append(value): LinkedListNode<T>
 ```
 
-#### Parameters
+追加节点
+
+#### 参数
 
 ##### value
 
-`unknown`
+`T`
 
-#### Returns
+节点的值
 
-[`LinkedListNode`](../interfaces/LinkedListNode.md)
+#### 返回
+
+[`LinkedListNode`](../interfaces/LinkedListNode.md)\<`T`\>
 
 ***
 
 ### clear()
 
 ```ts
-clear(): LinkedList
+clear(): LinkedList<T>
 ```
 
-#### Returns
+清空链表
 
-[`LinkedList`](LinkedList.md)
+#### 返回
+
+[`LinkedList`](LinkedList.md)\<`T`\>
 
 ***
 
@@ -92,26 +89,34 @@ clear(): LinkedList
 insert(
    value, 
    anchor, 
-   position): LinkedListNode
+position): LinkedListNode<T>
 ```
 
-#### Parameters
+中间插入节点
+
+#### 参数
 
 ##### value
 
-`unknown`
+`T`
+
+节点的值
 
 ##### anchor
 
-[`LinkedListNode`](../interfaces/LinkedListNode.md)
+[`LinkedListNode`](../interfaces/LinkedListNode.md)\<`T`\>
+
+锚点
 
 ##### position
 
 [`InsertPosition`](../type-aliases/InsertPosition.md) = `'before'`
 
-#### Returns
+插入位置
 
-[`LinkedListNode`](../interfaces/LinkedListNode.md)
+#### 返回
+
+[`LinkedListNode`](../interfaces/LinkedListNode.md)\<`T`\>
 
 ***
 
@@ -121,7 +126,9 @@ insert(
 isEmpty(): boolean
 ```
 
-#### Returns
+判断链表是否为空
+
+#### 返回
 
 `boolean`
 
@@ -130,18 +137,22 @@ isEmpty(): boolean
 ### prepend()
 
 ```ts
-prepend(value): LinkedListNode
+prepend(value): LinkedListNode<T>
 ```
 
-#### Parameters
+头部插入节点
+
+#### 参数
 
 ##### value
 
-`unknown`
+`T`
 
-#### Returns
+节点的值
 
-[`LinkedListNode`](../interfaces/LinkedListNode.md)
+#### 返回
+
+[`LinkedListNode`](../interfaces/LinkedListNode.md)\<`T`\>
 
 ***
 
@@ -151,6 +162,8 @@ prepend(value): LinkedListNode
 size(): number
 ```
 
-#### Returns
+获取链表的大小
+
+#### 返回
 
 `number`

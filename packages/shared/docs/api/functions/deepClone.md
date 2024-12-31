@@ -6,13 +6,11 @@
 function deepClone<T>(obj, hash): T
 ```
 
-深拷贝
-
-## Type Parameters
+## 类型参数
 
 • **T**
 
-## Parameters
+## 参数
 
 ### obj
 
@@ -22,6 +20,6 @@ function deepClone<T>(obj, hash): T
 
 `WeakMap`\<`object`, `any`\> = `...`
 
-## Returns
+## 返回
 
 `T`

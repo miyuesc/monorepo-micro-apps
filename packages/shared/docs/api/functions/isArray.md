@@ -6,12 +6,12 @@
 function isArray(arg): arg is any[]
 ```
 
-## Parameters
+## 参数
 
 ### arg
 
 `any`
 
-## Returns
+## 返回
 
 `arg is any[]`

@@ -9,9 +9,7 @@ function randomNum(
    integer?): number
 ```
 
-范围内随机数
-
-## Parameters
+## 参数
 
 ### min?
 
@@ -31,7 +29,7 @@ function randomNum(
 
 是否取整
 
-## Returns
+## 返回
 
 `number`
 

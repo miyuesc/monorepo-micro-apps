@@ -6,6 +6,6 @@
 function randomRgbaColor(): string
 ```
 
-## Returns
+## 返回
 
 `string`

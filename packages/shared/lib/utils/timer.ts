@@ -1,12 +1,27 @@
 import { isPlainObject } from './typed'
 
+/**
+ * @categoryDescription Timer
+ * 定时器相关方法
+ * @showCategories
+ * @module
+ */
+
 const nativeMax = Math.max
 const nativeMin = Math.min
 
 /**
+ * @category Timer
+ * @interface
  * 定时器
  */
-type CancelablePromise = Promise<any> & { cancel: any }
+export type CancelablePromise = Promise<any> & { cancel: any }
+
+/**
+ * @category Timer
+ * 延迟
+ * @param timeout 延迟时间
+ */
 export function sleep(timeout: number): CancelablePromise {
   let res: (v: string) => void
   let timer: ReturnType<typeof setTimeout> | undefined
@@ -16,22 +31,27 @@ export function sleep(timeout: number): CancelablePromise {
       resolve('done')
     }, timeout)
   }) as CancelablePromise
-  const cancel = function (data: string) {
+  promise.cancel = function (data: string) {
     res(data)
     clearTimeout(timer)
   }
-  promise.cancel = cancel
   return promise
 }
 
 /**
- * 防抖
+ * @category Timer
+ * @interface
+ * 防抖配置
  */
-interface DebounceOptions {
+export interface DebounceOptions {
   maxWait?: number
   leading?: boolean
   trailing?: boolean
 }
+/**
+ * @category Timer
+ * 防抖
+ */
 export function debounce<T extends (...args: any[]) => any>(func: T, wait: number, options?: DebounceOptions) {
   let lastArgs: unknown[] | undefined
   let lastThis: any
@@ -141,9 +161,10 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
 }
 
 /**
+ * @category Timer
  * 节流
  */
-interface ThrottleOptions {
+export interface ThrottleOptions {
   leading?: boolean
   trailing?: boolean
 }

@@ -6,6 +6,7 @@ export type RequestBodyGenerator<R = any, T extends Response = any> = (idx: numb
 export function commonPollingOver<T extends Response>(responseData: T) {
   return responseData.status !== 200
 }
+
 // 通用轮询请求
 export async function pollingRequest<R = any, T extends Response = any>(url: string, requestBodyGenerator: RequestBodyGenerator<R, T>, overPolling = commonPollingOver) {
   const resList: T[] = []

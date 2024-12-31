@@ -6,15 +6,15 @@
 function isPrime(num): boolean
 ```
 
-是否是素数
-
-## Parameters
+## 参数
 
 ### num
 
 `number`
 
-## Returns
+目标数字
+
+## 返回
 
 `boolean`
 

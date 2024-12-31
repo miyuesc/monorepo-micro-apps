@@ -2,10 +2,15 @@
 
 # StackConfig
 
-## Properties
+StackConfig
+栈配置
+
+## 属性
 
 ### maxLength
 
 ```ts
 maxLength: number;
 ```
+
+最大长度

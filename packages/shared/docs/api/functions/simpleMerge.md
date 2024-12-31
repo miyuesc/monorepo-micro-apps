@@ -6,13 +6,11 @@
 function simpleMerge<T>(target, source): T
 ```
 
-简易合并两个对象（仅合并第一层，如果第一层是引用类型，则会浅拷贝第二个参数同源属性）
-
-## Type Parameters
+## 类型参数
 
 • **T** *extends* `object`
 
-## Parameters
+## 参数
 
 ### target
 
@@ -22,6 +20,6 @@ function simpleMerge<T>(target, source): T
 
 `T`
 
-## Returns
+## 返回
 
 `T`

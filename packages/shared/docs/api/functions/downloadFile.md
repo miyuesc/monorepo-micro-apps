@@ -9,22 +9,26 @@ function downloadFile(
    type): void
 ```
 
-文件下载
-
-## Parameters
+## 参数
 
 ### buffer
 
 `BlobPart`
 
+文件流
+
 ### fileName
 
 `string`
+
+文件名
 
 ### type
 
 `string`
 
-## Returns
+文件类型
+
+## 返回
 
 `void`

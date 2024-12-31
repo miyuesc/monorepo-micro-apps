@@ -8,11 +8,11 @@ function flat<T>(data, props): T[]
 
 对象数组扁平化
 
-## Type Parameters
+## 类型参数
 
 • **T** *extends* `Record`\<`string`, `unknown`\>
 
-## Parameters
+## 参数
 
 ### data
 
@@ -26,6 +26,6 @@ function flat<T>(data, props): T[]
 
 配置项
 
-## Returns
+## 返回
 
 `T`[]
