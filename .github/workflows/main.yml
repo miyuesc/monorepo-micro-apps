@@ -42,11 +42,21 @@ jobs:
           cache: 'pnpm'
 
       # 执行npm脚本打包项目
-      - name: Install and Build
+      - name: Install
         run: |
           pnpm install
-          pnpm run build:shared
-          pnpm run build:ding-flow
+
+      - name: Build SharedUtils
+        run: |
+          cd ./packages/shared
+          pnpm install
+          pnpm run build:site
+
+      - name: Build DingFlow
+        run: |
+          cd ./packages/ding-flow
+          pnpm install
+          pnpm run build
 
       - name: Deploy DingFlow 🚀
         uses: cross-the-world/scp-pipeline@master
