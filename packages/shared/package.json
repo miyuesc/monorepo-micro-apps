@@ -45,9 +45,5 @@
     "typedoc-vitepress-theme": "^1.1.1",
     "vitepress": "^1.5.0"
   },
-  "private": false,
-  "devDependencies": {
-    "typedoc": "^0.27.6",
-    "typedoc-plugin-markdown": "^4.4.0"
-  }
+  "private": false
 }
