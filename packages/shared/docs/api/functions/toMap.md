@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / toMap
 
-# toMap()
+# 函数: toMap()
 
 ```ts
 function toMap<T>(

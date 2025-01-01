@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isFullDate
 
-# isFullDate()
+# 函数: isFullDate()
 
 ```ts
 function isFullDate(str): boolean
 ```
+
+完整日期格式(YYYY-MM-DD)
 
 ## 参数
 

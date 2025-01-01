@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / insert
 
-# insert()
+# 函数: insert()
 
 ```ts
 function insert(
@@ -8,6 +8,8 @@ function insert(
    index, 
    insertStr): string
 ```
+
+在指定位置插入字符串
 
 ## 参数
 

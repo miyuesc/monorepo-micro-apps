@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / findInTree
 
-# findInTree()
+# 函数: findInTree()
 
 ```ts
 function findInTree<T>(

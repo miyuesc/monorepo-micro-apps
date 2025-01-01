@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isSemanticVersion
 
-# isSemanticVersion()
+# 函数: isSemanticVersion()
 
 ```ts
 function isSemanticVersion(str, strict?): boolean
 ```
+
+语义化版本号
 
 ## 参数
 

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / Queue
 
-# Queue\<T\>
+# 类: Queue\<T\>
 
 Queue
 队列

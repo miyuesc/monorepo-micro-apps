@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isPrimitive
 
-# isPrimitive()
+# 函数: isPrimitive()
 
 ```ts
 function isPrimitive(value): boolean
 ```
+
+判断是否为非空原始值
 
 ## 参数
 

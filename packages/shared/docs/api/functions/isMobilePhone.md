@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isMobilePhone
 
-# isMobilePhone()
+# 函数: isMobilePhone()
 
 ```ts
 function isMobilePhone(str): boolean
 ```
+
+验证是移动手机电话号码
 
 ## 参数
 

@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / LinkedListNode
 
-# LinkedListNode\<T\>
+# 接口: LinkedListNode\<T\>
+
+链表节点
 
 ## 类型参数
 

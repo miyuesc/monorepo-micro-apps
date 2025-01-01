@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / CancelablePromise
 
-# CancelablePromise
+# 接口: CancelablePromise
+
+定时器
 
 ## 属性
 

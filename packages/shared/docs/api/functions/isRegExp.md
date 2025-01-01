@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isRegExp
 
-# isRegExp()
+# 函数: isRegExp()
 
 ```ts
 function isRegExp(val): val is RegExp
 ```
+
+判断是否为 RegExp
 
 ## 参数
 

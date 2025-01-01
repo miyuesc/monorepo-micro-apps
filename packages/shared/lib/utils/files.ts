@@ -8,8 +8,8 @@ import { isNumber } from './typed'
  */
 
 /**
- * @category File
  * 文件下载
+ * @category File
  * @param buffer 文件流
  * @param fileName 文件名
  * @param type 文件类型
@@ -28,8 +28,8 @@ export function downloadFile(buffer: BlobPart, fileName: string, type: string) {
 }
 
 /**
- * @category File
  * 字节数转义
+ * @category File
  * @param bytes 字节数
  */
 export function bytesToSize(bytes: number) {

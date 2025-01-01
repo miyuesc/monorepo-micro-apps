@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / limitInRange
 
-# limitInRange()
+# 函数: limitInRange()
 
 ```ts
 function limitInRange(
@@ -8,6 +8,8 @@ function limitInRange(
    min, 
    max): number
 ```
+
+限制 num 在指定范围内的随机数
 
 ## 参数
 

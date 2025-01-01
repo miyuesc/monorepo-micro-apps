@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isEmail
 
-# isEmail()
+# 函数: isEmail()
 
 ```ts
 function isEmail(str): boolean
 ```
+
+校验 邮箱
 
 ## 参数
 

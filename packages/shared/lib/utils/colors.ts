@@ -6,8 +6,8 @@
  */
 
 /**
- * @category Colors
  * 随机生成十六进制颜色
+ * @category Colors
  */
 export function randomHexColor(): string {
   let hex: string = Math.floor(Math.random() * 16777216).toString(16) // 生成 ffffff 以内16进制数
@@ -18,8 +18,8 @@ export function randomHexColor(): string {
   return `#${hex}` // 返回‘#’开头16进制颜色
 }
 /**
- * @category Colors
  * 随机生成RGB颜色
+ * @category Colors
  */
 export function randomRgbColor(): string {
   const r = Math.floor(Math.random() * 256) // 随机生成256以内r值
@@ -28,8 +28,8 @@ export function randomRgbColor(): string {
   return `rgb(${r},${g},${b})` // 返回rgb(r,g,b)格式颜色
 }
 /**
- * @category Colors
  * 随机生成RGBA颜色
+ * @category Colors
  */
 export function randomRgbaColor(): string {
   const r = Math.floor(Math.random() * 256) // 随机生成256以内r值
@@ -40,8 +40,8 @@ export function randomRgbaColor(): string {
 }
 
 /**
- * @category Colors
  * RGB颜色转十六进制颜色
+ * @category Colors
  * @param rgb RGB颜色
  */
 export function rgbToHex(rgb: string): string | undefined {
@@ -63,8 +63,8 @@ export function rgbToHex(rgb: string): string | undefined {
 }
 
 /**
- * @category Colors
  * 十六进制颜色转RGB颜色
+ * @category Colors
  * @param hex 十六进制颜色
  */
 export function hexToRgb(hex: string): string | undefined {

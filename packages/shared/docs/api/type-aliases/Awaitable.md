@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / Awaitable
 
-# Awaitable\<T\>
+# 类型别名: Awaitable\<T\>
 
 ```ts
 type Awaitable<T> = T | PromiseLike<T>;

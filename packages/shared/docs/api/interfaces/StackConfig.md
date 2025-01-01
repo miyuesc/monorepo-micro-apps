@@ -1,8 +1,7 @@
 [@miyue-mma/shared](../index.md) / StackConfig
 
-# StackConfig
+# 接口: StackConfig
 
-StackConfig
 栈配置
 
 ## 属性

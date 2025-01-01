@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / DebounceOptions
 
-# DebounceOptions
+# 接口: DebounceOptions
+
+防抖配置
 
 ## 属性
 

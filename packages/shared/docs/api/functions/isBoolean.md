@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isBoolean
 
-# isBoolean()
+# 函数: isBoolean()
 
 ```ts
 function isBoolean(val): val is boolean
 ```
+
+判断是否为 boolean
 
 ## 参数
 

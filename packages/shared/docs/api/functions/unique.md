@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / unique
 
-# unique()
+# 函数: unique()
 
 ```ts
 function unique<T>(array): T[]

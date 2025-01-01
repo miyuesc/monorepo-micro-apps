@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / calculateMidpoint
 
-# calculateMidpoint()
+# 函数: calculateMidpoint()
 
 ```ts
 function calculateMidpoint(point1, point2): IPoint

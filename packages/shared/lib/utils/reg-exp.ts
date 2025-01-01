@@ -7,8 +7,8 @@
  */
 
 /**
- * @category RegExp
  * 验证是移动手机电话号码
+ * @category RegExp
  * @param str
  */
 export function isMobilePhone(str: string): boolean {
@@ -16,8 +16,8 @@ export function isMobilePhone(str: string): boolean {
   return reg.test(str)
 }
 /**
- * @category RegExp
  * 验证固定电话号码
+ * @category RegExp
  * @param str
  */
 export function isFixedTelephone(str: string): boolean {
@@ -25,8 +25,8 @@ export function isFixedTelephone(str: string): boolean {
   return reg.test(str)
 }
 /**
- * @category RegExp
  * 校验 ip 地址
+ * @category RegExp
  * @param str
  */
 export function isIP(str: string, withPort?: boolean): boolean {
@@ -37,8 +37,8 @@ export function isIP(str: string, withPort?: boolean): boolean {
   return reg.test(str)
 }
 /**
- * @category RegExp
  * 校验 ip 地址和端口
+ * @category RegExp
  * @param str
  */
 export function isIPWithPort(str: string): boolean {
@@ -47,8 +47,8 @@ export function isIPWithPort(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 校验 子网掩码
+ * @category RegExp
  * @param str
  */
 export function isSubnetMask(str: string): boolean {
@@ -57,8 +57,8 @@ export function isSubnetMask(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 校验 Url
+ * @category RegExp
  * @param str
  * @param withProtocol 是否包含协议
  */
@@ -71,8 +71,8 @@ export function isUrl(str: string, withProtocol?: boolean): boolean {
 }
 
 /**
- * @category RegExp
  * 校验 Url 包含协议
+ * @category RegExp
  * @param str
  */
 export function isUrlWithProtocol(str: string) {
@@ -81,8 +81,8 @@ export function isUrlWithProtocol(str: string) {
 }
 
 /**
- * @category RegExp
  * 校验 邮箱
+ * @category RegExp
  * @param str
  */
 export function isEmail(str: string): boolean {
@@ -91,8 +91,8 @@ export function isEmail(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 校验 车牌号
+ * @category RegExp
  * @param str
  */
 export function isOldEnergyLicensePlate(str: string): boolean {
@@ -102,8 +102,8 @@ export function isOldEnergyLicensePlate(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 校验 验证新能源车牌
+ * @category RegExp
  * @param str
  */
 export function isNewEnergyLicensePlate(str: string): boolean {
@@ -113,8 +113,8 @@ export function isNewEnergyLicensePlate(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 验证车牌号（包含新旧能源车牌）
+ * @category RegExp
  * @param str
  */
 export function isLicensePlate(str: string): boolean {
@@ -122,8 +122,8 @@ export function isLicensePlate(str: string): boolean {
 }
 
 /**
- * @category RegExp
  * 校验经度
+ * @category RegExp
  * @param str
  */
 export function isLongitude(str: string): boolean {
@@ -131,8 +131,8 @@ export function isLongitude(str: string): boolean {
   return reg.test(str)
 }
 /**
- * @category RegExp
  * 整数部分为 [+-] 0-90小数部分为0到6位
+ * @category RegExp
  * @param str
  */
 export function isLatitude(str: string): boolean {
@@ -141,8 +141,8 @@ export function isLatitude(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 校验简单密码, 密码长度为6-20位, 必须包含数字和字母
+ * @category RegRex
  * @param str
  */
 export function isSimplePassword(str: string): boolean {
@@ -151,8 +151,8 @@ export function isSimplePassword(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 校验密码 严格模式
+ * @category RegRex
  * @param str
  */
 export function isStrictPassword(str: string): boolean {
@@ -161,8 +161,8 @@ export function isStrictPassword(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 字母、数字、下划线或中划线组成,不能以下划线或者中划线开头和结尾 复杂字符串
+ * @category RegRex
  * @param str
  */
 export function isComplexString(str: string): boolean {
@@ -171,8 +171,8 @@ export function isComplexString(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 完整日期格式(YYYY-MM-DD)
+ * @category RegRex
  * @param str
  */
 export function isFullDate(str: string): boolean {
@@ -181,8 +181,8 @@ export function isFullDate(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 标准 12 小时时间格式(hh:mm:ss)
+ * @category RegRex
  * @param str
  */
 export function isTwelveTime(str: string): boolean {
@@ -191,8 +191,8 @@ export function isTwelveTime(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 标准 24 小时时间格式(HH:mm:ss)
+ * @category RegRex
  * @param str
  */
 export function isTwentyFourTime(str: string): boolean {
@@ -201,8 +201,8 @@ export function isTwentyFourTime(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 严格语义化版本号
+ * @category RegRex
  * @param str
  */
 export function isStrictSemanticVersion(str: string): boolean {
@@ -211,8 +211,8 @@ export function isStrictSemanticVersion(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 语义化版本号
+ * @category RegRex
  * @param str
  * @param strict 是否严格模式
  */
@@ -225,8 +225,8 @@ export function isSemanticVersion(str: string, strict?: boolean): boolean {
 }
 
 /**
- * @category RegRex
  * 标准化货币格式(必须包含分隔符，支持复数与小数)
+ * @category RegRex
  * @param str
  */
 export function isStandardCurrency(str: string): boolean {
@@ -235,8 +235,8 @@ export function isStandardCurrency(str: string): boolean {
 }
 
 /**
- * @category RegRex
  * 二代身份证格式
+ * @category RegRex
  * @param str
  */
 export function isIdCard(str: string): boolean {

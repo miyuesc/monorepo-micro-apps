@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / diff
 
-# diff()
+# 函数: diff()
 
 ```ts
 function diff<T>(source, target): T[]

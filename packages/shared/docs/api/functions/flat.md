@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / flat
 
-# flat()
+# 函数: flat()
 
 ```ts
 function flat<T>(data, props): T[]

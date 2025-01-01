@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / randomNum
 
-# randomNum()
+# 函数: randomNum()
 
 ```ts
 function randomNum(
@@ -8,6 +8,8 @@ function randomNum(
    max?, 
    integer?): number
 ```
+
+范围内随机数
 
 ## 参数
 

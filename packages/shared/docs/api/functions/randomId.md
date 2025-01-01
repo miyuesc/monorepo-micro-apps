@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / randomId
 
-# randomId()
+# 函数: randomId()
 
 ```ts
 function randomId(length): string
 ```
+
+伪随机 Id
 
 ## 参数
 

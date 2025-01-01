@@ -7,8 +7,8 @@
  */
 
 /**
- * @category Clipboard
  * 复制文本到剪贴板
+ * @category Clipboard
  * @param text 待复制的文本
  */
 export async function clipboard(text: string) {

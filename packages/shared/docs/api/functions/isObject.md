@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isObject
 
-# isObject()
+# 函数: isObject()
 
 ```ts
 function isObject(val): val is Record<any, any>
 ```
+
+判断是否为 object 引用类型
 
 ## 参数
 

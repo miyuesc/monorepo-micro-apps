@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / Nullable
 
-# Nullable\<T\>
+# 类型别名: Nullable\<T\>
 
 ```ts
 type Nullable<T> = T | null | undefined;

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / setTranslate
 
-# setTranslate()
+# 函数: setTranslate()
 
 ```ts
 function setTranslate(
@@ -8,6 +8,8 @@ function setTranslate(
    x, 
    y): void
 ```
+
+设置元素 transform: translate 移动
 
 ## 参数
 

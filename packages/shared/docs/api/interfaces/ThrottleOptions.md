@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / ThrottleOptions
 
-# ThrottleOptions
+# 接口: ThrottleOptions
+
+节流
 
 ## 属性
 

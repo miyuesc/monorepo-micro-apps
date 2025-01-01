@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isUrlWithProtocol
 
-# isUrlWithProtocol()
+# 函数: isUrlWithProtocol()
 
 ```ts
 function isUrlWithProtocol(str): boolean
 ```
+
+校验 Url 包含协议
 
 ## 参数
 

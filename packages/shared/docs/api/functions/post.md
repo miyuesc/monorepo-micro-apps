@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / post
 
-# post()
+# 函数: post()
 
 ```ts
 function post(): void

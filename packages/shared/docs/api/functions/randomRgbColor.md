@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / randomRgbColor
 
-# randomRgbColor()
+# 函数: randomRgbColor()
 
 ```ts
 function randomRgbColor(): string
 ```
+
+随机生成RGB颜色
 
 ## 返回
 

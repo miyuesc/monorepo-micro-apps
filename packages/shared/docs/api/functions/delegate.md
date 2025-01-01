@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / delegate
 
-# delegate()
+# 函数: delegate()
 
 ```ts
 function delegate<K>(
@@ -10,6 +10,8 @@ function delegate<K>(
    callback, 
    capture?): object
 ```
+
+事件代理
 
 ## 类型参数
 

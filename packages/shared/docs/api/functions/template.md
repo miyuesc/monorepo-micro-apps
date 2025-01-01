@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / template
 
-# template()
+# 函数: template()
 
 ## 调用签名
 
@@ -10,6 +10,9 @@ function template(
    object, 
    fallback?): string
 ```
+
+非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
+您可以传递一个后备值作为第三个参数
 
 ### 参数
 
@@ -28,11 +31,6 @@ function template(
 ### 返回
 
 `string`
-
-### Description
-
-非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
-您可以传递一个后备值作为第三个参数
 
 ### 链接
 
@@ -65,6 +63,9 @@ const result = namedTemplate(
 function template(str, ...args): string
 ```
 
+非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
+您可以传递一个后备值作为第三个参数
+
 ### 参数
 
 #### str
@@ -78,11 +79,6 @@ function template(str, ...args): string
 ### 返回
 
 `string`
-
-### Description
-
-非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
-您可以传递一个后备值作为第三个参数
 
 ### 链接
 

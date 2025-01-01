@@ -1,10 +1,14 @@
 [@miyue-mma/shared](../index.md) / EventEmitterListener
 
-# EventEmitterListener()
+# 接口: EventEmitterListener()
+
+事件监听器毁掉函数
 
 ```ts
 interface EventEmitterListener(...args): unknown
 ```
+
+事件监听器毁掉函数
 
 ## 参数
 

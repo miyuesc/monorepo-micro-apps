@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isSet
 
-# isSet()
+# 函数: isSet()
 
 ```ts
 function isSet(val): val is Set<any>
 ```
+
+判断是否为 Set
 
 ## 参数
 

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / ElementOf
 
-# ElementOf\<T\>
+# 类型别名: ElementOf\<T\>
 
 ```ts
 type ElementOf<T> = T extends infer E[] ? E : never;

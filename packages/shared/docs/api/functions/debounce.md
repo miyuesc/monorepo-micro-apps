@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / debounce
 
-# debounce()
+# 函数: debounce()
 
 ```ts
 function debounce<T>(
@@ -8,6 +8,8 @@ function debounce<T>(
    wait, 
    options?): (this, ...cargs) => unknown
 ```
+
+防抖
 
 ## 类型参数
 

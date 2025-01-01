@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / capitalize
 
-# capitalize()
+# 函数: capitalize()
 
 ```ts
 function capitalize(str): string
 ```
+
+首字母大写
 
 ## 参数
 

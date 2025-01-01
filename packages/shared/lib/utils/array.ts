@@ -55,6 +55,10 @@ export function shuffle<T>(array: T[]): T[] {
   return array
 }
 
+/**
+ * 数组分组条件
+ * @category Array
+ */
 export type PartitionFilter<T> = (i: T, idx: number, arr: readonly T[]) => any
 
 /**
@@ -81,8 +85,8 @@ export function partition<T>(array: readonly T[], ...filters: PartitionFilter<T>
 }
 
 /**
- * @category Array
  * 扁平化对象数组的配置参数
+ * @category Array
  */
 export interface FlatProps {
   children?: string
@@ -116,8 +120,8 @@ export function flat<T extends Record<string, unknown>>(data: T[], props: FlatPr
 }
 
 /**
- * @category Array
  * 转成对象结构的配置参数
+ * @category Array
  */
 export interface ToMapProps {
   useBoolean?: boolean
@@ -148,8 +152,8 @@ export function toMap<T extends Record<string, unknown>>(data: T[], key: string,
 }
 
 /**
- * @category Array
  * 生成标签的配置参数
+ * @category Array
  */
 export interface GenerateLabelProps {
   key?: string
@@ -200,8 +204,8 @@ export function sortWith<T extends Record<string, unknown>>(articles: T[], key: 
 }
 
 /**
- * @category Array
  * 树形数组的配置参数
+ * @category Array
  */
 export interface TreeArrayProps {
   children?: string

@@ -1,8 +1,7 @@
 [@miyue-mma/shared](../index.md) / LinkedList
 
-# LinkedList\<T\>
+# 类: LinkedList\<T\>
 
-LinkedList
 链表
 
 ## 类型参数

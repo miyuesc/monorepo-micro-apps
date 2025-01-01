@@ -6,8 +6,8 @@
  */
 
 /**
- * @category Math
  * 坐标类型
+ * @category Math
  */
 export interface IPoint {
   x: number
@@ -16,6 +16,7 @@ export interface IPoint {
 
 /**
  * 计算两点之间的距离
+ * @category Math
  * @param point1
  * @param point2
  */
@@ -27,6 +28,7 @@ export function calculateDistance(point1: IPoint, point2: IPoint): number {
 
 /**
  * 计算两点之间的中点
+ * @category Math
  * @param point1
  * @param point2
  */
@@ -39,6 +41,7 @@ export function calculateMidpoint(point1: IPoint, point2: IPoint): IPoint {
 
 /**
  * 判断点是否在图形内
+ * @category Math
  * @param polygon 多边形坐标数组
  * @param point 点
  */

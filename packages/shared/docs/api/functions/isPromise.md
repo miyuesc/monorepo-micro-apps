@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isPromise
 
-# isPromise()
+# 函数: isPromise()
 
 ```ts
 function isPromise<T>(val): val is Promise<T>
 ```
+
+判断是否为 Promise
 
 ## 类型参数
 

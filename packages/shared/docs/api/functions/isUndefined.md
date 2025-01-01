@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isUndefined
 
-# isUndefined()
+# 函数: isUndefined()
 
 ```ts
 function isUndefined(val): val is undefined
 ```
+
+判断是否为 undefined
 
 ## 参数
 

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / create
 
-# create()
+# 函数: create()
 
 ```ts
 function create<T>(length, formatter?): T[]

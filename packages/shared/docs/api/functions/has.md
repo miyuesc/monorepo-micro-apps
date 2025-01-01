@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / has
 
-# has()
+# 函数: has()
 
 ```ts
 function has(obj, path): boolean
 ```
+
+判断对象是否具有指定路径的属性
 
 ## 参数
 

@@ -8,8 +8,8 @@ import { isNumber, isUndefined } from './typed'
  */
 
 /**
- * @category Number
  * 范围内随机数
+ * @category Number
  * @param [min] 最小值
  * @param [max] 最大值
  * @param [integer] 是否取整
@@ -28,8 +28,8 @@ export function randomNum(min?: number, max?: number, integer: boolean = false):
 }
 
 /**
- * @category Number
  * 数字是否在指定范围内
+ * @category Number
  * @param target 目标数字
  * @param min 最小值
  * @param max 最大值
@@ -40,8 +40,8 @@ export function inRange(target: number, min: number, max: number): boolean {
 }
 
 /**
- * @category Number
  * 是否是素数
+ * @category Number
  * @param num 目标数字
  * @return boolean
  */
@@ -64,8 +64,8 @@ export function isPrime(num: number): boolean {
 }
 
 /**
- * @category Number
  * 限制 num 在指定范围内的随机数
+ * @category Number
  * @param num 目标数字
  * @param min 最小值
  * @param max 最大值

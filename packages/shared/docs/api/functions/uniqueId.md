@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / uniqueId
 
-# uniqueId()
+# 函数: uniqueId()
 
 ```ts
 function uniqueId(prefix?): string
 ```
+
+递增 Id
 
 ## 参数
 

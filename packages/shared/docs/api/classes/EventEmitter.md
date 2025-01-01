@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / EventEmitter
 
-# EventEmitter
+# 类: EventEmitter
+
+事件发布订阅
 
 ## 构造函数
 

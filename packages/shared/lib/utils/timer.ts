@@ -11,16 +11,16 @@ const nativeMax = Math.max
 const nativeMin = Math.min
 
 /**
- * @category Timer
  * @interface
  * 定时器
+ * @category Timer
  */
 export type CancelablePromise = Promise<any> & { cancel: any }
 
 /**
- * @category Timer
  * 延迟
  * @param timeout 延迟时间
+ * @category Timer
  */
 export function sleep(timeout: number): CancelablePromise {
   let res: (v: string) => void
@@ -39,9 +39,9 @@ export function sleep(timeout: number): CancelablePromise {
 }
 
 /**
- * @category Timer
  * @interface
  * 防抖配置
+ * @category Timer
  */
 export interface DebounceOptions {
   maxWait?: number
@@ -49,8 +49,8 @@ export interface DebounceOptions {
   trailing?: boolean
 }
 /**
- * @category Timer
  * 防抖
+ * @category Timer
  */
 export function debounce<T extends (...args: any[]) => any>(func: T, wait: number, options?: DebounceOptions) {
   let lastArgs: unknown[] | undefined
@@ -161,8 +161,8 @@ export function debounce<T extends (...args: any[]) => any>(func: T, wait: numbe
 }
 
 /**
- * @category Timer
  * 节流
+ * @category Timer
  */
 export interface ThrottleOptions {
   leading?: boolean

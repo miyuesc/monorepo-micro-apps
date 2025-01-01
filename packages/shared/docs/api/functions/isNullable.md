@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isNullable
 
-# isNullable()
+# 函数: isNullable()
 
 ```ts
 function isNullable(value): boolean
 ```
+
+判断是否为 null 或 undefined
 
 ## 参数
 

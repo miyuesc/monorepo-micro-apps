@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / deepClone
 
-# deepClone()
+# 函数: deepClone()
 
 ```ts
 function deepClone<T>(obj, hash): T
 ```
+
+深拷贝
 
 ## 类型参数
 

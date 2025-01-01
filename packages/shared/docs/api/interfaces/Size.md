@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / Size
 
-# Size
+# 接口: Size
+
+文档尺寸
 
 ## 属性
 

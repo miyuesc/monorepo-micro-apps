@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isFixedTelephone
 
-# isFixedTelephone()
+# 函数: isFixedTelephone()
 
 ```ts
 function isFixedTelephone(str): boolean
 ```
+
+验证固定电话号码
 
 ## 参数
 

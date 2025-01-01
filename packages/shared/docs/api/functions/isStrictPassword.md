@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isStrictPassword
 
-# isStrictPassword()
+# 函数: isStrictPassword()
 
 ```ts
 function isStrictPassword(str): boolean
 ```
+
+校验密码 严格模式
 
 ## 参数
 

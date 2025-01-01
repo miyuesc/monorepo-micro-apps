@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / getScrollBarWidth
 
-# getScrollBarWidth()
+# 函数: getScrollBarWidth()
 
 ```ts
 function getScrollBarWidth(element): number
 ```
+
+滚动条尺寸
 
 ## 参数
 

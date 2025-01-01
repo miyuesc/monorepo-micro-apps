@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / bind
 
-# bind()
+# 函数: bind()
 
 ```ts
 function bind<K>(
@@ -9,6 +9,8 @@ function bind<K>(
    listener, 
    capture?): object
 ```
+
+元素事件绑定
 
 ## 类型参数
 

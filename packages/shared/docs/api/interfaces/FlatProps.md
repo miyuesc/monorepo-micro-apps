@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / FlatProps
 
-# FlatProps
+# 接口: FlatProps
+
+扁平化对象数组的配置参数
 
 ## 属性
 

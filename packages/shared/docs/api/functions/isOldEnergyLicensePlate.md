@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isOldEnergyLicensePlate
 
-# isOldEnergyLicensePlate()
+# 函数: isOldEnergyLicensePlate()
 
 ```ts
 function isOldEnergyLicensePlate(str): boolean
 ```
+
+校验 车牌号
 
 ## 参数
 

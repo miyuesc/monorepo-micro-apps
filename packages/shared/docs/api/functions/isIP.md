@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isIP
 
-# isIP()
+# 函数: isIP()
 
 ```ts
 function isIP(str, withPort?): boolean
 ```
+
+校验 ip 地址
 
 ## 参数
 

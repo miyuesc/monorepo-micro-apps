@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isWeakMap
 
-# isWeakMap()
+# 函数: isWeakMap()
 
 ```ts
 function isWeakMap(val): val is WeakMap<any, any>
 ```
+
+判断是否为 WeakMap
 
 ## 参数
 

@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / GenerateLabelProps
 
-# GenerateLabelProps
+# 接口: GenerateLabelProps
+
+生成标签的配置参数
 
 ## 属性
 

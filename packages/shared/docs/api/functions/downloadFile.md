@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / downloadFile
 
-# downloadFile()
+# 函数: downloadFile()
 
 ```ts
 function downloadFile(
@@ -8,6 +8,8 @@ function downloadFile(
    fileName, 
    type): void
 ```
+
+文件下载
 
 ## 参数
 

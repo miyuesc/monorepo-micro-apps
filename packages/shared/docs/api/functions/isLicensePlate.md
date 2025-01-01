@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isLicensePlate
 
-# isLicensePlate()
+# 函数: isLicensePlate()
 
 ```ts
 function isLicensePlate(str): boolean
 ```
+
+验证车牌号（包含新旧能源车牌）
 
 ## 参数
 

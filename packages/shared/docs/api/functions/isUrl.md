@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isUrl
 
-# isUrl()
+# 函数: isUrl()
 
 ```ts
 function isUrl(str, withProtocol?): boolean
 ```
+
+校验 Url
 
 ## 参数
 

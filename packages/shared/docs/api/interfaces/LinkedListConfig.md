@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / LinkedListConfig
 
-# LinkedListConfig
+# 接口: LinkedListConfig
+
+链表配置
 
 ## 属性
 

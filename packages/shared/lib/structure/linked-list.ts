@@ -6,9 +6,9 @@
  */
 
 /**
- * @category LinkedList
- * @interface
  * 链表节点
+ * @interface
+ * @category LinkedList
  * @property value 当前节点的值
  * @property prev 上一个节点
  * @property next 下一个节点
@@ -20,9 +20,9 @@ export interface LinkedListNode<T> {
 }
 
 /**
+ * 链表配置
  * @category LinkedList
  * @interface
- * 链表配置
  * @property maxLength 最大长度
  */
 export interface LinkedListConfig {
@@ -30,17 +30,17 @@ export interface LinkedListConfig {
 }
 
 /**
+ * 插入位置
  * @category LinkedList
  * @type
- * 插入位置
  * @typeParam before 插入到节点之前
  * @typeParam after 插入到节点之后
  */
 export type InsertPosition = 'before' | 'after'
 
 /**
- * @class LinkedList
  * 链表
+ * @category LinkedList
  */
 export class LinkedList<T> {
   _config: LinkedListConfig

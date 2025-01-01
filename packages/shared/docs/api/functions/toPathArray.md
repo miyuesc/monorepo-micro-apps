@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / toPathArray
 
-# toPathArray()
+# 函数: toPathArray()
 
 ```ts
 function toPathArray(path): string[]
 ```
+
+转对象路径数组
 
 ## 参数
 

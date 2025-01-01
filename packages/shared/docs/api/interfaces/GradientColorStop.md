@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / GradientColorStop
 
-# GradientColorStop
+# 接口: GradientColorStop
+
+渐变色梯度
 
 ## 属性
 

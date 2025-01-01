@@ -2,12 +2,26 @@
 import { graphic } from 'echarts/core'
 import { isPlainObject } from '../utils/typed'
 
+/**
+ * @categoryDescription EchartsColors
+ * 对象相关方法
+ * @showCategories
+ * @module
+ */
+
+/**
+ * 渐变色梯度
+ * @category EchartsColors
+ */
 export interface GradientColorStop {
   offset: number
   color: string
 }
 
-// 辅助函数 1. 渐变色梯度
+/**
+ * 渐变色梯度辅助函数
+ * @category EchartsColors
+ */
 export function colorStepsHelper(
   colors?: GradientColorStop[] | string[],
 ): GradientColorStop[] | undefined {
@@ -25,7 +39,10 @@ export function colorStepsHelper(
   return newColors
 }
 
-// 线性渐变
+/**
+ * 线性渐变
+ * @category EchartsColors
+ */
 export function eLinearGradient(
   x1: number,
   y1: number,
@@ -38,7 +55,10 @@ export function eLinearGradient(
   return new graphic.LinearGradient(x1, y1, x2, y2, newColors, cord)
 }
 
-// 径向渐变
+/**
+ * 径向渐变
+ * @category EchartsColors
+ */
 export function eRadialGradient(
   x: number,
   y: number,

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / eRadialGradient
 
-# eRadialGradient()
+# 函数: eRadialGradient()
 
 ```ts
 function eRadialGradient(
@@ -10,6 +10,8 @@ function eRadialGradient(
    colors?, 
    cord?): graphic.RadialGradient
 ```
+
+径向渐变
 
 ## 参数
 

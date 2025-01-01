@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / TreeArrayProps
 
-# TreeArrayProps
+# 接口: TreeArrayProps
+
+树形数组的配置参数
 
 ## 属性
 

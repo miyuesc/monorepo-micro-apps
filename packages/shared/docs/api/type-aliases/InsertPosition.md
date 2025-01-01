@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / InsertPosition
 
-# InsertPosition
+# 类型别名: InsertPosition
 
 ```ts
 type InsertPosition = "before" | "after";
 ```
+
+插入位置
 
 ## 类型参数
 

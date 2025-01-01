@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isPrime
 
-# isPrime()
+# 函数: isPrime()
 
 ```ts
 function isPrime(num): boolean
 ```
+
+是否是素数
 
 ## 参数
 

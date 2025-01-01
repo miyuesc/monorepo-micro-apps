@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / ToMapProps
 
-# ToMapProps
+# 接口: ToMapProps
+
+转成对象结构的配置参数
 
 ## 属性
 

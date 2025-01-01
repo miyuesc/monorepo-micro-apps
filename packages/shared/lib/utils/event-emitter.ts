@@ -8,8 +8,8 @@ import { isArray, isNullable } from './typed'
  */
 
 /**
- * @category EventEmitter
  * 事件监听器毁掉函数
+ * @category EventEmitter
  */
 export interface EventEmitterListener {
   (...args: unknown[]): unknown
@@ -18,9 +18,8 @@ export interface EventEmitterListener {
 }
 
 /**
- * @category EventEmitter
- * @class
  * 事件发布订阅
+ * @category EventEmitter
  */
 export class EventEmitter {
   private _events: { [p: string]: EventEmitterListener | EventEmitterListener[] }
@@ -248,7 +247,7 @@ export class EventEmitter {
 }
 
 /**
- * @category EventEmitter
  * 事件发布订阅实例
+ * @category EventEmitter
  */
 export const emitterInstance = new EventEmitter()

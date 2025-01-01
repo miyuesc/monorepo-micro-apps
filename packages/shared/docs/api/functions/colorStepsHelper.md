@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / colorStepsHelper
 
-# colorStepsHelper()
+# 函数: colorStepsHelper()
 
 ```ts
 function colorStepsHelper(colors?): GradientColorStop[] | undefined
 ```
+
+渐变色梯度辅助函数
 
 ## 参数
 

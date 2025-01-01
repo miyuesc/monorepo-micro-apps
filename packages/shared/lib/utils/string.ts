@@ -8,28 +8,24 @@ import { isObject } from './typed'
  */
 
 /**
- * @category String
  * 在指定位置插入字符串
- *
- * insertString('hello world', 6, 'my ') -> 'hello my world'
+ * @category String
  */
 export function insert(str: string, index: number, insertStr: string): string {
   return str.substring(0, index) + insertStr + str.substring(index)
 }
 
 /**
- * @category String
  * 将反斜杠替换为斜杠
+ * @category String
  */
 export function slash(str: string) {
   return str.replace(/\\/g, '/')
 }
 
 /**
- * @category String
  * 首字母大写
- *
- * capitalize('hello')   -> 'Hello'
+ * @category String
  */
 export function capitalize(str: string): string {
   if (!str || str.length === 0)
@@ -39,10 +35,8 @@ export function capitalize(str: string): string {
 }
 
 /**
- * @category String
  * 多单词首字母大写
- *
- * pascal('hello world')  -> 'HelloWorld'
+ * @category String
  */
 export function pascal(str: string): string {
   const parts = str?.split(/[.\-\s_]/).map(x => x.toLowerCase()) ?? []
@@ -54,10 +48,8 @@ export function pascal(str: string): string {
 }
 
 /**
- * @category String
  * 转驼峰命名
- *
- * camel('hello world')  -> 'helloWorld'
+ * @category String
  */
 export function camel(str: string): string {
   const parts
@@ -75,11 +67,10 @@ export function camel(str: string): string {
 }
 
 /**
- * @category String
  *
- * @description
  * 非常简单的模板引擎，就像Python的`.format()`一样支持以基于索引或基于对象名的方法传递变量在使用基于对象名的方法时，
  * 您可以传递一个后备值作为第三个参数
+ * @category String
  *
  * @link https://github.com/antfu/utils/blob/main/src/string.ts
  *
@@ -137,8 +128,8 @@ export function template(str: string, ...args: any[]): string {
 let idCounter: number = 0
 
 /**
- * @category String
  * 递增 Id
+ * @category String
  * @param prefix
  */
 export function uniqueId(prefix?: string) {
@@ -147,8 +138,8 @@ export function uniqueId(prefix?: string) {
 }
 
 /**
- * @category String
  * 伪随机 Id
+ * @category String
  * @param length
  */
 export function randomId(length: number): string {
@@ -165,8 +156,8 @@ export function randomId(length: number): string {
 }
 
 /**
- * @category String
  * 转对象路径数组
+ * @category String
  * @param path 对象路径
  */
 export function toPathArray(path: string): string[] {

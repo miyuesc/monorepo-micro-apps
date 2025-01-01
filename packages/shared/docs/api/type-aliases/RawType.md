@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / RawType
 
-# RawType
+# 类型别名: RawType
 
 ```ts
 type RawType = 
@@ -18,3 +18,5 @@ type RawType =
   | "weakmap"
   | "weakset";
 ```
+
+基础类型

@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / getRawType
 
-# getRawType()
+# 函数: getRawType()
 
 ```ts
 function getRawType(value): RawType
 ```
+
+获取类型
 
 ## 参数
 

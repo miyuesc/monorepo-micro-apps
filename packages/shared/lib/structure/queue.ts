@@ -6,8 +6,8 @@
  */
 
 /**
- * @category Queue
  * 队列配置
+ * @category Queue
  * @property maxLength 最大长度
  */
 export interface QueueConfig {
@@ -17,6 +17,7 @@ export interface QueueConfig {
 /**
  * @class Queue
  * 队列
+ * @category Queue
  */
 export class Queue<T> {
   _config: QueueConfig

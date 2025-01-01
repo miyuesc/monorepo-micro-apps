@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isSymbol
 
-# isSymbol()
+# 函数: isSymbol()
 
 ```ts
 function isSymbol(val): val is symbol
 ```
+
+判断是否为 symbol
 
 ## 参数
 

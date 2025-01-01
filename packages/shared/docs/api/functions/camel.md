@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / camel
 
-# camel()
+# 函数: camel()
 
 ```ts
 function camel(str): string
 ```
+
+转驼峰命名
 
 ## 参数
 

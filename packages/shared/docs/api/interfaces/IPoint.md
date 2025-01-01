@@ -1,6 +1,8 @@
 [@miyue-mma/shared](../index.md) / IPoint
 
-# IPoint
+# 接口: IPoint
+
+坐标类型
 
 ## 属性
 

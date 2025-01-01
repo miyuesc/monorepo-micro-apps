@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / calculateDistance
 
-# calculateDistance()
+# 函数: calculateDistance()
 
 ```ts
 function calculateDistance(point1, point2): number

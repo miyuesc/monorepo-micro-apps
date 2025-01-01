@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / isPointInConvexPolygon
 
-# isPointInConvexPolygon()
+# 函数: isPointInConvexPolygon()
 
 ```ts
 function isPointInConvexPolygon(polygon, point): boolean

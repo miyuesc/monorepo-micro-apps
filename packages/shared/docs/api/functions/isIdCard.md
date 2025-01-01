@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isIdCard
 
-# isIdCard()
+# 函数: isIdCard()
 
 ```ts
 function isIdCard(str): boolean
 ```
+
+二代身份证格式
 
 ## 参数
 

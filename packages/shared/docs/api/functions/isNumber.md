@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isNumber
 
-# isNumber()
+# 函数: isNumber()
 
 ```ts
 function isNumber(val): val is number
 ```
+
+判断是否为 number
 
 ## 参数
 

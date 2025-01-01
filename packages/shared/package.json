@@ -17,7 +17,7 @@
     "clean": "rimraf dist",
     "clean:docs": "rimraf ./docs/api",
     "build:docs": "pnpm clean:docs && typeDoc",
-    "view:site": "pnpm build:docs && vitepress dev docs",
+    "view:site": "pnpm build:docs && vitepress dev docs --port 3000",
     "build:site": "pnpm build:docs && vitepress build docs"
   },
   "typedocMain": "lib/index.ts",

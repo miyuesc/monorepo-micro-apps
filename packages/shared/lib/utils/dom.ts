@@ -8,8 +8,8 @@ import { isNumber } from './typed'
  */
 
 /**
- * @category Dom
  * 文档尺寸
+ * @category Dom
  */
 export interface Size {
   height: number
@@ -17,8 +17,8 @@ export interface Size {
 }
 
 /**
- * @category Dom
  * 获取文档整体尺寸
+ * @category Dom
  */
 export function getDocumentSize(): Size {
   const { body } = document
@@ -53,8 +53,8 @@ export function getDocumentSize(): Size {
 }
 
 /**
- * @category Dom
  * 是否存在滚动条
+ * @category Dom
  * @param element
  */
 export function isScroll(element: HTMLElement): boolean {
@@ -64,8 +64,8 @@ export function isScroll(element: HTMLElement): boolean {
 }
 
 /**
- @category Dom
  * 滚动条尺寸
+ * @category Dom
  * @param element
  */
 export function getScrollBarWidth(element: HTMLElement): number {
@@ -75,8 +75,8 @@ export function getScrollBarWidth(element: HTMLElement): number {
 }
 
 /**
- * @category Dom
  * 设置元素 transform: translate 移动
+ * @category Dom
  * @param element HTMLElement
  * @param x
  * @param y

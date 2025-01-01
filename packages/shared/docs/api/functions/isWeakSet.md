@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isWeakSet
 
-# isWeakSet()
+# 函数: isWeakSet()
 
 ```ts
 function isWeakSet(val): val is WeakSet<any>
 ```
+
+判断是否为 WeakSet
 
 ## 参数
 

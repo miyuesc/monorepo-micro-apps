@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / Constructor
 
-# Constructor()\<T\>
+# 类型别名: Constructor()\<T\>
 
 ```ts
 type Constructor<T> = (...args) => T;

@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isArray
 
-# isArray()
+# 函数: isArray()
 
 ```ts
 function isArray(arg): arg is any[]
 ```
+
+判断是否为 array
 
 ## 参数
 

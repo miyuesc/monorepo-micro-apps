@@ -1,13 +1,14 @@
 /**
- * @category Stack
+ * @categoryDescription Stack
  * 栈
  * @showCategories
  * @module
  */
 
 /**
- * @interface StackConfig
  * 栈配置
+ * @category Stack
+ * @interface StackConfig
  * @property maxLength 最大长度
  */
 export interface StackConfig {
@@ -15,8 +16,8 @@ export interface StackConfig {
 }
 
 /**
- * @class Stack
  * 栈
+ * @category Stack
  */
 export class Stack<T> {
   _config: StackConfig

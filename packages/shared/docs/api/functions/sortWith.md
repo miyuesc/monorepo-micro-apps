@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / sortWith
 
-# sortWith()
+# 函数: sortWith()
 
 ```ts
 function sortWith<T>(

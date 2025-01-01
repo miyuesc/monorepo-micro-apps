@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / partition
 
-# partition()
+# 函数: partition()
 
 ```ts
 function partition<T>(array, ...filters): T[][] & object

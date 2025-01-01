@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / inRange
 
-# inRange()
+# 函数: inRange()
 
 ```ts
 function inRange(
@@ -8,6 +8,8 @@ function inRange(
    min, 
    max): boolean
 ```
+
+数字是否在指定范围内
 
 ## 参数
 

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / eLinearGradient
 
-# eLinearGradient()
+# 函数: eLinearGradient()
 
 ```ts
 function eLinearGradient(
@@ -11,6 +11,8 @@ function eLinearGradient(
    colors?, 
    cord?): graphic.LinearGradient
 ```
+
+线性渐变
 
 ## 参数
 

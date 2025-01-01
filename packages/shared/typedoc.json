@@ -7,13 +7,8 @@
   "lang": "zh",
   "githubPages": false,
   "readme": "none",
-  "indexFormat": "table",
   "useCodeBlocks": true,
   "disableSources": true,
-  "textContentMappings": {
-    "title.indexPage": "API Reference",
-    "title.memberPage": "{name}"
-  },
   "navigation": {
     "includeCategories": true,
     "includeGroups": true,

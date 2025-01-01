@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isFunction
 
-# isFunction()
+# 函数: isFunction()
 
 ```ts
 function isFunction(val): val is Function
 ```
+
+判断是否为 function
 
 ## 参数
 

@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / throttle
 
-# throttle()
+# 函数: throttle()
 
 ```ts
 function throttle<T>(

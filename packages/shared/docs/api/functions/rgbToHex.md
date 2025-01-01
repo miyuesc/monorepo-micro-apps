@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / rgbToHex
 
-# rgbToHex()
+# 函数: rgbToHex()
 
 ```ts
 function rgbToHex(rgb): string | undefined
 ```
+
+RGB颜色转十六进制颜色
 
 ## 参数
 

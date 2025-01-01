@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / shuffle
 
-# shuffle()
+# 函数: shuffle()
 
 ```ts
 function shuffle<T>(array): T[]

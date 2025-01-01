@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / isScroll
 
-# isScroll()
+# 函数: isScroll()
 
 ```ts
 function isScroll(element): boolean
 ```
+
+是否存在滚动条
 
 ## 参数
 

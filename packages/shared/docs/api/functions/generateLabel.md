@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / generateLabel
 
-# generateLabel()
+# 函数: generateLabel()
 
 ```ts
 function generateLabel<T>(

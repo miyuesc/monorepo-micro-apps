@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / PartitionFilter
 
-# PartitionFilter()\<T\>
+# 类型别名: PartitionFilter()\<T\>
 
 ```ts
 type PartitionFilter<T> = (i, idx, arr) => any;
 ```
+
+数组分组条件
 
 ## 类型参数
 

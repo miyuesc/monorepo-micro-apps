@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / unbind
 
-# unbind()
+# 函数: unbind()
 
 ```ts
 function unbind<K>(
@@ -9,6 +9,8 @@ function unbind<K>(
    listener, 
    capture?): void
 ```
+
+元素事件解绑
 
 ## 类型参数
 

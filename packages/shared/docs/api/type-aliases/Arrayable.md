@@ -1,6 +1,6 @@
 [@miyue-mma/shared](../index.md) / Arrayable
 
-# Arrayable\<T\>
+# 类型别名: Arrayable\<T\>
 
 ```ts
 type Arrayable<T> = T | T[];

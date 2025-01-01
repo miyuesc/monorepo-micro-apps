@@ -1,8 +1,7 @@
 [@miyue-mma/shared](../index.md) / Stack
 
-# Stack\<T\>
+# 类: Stack\<T\>
 
-Stack
 栈
 
 ## 类型参数

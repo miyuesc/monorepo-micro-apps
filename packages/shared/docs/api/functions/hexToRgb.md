@@ -1,10 +1,12 @@
 [@miyue-mma/shared](../index.md) / hexToRgb
 
-# hexToRgb()
+# 函数: hexToRgb()
 
 ```ts
 function hexToRgb(hex): string | undefined
 ```
+
+十六进制颜色转RGB颜色
 
 ## 参数
 
