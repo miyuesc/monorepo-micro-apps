@@ -44,7 +44,7 @@ jobs:
       # 执行npm脚本打包项目
       - name: Install
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
 
       - name: Build SharedUtils
         run: |
