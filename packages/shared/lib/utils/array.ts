@@ -94,7 +94,6 @@ export interface FlatProps {
   currentDepth?: number
   removeChildren?: boolean
 }
-
 /**
  * 对象数组扁平化
  * @category Array
@@ -122,6 +121,10 @@ export function flat<T extends Record<string, unknown>>(data: T[], props: FlatPr
 /**
  * 转成对象结构的配置参数
  * @category Array
+ * @interface
+ * @property useBoolean 是否使用布尔值作为值
+ * @property useFlat 是否扁平化数组
+ * @property flatOptions 扁平化配置参数
  */
 export interface ToMapProps {
   useBoolean?: boolean
@@ -148,6 +151,41 @@ export function toMap<T extends Record<string, unknown>>(data: T[], key: string,
       result[itemKey] = useBoolean ? true : source
   }
 
+  return result
+}
+
+/**
+ * 转成对象结构的配置参数
+ * @category Array
+ * @interface
+ * @property id 指定 id 属性名
+ * @property children 指定子节点属性名
+ * @property pid 指定父节点属性名
+ */
+export interface TreeArrayProps {
+  id?: string
+  children?: string
+  pid?: string
+}
+
+/**
+ * 转成树形结构
+ * @category Array
+ * @param data 源对象数组
+ * @param props 配置项
+ */
+export function toTree<T extends Record<string, any> = any>(data: T[], props: TreeArrayProps) {
+  const { id = 'id', children = 'children', pid = 'pid' } = props
+  const result: T[] = []
+  const nodeMap = new Map<string, T>()
+  for (const node of data) {
+    (node[children] as T[]) = node[children] || []
+    nodeMap.set(node[id], node)
+  }
+  for (const node of data) {
+    const parent = nodeMap.get(node[pid]);
+    (parent ? parent[children] : result).push(node)
+  }
   return result
 }
 
@@ -198,14 +236,20 @@ export function generateLabel<T extends Record<string, unknown>>(data: T[], valu
  * @param key 排序的键名
  * @param len 前 n 个元素
  */
-export function sortWith<T extends Record<string, unknown>>(articles: T[], key: keyof T, len: number = 10): T[] {
+export function sortWith<T extends Record<string, unknown>>(articles: T[], key: keyof T, len: number): T[]
+export function sortWith<T extends Record<string, unknown>>(articles: T[], key: typeof Array.prototype.sort, len: number): T[]
+export function sortWith<T extends Record<string, unknown>>(articles: T[], key: any, len: number = 10): T[] {
   const copyArr = articles.slice()
-  return copyArr.sort((a, b) => (b[key] as number) - (a[key] as number)).slice(0, len)
+  const sorter = typeof key === 'function' ? key : (a: T, b: T) => (b[key] as number) - (a[key] as number)
+  return copyArr.sort(sorter).slice(0, len)
 }
 
 /**
  * 树形数组的配置参数
  * @category Array
+ * @interface
+ * @property children 指定子节点属性名
+ * @property traversal 遍历方式，默认为深度优先
  */
 export interface TreeArrayProps {
   children?: string
