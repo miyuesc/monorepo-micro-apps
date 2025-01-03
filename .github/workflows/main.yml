@@ -50,6 +50,7 @@ jobs:
         run: |
           cd ./packages/shared
           pnpm install
+          pnpm run build:dist
           pnpm run build:site
 
       - name: Build DingFlow
