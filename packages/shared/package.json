@@ -13,8 +13,8 @@
     "require": "./dist/cjs/index.cjs"
   },
   "scripts": {
-    "build:dist": "pnpm clean && pnpm rollup -c",
-    "clean": "rimraf dist",
+    "clean:dist": "rimraf dist",
+    "build:dist": "pnpm clean:dist && pnpm rollup -c",
     "clean:docs": "rimraf ./docs/api",
     "build:docs": "pnpm clean:docs && typeDoc",
     "view:site": "vitepress dev docs --port 3000",
