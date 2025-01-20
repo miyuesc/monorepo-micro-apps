@@ -58,7 +58,9 @@ export function usePaginationRequest<T extends object = NonNullable<unknown>, S 
           total.value = totalNum || 0
         }
         else {
-          errorHanding && errorHanding(msg)
+          if (errorHanding) {
+            errorHanding(msg)
+          }
           emptyTableData()
         }
       }
@@ -69,13 +71,15 @@ export function usePaginationRequest<T extends object = NonNullable<unknown>, S 
     }
   }
 
-  const currentPageChanged = (pageNo: number) => {
+  const currentPageChanged = async (pageNo: number) => {
     page.value.pageNo = pageNo
-    getTableData && getTableData()
+    if (getTableData)
+      await getTableData()
   }
-  const currentSizeChanged = (pageSize: number) => {
+  const currentSizeChanged = async (pageSize: number) => {
     page.value.pageSize = pageSize
-    getTableData && getTableData()
+    if (getTableData)
+      await getTableData()
   }
 
   return {

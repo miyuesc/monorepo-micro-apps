@@ -5,7 +5,7 @@ export default antfu({
     prettierOptions: {
       printWidth: 120,
       quotes: 'single',
-    }
+    },
   },
   vue: true,
   react: true,
@@ -16,5 +16,5 @@ export default antfu({
     'no-case-declarations': 'off',
     'no-console': 'off',
     'ts/ban-ts-comment': 'off',
-  }
+  },
 })

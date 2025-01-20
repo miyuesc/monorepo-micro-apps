@@ -331,7 +331,7 @@ export function daysExpressionGenerator(panelData: DayPanelData): [string, strin
 export function useCronExpression(
   value?: string | Ref<string>,
   presetDefaultValue?: string,
-  callback?: Function,
+  callback?: () => unknown,
 ) {
   const secondData = ref<CommonPanelData>(JSON.parse(JSON.stringify(defaultCommonPanelData)))
   const minuteData = ref<CommonPanelData>(JSON.parse(JSON.stringify(defaultCommonPanelData)))
@@ -371,7 +371,9 @@ export function useCronExpression(
       exp = presetDefaultValue || '* * * * * ?'
 
     initCronExpression(exp)
-    callback && callback()
+    if (callback) {
+      callback()
+    }
   }
 
   onMounted(() => {
@@ -391,7 +393,9 @@ export function useCronExpression(
           exp += ` ${yearValue.value}`
 
         cronExpression.value = exp
-        callback && callback()
+        if (callback) {
+          callback()
+        }
       },
       { deep: true },
     )
