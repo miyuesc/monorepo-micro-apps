@@ -8,6 +8,30 @@ import { isNumber } from './typed'
  */
 
 /**
+ * 图片后缀列表
+ * @category File
+ */
+export const ImageExtList = ['.png', '.jpg', '.jpeg', '.bmp', '.gif', '.webp', '.svg'] as const
+
+/**
+ * 视频后缀列表
+ * @category File
+ */
+export const VideoExtList = ['.flv', '.avi', '.mp4', '.ogg'] as const
+
+/**
+ * 音频后缀列表
+ * @category File
+ */
+export const AudioExtList = ['.mp3', '.m4a', '.wav', '.mpeg'] as const
+
+/**
+ * PDF后缀列表
+ * @category File
+ */
+export const PDFExtList = ['.pdf'] as const
+
+/**
  * 文件下载
  * @category File
  * @param buffer 文件流
