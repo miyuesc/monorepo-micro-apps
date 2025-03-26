@@ -15,9 +15,9 @@ export default defineConfig({
     logo: 'https://miyuefe.cn/assets/images/logo.svg',
     search: { provider: 'local' },
     outline: 'deep',
-    socialLinks: [{ icon: 'github', link: 'https://github.com/TeaTools/auto-sync-blog' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/miyuesc/monorepo-micro-apps' }],
     footer: {
-      copyright: `Copyright © 2023-${new Date().getFullYear()} MiyueFE`,
+      copyright: `Copyright © 2024-${new Date().getFullYear()} MiyueFE`,
       message: 'Released under the MIT License.',
     },
   },
