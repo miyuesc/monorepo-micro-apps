@@ -100,3 +100,54 @@ export function limitInRange(num: number, min: number, max: number): number {
 
   return num
 }
+
+/**
+ * 保留指定位数小数，默认两位
+ * @category Number
+ * @param num 目标数字
+ * @param precision 小数位数
+ * @return number
+ */
+export function toFixed(num: number, precision: number = 2): number {
+  if (!isNumber(num))
+    throw new Error('argument must be a number')
+
+  if (Number.isNaN(num))
+    throw new Error('argument can not be NaN')
+
+  if (!isNumber(precision))
+    throw new Error('precision must be a number')
+
+  if (Number.isNaN(precision))
+    throw new Error('precision can not be NaN')
+
+  if (precision < 0)
+    throw new Error('precision can not be less than 0')
+
+  if (precision > 20)
+    throw new Error('precision can not be greater than 20')
+
+  return Number(num.toFixed(precision)).valueOf()
+}
+
+/**
+ * 数字千分位格式化
+ * @category Number
+ * @param num 目标数字
+ * @return string
+ */
+export function toThousands(num: number | string): string {
+  if (!isNumber(num))
+    num = Number(num).valueOf()
+
+  if (Number.isNaN(num))
+    throw new Error('argument can not be NaN')
+
+  if (num.toLocaleString) {
+    return num.toLocaleString('en-US')
+  }
+
+  return num.toString().replace(/\d+/, (s) => {
+    return s.replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+  })
+}

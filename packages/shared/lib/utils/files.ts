@@ -57,8 +57,15 @@ export function downloadFile(buffer: BlobPart, fileName: string, type: string) {
  * @param bytes 字节数
  */
 export function bytesToSize(bytes: number) {
-  if (!isNumber(bytes))
-    bytes = Number.parseFloat(bytes as string)
+  if (!isNumber(bytes)) {
+    try {
+      bytes = Number.parseFloat(bytes as string)
+    }
+    catch (e) {
+      (e as Error).message = 'bytes must be a number'
+      throw e
+    }
+  }
 
   if (bytes < 0)
     throw new Error('bytes must be a number and >= 0')
