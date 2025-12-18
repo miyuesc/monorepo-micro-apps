@@ -1,4 +1,4 @@
-import { post } from './axios'
+import axiosHttp from './axios'
 
 export type RequestBodyGenerator<R = any, T extends Response = any> = (idx: number, lastResponse: T | null) => R
 
@@ -16,11 +16,11 @@ export async function pollingRequest<R = any, T extends Response = any>(url: str
   while (true) {
     const requestBody = requestBodyGenerator(idx, lastResponse)
 
-    let res = await post(url, requestBody)
+    let res = await axiosHttp.post(url, requestBody)
 
     // 有可能网络异常，数据请求不到，那就重复5次
     while ((!res || !res.data) && badCount < 5) {
-      res = await post(url, requestBody)
+      res = await axiosHttp.post(url, requestBody)
       badCount++
     }
 
